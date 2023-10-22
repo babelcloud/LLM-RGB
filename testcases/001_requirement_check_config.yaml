@@ -1,0 +1,22 @@
+- description: This test mainly focuses on reasoning-depth and instruction-compliance. It requires the LLM to understand the intent of the application and infer that the persistent storage is needed to achieve the purpose. The answer format is regulated to YES or NO.
+  threshold: 0.6
+  vars: 
+    name: 001_requirement_check
+    difficulties:
+      context-length: 1
+      reasoning-depth: 2
+      instruction-compliance: 2
+    prompt: file://testcases/001_requirement_check_prompt.txt
+  assert:
+    - type: equals
+      value: "YES"
+      weight: 2
+    - type: regex
+      value: "^(YES|Yes|yes)\\.?$"
+      weight: 1
+    - type: regex
+      value: "^(YES|NO|Yes|No|yes|no)\\.?$"
+      weight: 1
+    - type: regex
+      value: "^(YES|Yes|yes)"
+      weight: 1

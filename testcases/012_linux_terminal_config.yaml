@@ -1,0 +1,13 @@
+- description: This test mainly focuses on reasoning-depth and instruction-compliance. It requires the LLM to understand the scenario is to mimic Linux terminal and output response as shell format accroding to user's command.
+  threshold: 1
+  vars: 
+    name: 012_linux_terminal
+    difficulties:
+      context-length: 1
+      reasoning-depth: 2
+      instruction-compliance: 3
+    prompt: file://testcases/012_linux_terminal_prompt.txt
+  assert:
+    - type: icontains
+      value: "sed: can't read test.txt: No such file or directory"
+      weight: 1

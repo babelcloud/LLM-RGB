@@ -1,0 +1,16 @@
+- description: This test mainly focuses on reasoning-depth and instruction-compliance. It requires the LLM to understand the situation and use tools as required. This ability is often used in Agent apps. 
+  threshold: 0.6
+  vars: 
+    name: 011_tool_using
+    difficulties:
+      context-length: 2
+      reasoning-depth: 4
+      instruction-compliance: 3
+    prompt: file://testcases/011_tool_using_prompt.txt
+  assert:
+    - type: javascript
+      value: file://testcases/011_tool_using_assert.js
+      weight: 3
+    - type: starts-with
+      value: "tool_to_use:"
+      weight: 1

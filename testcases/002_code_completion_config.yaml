@@ -1,0 +1,21 @@
+- description: This test mainly focuses on reasoning-depth. It requires the LLM to understand the whole piece of code and infer that the intent of the user is to call buildMessages function.
+  threshold: 0.6
+  vars:
+    name: 002_code_completion
+    difficulties:
+      context-length: 1
+      reasoning-depth: 4
+      instruction-compliance: 2
+    prompt: file://testcases/002_code_completion_prompt.txt
+  assert:
+    - type: equals
+      value: "Messages(history, instruction);"
+      weight: 2
+    - type: contains-any
+      value: 
+        - "buildMessages(history, instruction);"
+        - "Messages(history, instruction);"
+      weight: 3
+    - type: javascript
+      value: "output.length < 150"
+      weight: 1  

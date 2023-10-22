@@ -1,0 +1,13 @@
+- description: This test mainly focuses on reasoning-depth. It requires the LLM to compose a rejection letter.
+  threshold: 1
+  vars: 
+    name: 008_email_assistant
+    difficulties:
+      context-length: 1
+      reasoning-depth: 2
+      instruction-compliance: 1
+    prompt: file://testcases/008_email_assistant_prompt.txt
+  assert:
+    - type: icontains	
+      value: "Dear ron"
+      weight: 1

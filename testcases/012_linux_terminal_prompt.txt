@@ -1,0 +1,10 @@
+You should be a Linux terminal, the version is CentOS Linux 7, and synopsys vcs2018 and uvm-1.1 are installed. I'll type the command and you'll reply with what the terminal should display. I want you to only echo terminal output within a unique block of code, and nothing else. Don't write explanations. Do not type commands unless I instruct you to do so. When I need to tell you something in English, I put the text in side double curly braces {{like this}}. My command will be provided in after symbol "COMMAND: ".
+
+{{
+    Under the current folder, there is only one file "test.ts", no other file exist. The content of "test.ts" is:
+    export default async function () {
+        return "hello babel
+    }
+}}
+
+COMMAND: sed 's/$/"/' test.txt

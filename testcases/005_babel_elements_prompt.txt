@@ -1,0 +1,395 @@
+You are an AI programming assistant for Babel applications. Babel is a custom DSL(YAML) that defines an application. Babel consists of requirements, dependencies, config and elements. Elements are the major part of a babel which has following kinds: Database, Function, HTTP, Worker, Assets. Database element can be used to define data structure and save data. Function element can be used to execute any task. HTTP element can be used to respond to http request such as GET, POST. Worker element can be used as cron job. Assets element can be used to put static files such as html, css, js. The code part of an element should be a TypeScript module. 
+
+You will be provided with some examples of babel YAML code delimited by triple hashtag. Based on the requirements delimited by triple quotes, write the corresponding babel elements including detailed comments, starting from "dependencies". 
+
+Code only, no explanations. Respond without code block wrap:
+dependencies:
+<Your response goes here>
+
+###
+schemaVersion: v2-alpha3
+requirements:
+  title: Build an alcohol selection system for a party.
+  content:
+  - type: worker
+    desc:
+    - "This worker runs at midnight every day. "
+    - "This worker sends invitation emails to Ella and Hailong with a link to select their preferred alcohol."
+  - type: webpage
+    desc:
+    - "This page shows available alcohol choices and submit email and choice."
+  - type: endpoint
+    desc:
+    - "Handle HTTP POST request to submit the alcohol choice of a friend. The email and alcohol choice are provided in the POST message."
+  - type: webpage
+    desc:
+    - "This page displays all friends' alcohol choices."
+dependencies:
+  ejs: 3.1.9
+  nodemailer: 6.4.18
+config:
+  EMAIL_ACCOUNT: ""
+  EMAIL_PASSWORD: ""
+elements:
+- name: SendInvitationEmail
+  kind: Worker
+  schedule: "0 0 * * *"
+  scheduleEnabled: true
+  code: |
+    import { sendEmail } from '#elements';
+    /**
+    * Send invitation emails to Ella and Hailong with a link to select their preferred alcohol.
+    **/
+    export default async function() {
+        const emails = [
+            { name: "ella", email: "ella@gmail.com" },
+            { name: "Hailong", email: "zhlmmc@gmail.com" }
+        ];
+        for (const friend of emails) {
+            const link = `/select-alcohol/${friend.email}`;
+            const message = `
+                Hi ${friend.name},
+                
+                You are invited to the party tomorrow night! Please click the link below to choose your preferred alcohol:
+                
+                ${link}
+                
+                Cheers!
+            `;
+            await sendEmail(friend.email, "Party Invitation", message);
+        }
+    }
+- name: sendEmail
+  kind: Function
+  code: |
+    import nodemailer from "nodemailer";
+    import Config from "#config";
+    /**
+     * Send an email to the specified recipients with a link to select their preferred alcohol.
+     * @param to - email address of the recipient.
+     * @param subject - subject of the email.
+     * @param message - content of the email.
+     **/
+    export default async function(to:string, subject:string, message:string) {
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: Config.EMAIL_ACCOUNT,
+                pass: Config.EMAIL_PASSWORD,
+            },
+        });
+        const mailOptions = {
+            from: Config.EMAIL_ACCOUNT,
+            to: to,
+            subject: subject,
+            html: message,
+        };
+        await transporter.sendMail(mailOptions);
+    }
+- name: AlcoholChoice
+  kind: Database
+  code: |
+    /**
+     * This element saves friends' alcohol choices.
+     **/
+    export type AlcoholChoice = {
+        email: string; // The email address of the friend.
+        choice: string; // The preferred alcohol choice (Whisky, Wine, or Beer).
+    }
+- name: SelectAlcohol
+  kind: HTTP
+  method: GET
+  pathname: /select-alcohol/:email
+  code: |
+    import { frontend } from "#elements";
+    import * as Koa from "koa";
+    import ejs from "ejs";
+    /**
+     * Handle HTTP GET request /select-alcohol/:email. Get the email address of the friend from the url path, and show a web page with the available alcohol choices.
+     **/
+    export default async function (request: Koa.Request, response: Koa.Response, ctx: Koa.Context) {
+        const email = request.params.email;
+        const html = ejs.render(await frontend["/choose.ejs"].text(), {email});
+        return html;
+    }
+- name: SubmitAlcoholChoice
+  kind: HTTP
+  method: POST
+  pathname: /submit-choice
+  code: |
+    import { AlcoholChoice } from "#elements";
+    import * as Koa from "koa";
+    /**
+     * Handle HTTP POST request /submit-choice. Get the email address and alcohol choice through POST message. Save the alcohol choice to the AlcoholChoice database.
+     **/
+    export default async function(request: Koa.Request, response: Koa.Response, ctx: Koa.Context) {
+        const email = request.body.email;
+        const choice = request.body.choice;
+        await AlcoholChoice.set(email, { email, choice });
+        return 'Your choice has been submitted. Thank you!';
+    }
+- name: DisplayChoices
+  kind: HTTP
+  method: GET
+  pathname: /choices
+  code: |
+    import { AlcoholChoice } from "#elements";
+    import { frontend } from "#elements";
+    import * as Koa from "koa";
+    import ejs from "ejs";
+    /**
+     * Handle HTTP GET request /choices. Retrieve alcohol choices from database and return a web page that shows friends' alcohol choices.
+     **/
+    export default async function (request: Koa.Request, response: Koa.Response, ctx: Koa.Context) {
+        const choices = await AlcoholChoice.list();
+        const html = ejs.render(await frontend["/selections.ejs"].text(), {choices});
+        return html;
+    }
+- name: frontend
+  kind: Assets
+  items:
+  - path: /selections.ejs
+    type: text/plain
+    content: |
+      <!DOCTYPE html>
+      <html>
+      <head>
+          <title>Friends' Alcohol Choices</title>
+          <style>
+              table, th, td {
+                  border: 1px solid black;
+              }
+          </style>
+      </head>
+      <body>
+          <h1>Friends' Alcohol Choices</h1>
+          <table>
+              <tr>
+                  <th>Email</th>
+                  <th>Alcohol Choice</th>
+              </tr>
+      <% choices.forEach(choice => { %>
+              <tr>
+                  <td><%= choice.email %></td>
+                  <td><%= choice.choice %></td>
+              </tr>
+      <% }); %>
+          </table>
+      </body>
+      </html>
+  - path: /choose.ejs
+    type: text/plain
+    content: |
+      <!DOCTYPE html>
+      <html>
+          <head>
+          <title>Select Alcohol Choice</title>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          </head>
+          <body>
+          <h1>Select Alcohol Choice</h1>
+          <form action="/submit-choice" method="post">
+              <input type="hidden" name="email" value="<%= email %>">
+              <label>
+              <input type="radio" name="choice" value="Whisky" required>
+              Whisky
+              </label><br>
+              <label>
+              <input type="radio" name="choice" value="Wine">
+              Wine
+              </label><br>
+              <label>
+              <input type="radio" name="choice" value="Beer">
+              Beer
+              </label><br>
+              <button type="submit">Submit</button>
+          </form>
+          </body>
+      </html>
+###
+schemaVersion: v2-alpha3
+requirements:
+  title: Build a flight ticket monitor.
+  content:
+  - type: webpage
+    desc: 
+    - "This page display the current lowest price ticket details for the specified date from Hong Kong to San Francisco."
+    - "The url path for this page is \"/ticket/{date}\"."
+    - "Date format should be 2023-08-01."
+  - type: webpage
+    desc:
+    - "This page shows the lowest priced ticket information from database. "
+  - type: worker
+    desc:
+    - "This worker runs at 6:00AM every morning. "
+    - "This workder checks flight ticket prices from Hong Kong to San Francisco for the period from 2023-08-01 to 2023-08-30 and saves the lowest priced ticket infomaton in database. "
+dependencies:
+  ejs: 3.1.9
+  axios: 0.24.0
+config:
+  KIWI_API_KEY: ""
+elements:
+- name: FlightInfo
+  kind: Database
+  code: |
+    /**
+     * This element saves ticket information.
+     **/
+    export type FlightInfo = {
+        price: number; // price should be integer.
+        departureTime: string; // Local departure time, e.g. 7/24/2023, 10:30:00 AM.
+        arrivalTime: string; // Local arrival time, e.g. 7/24/2023, 10:30:00 AM.
+        airline: string; // airline IATA code, in shared aireline cases, this field can contain multiple airline codes separated by comma.
+        flightNumber: string; // flightNumber should not include the airline code.
+    }
+- name: CheckFlightPrice
+  kind: Worker
+  schedule: "0 */6 * * *"
+  scheduleEnabled: true
+  code: | 
+    import { FlightInfo, getTicket } from '#elements';
+    /**
+    * Every 6 hours, check flight ticket between 2023-07-01 to 2023-07-30 and save the lowest price ticket info to database.
+    **/
+    export default async function() {
+        const startDate = '2023-08-01';
+        const endDate = '2023-08-30';
+        const ticket = await getTicket(startDate, endDate);
+        FlightInfo.set(Date.now(), ticket); 
+    }
+- name: GetLowestPriceTicketByDate
+  kind: HTTP
+  method: GET
+  pathname: /ticket/:date
+  code: |
+    import { getTicket } from '#elements';
+    import { frontend } from "#elements";
+    import * as Koa from "koa";
+    import ejs from "ejs";
+    /**
+     * Respond to HTTP GET request. Return a web page that shows the current lowest price ticket of the given date, e.g. 2023-08-01. The date is provided through URL. Calls getTicket to get the ticket info and using ejs to render html from frontend assets.
+     **/
+    export default async function (request: Koa.Request, response: Koa.Response, ctx: Koa.Context) {
+        const ticket = await getTicket(request.params.date, request.params.date);
+        const html = ejs.render(await frontend["/index.ejs"].text(), {ticket});
+        return html;
+    }
+- name: GetLowestPriceTicket
+  kind: HTTP
+  method: GET
+  pathname: /ticket/hk-sfo
+  code: |
+    import { getLowestTicket } from '#elements';
+    import { frontend } from "#elements";
+    import * as Koa from "koa";
+    import ejs from "ejs";
+    /**
+     * Respond to HTTP GET request. Calls getLowestTicket element to get the current lowest price ticket in database. Render HTML using ejs from frontend assets.
+     **/
+    export default async function (request: Koa.Request, response: Koa.Response, ctx: Koa.Context) {
+        const ticket = await getLowestTicket();
+        const html = ejs.render(await frontend["/index.ejs"].text(), {ticket});
+        return html;
+    }
+- name: getTicket
+  kind: Function
+  code: |
+    import axios from "axios";
+    import Config from "#config";
+    /**
+     * Calls KIWI API to get the lowest price ticket between the given dates from HK to SFO.
+     * @param startDate - The start date, e.g. 2023-07-01
+     * @param endDate - The end date, e.g. 2023-07-30
+     **/
+    export default async function(startDate:string, endDate:string) {
+        const searchParams = {
+            fly_from: 'HKG',
+            fly_to: 'SFO',
+            date_from: startDate,
+            date_to: endDate,
+            max_fly_duration: 24,
+            curr: 'USD',
+            sort: 'price',
+            limit: 20
+        };
+        const response = await axios.get('https://api.tequila.kiwi.com/v2/search', {
+            params: searchParams,
+            headers: {
+            'apikey': Config.KIWI_API_KEY,
+            },
+        })
+        const flights = response.data.data.map(flight => {
+            return {
+            price: flight.price,
+            departureTime: new Date(flight.local_departure),
+            arrivalTime: new Date(flight.local_arrival),
+            airline: flight.airlines.join(','),
+            flightNumber: flight.route[0].flight_no,
+            };
+        });
+        const random = Math.floor(Math.random() * (flights.length + 1));
+        return flights[random];
+    }
+- name: getLowestTicket
+  kind: Function
+  code: |
+    import { FlightInfo } from '#elements';
+    /**
+     * Return the loweset price ticket in database.
+     **/
+    export default async function() {
+        const tickets = await FlightInfo.list();
+        let lowestPrice = Number.MAX_SAFE_INTEGER;
+        let lowestTicket = null;
+        for (const ticket of tickets) {
+            const price = ticket.price;
+            if (price < lowestPrice) {
+            lowestPrice = price;
+            lowestTicket = ticket;
+            }
+        }
+        return lowestTicket;
+    }
+- name: frontend
+  kind: Assets
+  items:
+  - path: /index.ejs
+    type: text/plain
+    content: |
+      <!DOCTYPE html>
+      <html>
+          <head>
+          <title>Lowest Ticket from HKG to SFO</title>
+          <style>
+              header {
+                  background-color: #4CAF50;
+                  color: white;
+                  text-align: center;
+              }
+              span {
+                  text-align: left;
+                  display: block;
+              }
+              </style>
+          </head>
+          <body>
+          <header>
+              <h1>Current Lowest Ticket from HKG to SFO</h1>
+          </header>
+          <div>
+              <span>Flight Number: <b><%= ticket.flightNumber %></b></span>
+              <span>Departure Time: <b><%= new Date(ticket.departureTime).toLocaleString() %></b></span>
+              <span>Arrival Time: <b><%= new Date(ticket.arrivalTime).toLocaleString() %></b></span>
+              <span>Air Line: <b><%= ticket.airline %></b></span>
+              <span>Ticket Price: <b>$<%= ticket.price %></b></span>
+          </div>
+          </body>
+      </html>
+###
+
+"""
+requirements:
+    - "I need an app that can help me manage meeting room bookings. There are 5 meeting rooms: Apple, Orange, Pear, Banana, Mango.
+Every meeting room can be booked at least 30 mintues and at most 180 minutes. I need a web page that shows the booking status including meeting topics of each meeting room. Based on the booking status, user can click on free slots of each meeting room, input meeting topic and select time duration."
+"""

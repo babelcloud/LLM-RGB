@@ -1,0 +1,27 @@
+- description: This test primarily focuses on context-length and instruction-compliance, requiring the LLM to understand the novel's content and distill the key points.
+  threshold: 0.6
+  vars: 
+    name: 006_reading_comprehension
+    difficulties:
+      context-length: 3
+      reasoning-depth: 2
+      instruction-compliance: 3
+    prompt: file://testcases/006_reading_comprehension_prompt.txt
+  assert:
+    - type: contains
+      value: "happy_ending: YES"
+      weight: 1
+    - type: starts-with
+      value: "happy_ending: YES"
+      weight: 1
+    - type: regex
+      value: ".*(Yes|yes|YES).*"
+      weight: 1
+    - type: contains
+      value: "touching_point:"
+      weight: 1
+    - type: contains-any
+      value:
+        - "touching_point"
+        - "touching_points"
+      weight: 1

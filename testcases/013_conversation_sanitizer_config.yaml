@@ -1,0 +1,59 @@
+- description: This test mainly focuses on context-length and instruction-compliance. It requires the LLM to understand the requirements as a text sanitizer and generate output in the required formart.
+  threshold: 0.6
+  vars: 
+    name: 013_conversation_sanitizer
+    difficulties:
+      context-length: 3
+      reasoning-depth: 1
+      instruction-compliance: 2
+    prompt: file://testcases/013_conversation_sanitizer_prompt.txt
+  assert:
+    - type: starts-with
+      value: "[Agent] 2023-07-15"
+      weight: 2
+    - type: contains-all
+      value: 
+        - "SAVE20"
+        - "[Agent]"
+        - "[Client]"
+      weight: 2
+    - type: contains-all
+      value: 
+        - "It's ***@email.com."
+        - "it's ***@email.com."
+      weight: 2
+    - type: contains-all
+      value: 
+        - "Sure, it's <order>"
+        - "It's <order>."
+        - "Yes, it's <order>. Thanks!"
+      weight: 1
+    - type: contains-all
+      value: 
+        - "2023-07-24:"
+        - "2023-07-15:"
+        - "2023-11-08:"
+      weight: 1
+    - type: contains-all
+      value: 
+        - "my 😤 credit card"
+        - "my 😤 money"
+        - "my 😤 data"
+        - "my 😤 password"
+        - "😤!"
+        - "kind of 😤 joint"
+        - "the 😤 website"
+      weight: 1    
+    - type: contains-all
+      value:
+        - "trouble, <name>."
+        - "inconvenience, <name>"
+        - "hear that, <name>. Could you tell me"
+        - "Hi <name>, I've forgotten"
+        - "hear that, <name>. Can you"
+        - "Of course, <name>"
+        - "help you with this, <name>"
+        - "Hi <name>, I was"
+        - "hear that, <name>. Could you share"
+        - "Certainly, <name>"
+      weight: 1

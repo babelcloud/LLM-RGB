@@ -1,0 +1,2 @@
+Please answer the following question and provide an explanation:
+In a room, how many people are needed at least, in order for the probability that at least two people have the same birthday to be greater than 50%?
