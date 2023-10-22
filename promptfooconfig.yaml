@@ -59,7 +59,7 @@ providers:
   - webhook:https://llm-proxy.babel.run/chatglm:
       id: chatglm
       config:
-        apiKey: 1eaa2f783a690928456f27ac343c4487.SSeoNIBVMDNMmnWE
+        apiKey: 
 defaultTest:
   options:
     postprocess: |
