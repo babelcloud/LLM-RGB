@@ -1,0 +1,26 @@
+- description: This test mainly focuses on reasoning-depth and instruction-compliance. It requires the LLM to act as a customer service robot and provide reasonable suggestions for customers who need to replace their car batteries.
+  threshold: 0.6
+  vars:
+    name: 009_customer_service
+    difficulties:
+      context-length: 1
+      reasoning-depth: 3
+      instruction-compliance: 3
+    prompt: file://testcases/009_customer_service_prompt.txt
+  assert:
+    - type: javascript
+      value: file://testcases/009_customer_service_assert.js
+      weight: 6
+    - type: starts-with
+      value: "goal:"
+      weight: 2
+    - type: contains-any
+      value:
+        - "route"
+        - "location"
+      weight: 1
+    - type: contains-any
+      value:
+        - "power"
+        - "battery"
+      weight: 1

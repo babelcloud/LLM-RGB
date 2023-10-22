@@ -1,0 +1,16 @@
+- description: This test is complicated in all difficulties. It requires the LLM to learn a new DSL from long context examples, understand user's requirement and generate answer in the new DSL.
+  threshold: 0.6
+  vars: 
+    name: 005_babel_elements
+    difficulties:
+      context-length: 3
+      reasoning-depth: 4
+      instruction-compliance: 3
+    prompt: file://testcases/005_babel_elements_prompt.txt
+  assert:
+    - type: javascript
+      value: file://testcases/005_babel_elements_assert.js
+      weight: 3
+    - type: starts-with
+      value: "dependencies:"
+      weight: 1

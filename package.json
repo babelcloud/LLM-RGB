@@ -1,0 +1,35 @@
+{
+  "name": "llm-rgb",
+  "version": "1.0.0",
+  "description": "This is a set of fine grained test cases(prompts) to benchmark the reasoning and generation of LLMs in complex scenarios. Please note that this benchmark does NOT mean to be a comprehensive test against LLMs. This project is originated from an internal project of babel.cloud, the purpose of the project is to test LLMs' performance in context understanding and instruction compliance.",
+  "main": "index.js",
+  "scripts": {
+    "eval": "promptfoo eval --no-cache",
+    "render": "ts-node generateEvalScore.ts && ts-node render.ts",
+    "share": " promptfoo share -y",
+    "start": "npm run eval && npm run render && npm run share",
+    "start:render": "npm run eval && npm run render",
+    "start:share": "npm run eval && npm run share"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/babelcloud/LLM-RGB.git"
+  },
+  "keywords": ["LLM", "benchmark", "prompt", "prompt-engineering", "prompt-testing"],
+  "author": "Hailong Zhang, Ziying Wang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/babelcloud/LLM-RGB/issues"
+  },
+  "homepage": "https://github.com/babelcloud/LLM-RGB#readme",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "cli-table3": "^0.6.3",
+    "js-yaml": "^4.1.0",
+    "promptfoo": "~0.25.1",
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.7"
+  }
+}

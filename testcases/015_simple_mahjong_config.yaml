@@ -1,0 +1,13 @@
+- description: This test mainly focuses on reasoning-depth and instruction-compliance. It requires the LLM to understand the rules and find the best way to play.
+  threshold: 0.5
+  vars: 
+    name: 015_simple_mahjong
+    difficulties:
+      context-length: 3
+      reasoning-depth: 4
+      instruction-compliance: 1
+    prompt: file://testcases/015_simple_mahjong_prompt.txt
+  assert:
+    - type: javascript
+      value: file://testcases/015_simple_mahjong_assert.js
+      weight: 1

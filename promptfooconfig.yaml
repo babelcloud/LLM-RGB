@@ -1,0 +1,83 @@
+prompts: prompt.txt
+providers: 
+  - openai:gpt-3.5-turbo-16k-0613:
+      id: gpt-3.5
+      config:
+        apiKey: 
+        temperature: 0
+  - openai:gpt-4-0613:
+      id: gpt-4
+      config:
+        apiKey: 
+        temperature: 0
+  - replicate:meta/llama-2-70b-chat:35042c9a33ac8fd5e29e27fb3197f33aa483f72c2ce3b0b9d201155c7fd2a287:
+      id: llama2
+      config:
+        apiKey: 
+        temperature: 0.01
+        max_new_tokens: 4096
+  - anthropic:completion:claude-2:
+      id: claude2
+      config:
+        apiKey:
+        temperature: 0
+  # Google Palm is not stable, it returns empty reponses in some cases. Use google vertex intead.
+  - palm:chat-bison-001:
+      id: palm2-chat-bison
+      config:
+        apiKey: 
+        temperature: 0
+  - vertex:codechat-bison:
+      id: palm2-code-bison
+      config:
+        apiKey:
+        projectId: 
+        temperature: 0
+  - webhook:https://llm-proxy.babel.run/minimax:
+      id: minimax
+      config:
+        apiKey: 
+        groupId: 
+  - webhook:https://llm-proxy.babel.run/baidu-erniebot:
+      id: baidu
+      config:
+        apiKey: 
+        secretKey: 
+  - webhook:https://llm-proxy.babel.run/aliqwen:
+      id: aliqwen
+      config:
+        apiKey: 
+  - webhook:https://llm-proxy.babel.run/baichuan:
+      id: baichuan2
+      config:
+        apiKey: 
+        secretKey: 
+  - webhook:https://llm-proxy.babel.run/cohere:
+      id: cohere
+      config:
+        apiKey: 
+  - webhook:https://llm-proxy.babel.run/chatglm:
+      id: chatglm
+      config:
+        apiKey: 1eaa2f783a690928456f27ac343c4487.SSeoNIBVMDNMmnWE
+defaultTest:
+  options:
+    postprocess: |
+      output = output.replace('---', '').trim();
+      return output;
+tests:
+  - testcases/001_requirement_check_config.yaml
+  - testcases/002_code_completion_config.yaml
+  - testcases/003_context_code_fix_config.yaml
+  - testcases/004_sed_command_config.yaml
+  - testcases/005_babel_elements_config.yaml
+  - testcases/006_reading_comprehension_config.yaml
+  - testcases/007_birthday_paradox_config.yaml
+  - testcases/008_email_assistant_config.yaml
+  - testcases/009_customer_service_config.yaml
+  - testcases/010_trip_plan_config.yaml
+  - testcases/011_tool_using_config.yaml
+  - testcases/012_linux_terminal_config.yaml
+  - testcases/013_conversation_sanitizer_config.yaml
+  - testcases/014_jailbreak_config.yaml
+  - testcases/015_simple_mahjong_config.yaml

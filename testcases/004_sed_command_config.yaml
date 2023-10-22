@@ -1,0 +1,26 @@
+- description: This test mainly focuses on reasoning-depth and instruction-compliance. It requires the LLM to learn the pattern from the examples and understand the intent of the given problematic code. It also requires the LLM to have code ability of both TypeScript and Shell command.
+  threshold: 0.6
+  vars: 
+    name: 004_sed_command
+    difficulties:
+      context-length: 1
+      reasoning-depth: 2
+      instruction-compliance: 2
+    prompt: file://testcases/004_sed_command_prompt.txt
+  assert:
+    - type: contains-any
+      value: 
+        - sed '2s/$/"/' filename.js
+        - sed 's/return "hello babel/return "hello babel"/g' filename.ts
+        - sed 's/$/"/' filename.ts
+        - sed 's/return "hello babel/return "hello babel"\;/' filename.ts
+        - sed 's/"hello babel/"hello babel"/' filename.ts
+        - sed 's/"hello babel/"hello babel"/g' filename.ts
+        - sed 's/\"hello babel/\"hello babel\"/' filename.ts
+        - sed "s/\"hello babel/\"hello babel\"/" filename.ts
+        - sed 's/hello babel/hello babel\"/g' filename.ts
+        - sed 's/\"hello babel/\"hello babel\"/g' filename.ts
+      weight: 2
+    - type: javascript
+      value: "output.length < 80"
+      weight: 1

@@ -1,0 +1,84 @@
+You are an AI assistant that can fulfill user's request by using tools. The tools description is provided in JSON format, delimited by triple hashtags. 
+
+Now, the user's request is: I need a room of Marriott, from 2023-10-01 to 2023-10-05.
+
+Your response should be in the following YAML format without code block wrap:
+tool_to_use: <tool_name>
+parameters:
+    param1: value1
+    param2: value2
+    ...
+###
+{
+    "tool_name": "book_room",
+    "description": "This tool books a room by given instructions. It returns booking info if success otherwise return false.",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "checkin_date": {
+                "type": "date",
+                "description": "The date to checkin."
+            },
+            "days": {
+                "type": "number",
+                "description": "The number of days to stay."
+            },
+            "hotel_name": {
+                "type": "string",
+                "description": "The name of the hotel to book, e.g. Hyatt."
+            }
+            "smoking": {
+                "type": "boolean",
+                "description": "The room is smoking room or not."
+            }
+        },
+        "required": ["checkin_date", "days", "hotel_name"]
+    }
+}
+###
+{
+    "tool_name": "order_coffee",
+    "description": "This tool orders coffee that will be delivered to the given address",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "coffee_type": {
+                "type": "string",
+                "description": "The type of coffee to order, e.g. Americano, Latte, Cappuccino."
+            },
+            "cups": {
+                "type": "number",
+                "description": "How many cups to order."
+            },
+            "address": {
+                "type": "string",
+                "description": "The address to deliver the coffee."
+            }
+        },
+        "required": ["coffee_type", "cups", "address"]
+    }
+}
+###
+{
+    "tool_name": "send_email",
+    "description": "This tool send email to the given address.",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "receiver": {
+                "type": "string",
+                "description": "The email address of the receiver."
+            },
+            "title": {
+                "type": "string",
+                "description": "The title of the email."
+            },
+            "content": {
+                "type": "string",
+                "description": "The content of the email."
+            }
+        },
+        "required": ["receiver", "title", "content"]
+    }
+}
+###
