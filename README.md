@@ -56,6 +56,12 @@ npm install
 npm run start
 ```
 
+By default, the test result will be uploaded so that you can share the test result link. If you don't want to share the test result:
+
+```shell
+npm run start:noshare
+```
+
 If you don't have a suitable environment to run the tests, you can use [LLM-RGB Online](https://llm-rgb.babel.run).
 
 If you want to run these tests against LLMs that are not currently listed, you can add custom webhook providers in the same way as the existing ones.

@@ -6,10 +6,9 @@
   "scripts": {
     "eval": "promptfoo eval --no-cache",
     "render": "ts-node generateEvalScore.ts && ts-node render.ts",
-    "share": " promptfoo share -y",
+    "share": "ts-node shareResult.ts",
     "start": "npm run eval && npm run render && npm run share",
-    "start:render": "npm run eval && npm run render",
-    "start:share": "npm run eval && npm run share"
+    "start:noshare": "npm run eval && npm run render"
   },
   "repository": {
     "type": "git",
