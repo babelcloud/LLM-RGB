@@ -1,6 +1,6 @@
 Bob is in living room
 He takes a cup and walks to kitchen
-He puts a bal in the cup, and then walks to bedroom
+He puts a ball in the cup, and then walks to bedroom
 He reverts the cup to make it upside down, and walks to garden
 He puts the cup in garden and walks to garage
 
