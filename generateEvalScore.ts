@@ -5,6 +5,7 @@ import * as path from "path";
 const resultFileName = path.join(os.homedir(), '.promptfoo/output/latest.json');
 const scoreFileName = path.join(os.homedir(), '.promptfoo/output/latest-score.json');
 const statsFileName = path.join(os.homedir(), '.promptfoo/output/latest-stats.json');
+const rawFileName = path.join(os.homedir(), '.promptfoo/output/latest-raw.json');
 fs.readFile(resultFileName, 'utf8', (err, jsonString) => {
     if (err) {
         console.log("Error reading file from disk:", err);
@@ -37,6 +38,15 @@ fs.readFile(resultFileName, 'utf8', (err, jsonString) => {
                 console.log('Error writing scores to file:', err);
             } else {
                 console.log('Successfully wrote scores to ' + scoreFileName);
+            }
+        });
+
+        // Write raw result
+        fs.writeFile(rawFileName, JSON.stringify(result), (err) => {
+            if (err) {
+                console.log('Error writing scores to file:', err);
+            } else {
+                console.log('Successfully wrote scores to ' + rawFileName);
             }
         });
 
