@@ -1,0 +1,135 @@
+.bodyContainer {
+    background-color: #040404;
+    font-family: sans-serif;
+}
+
+.mainContainer {
+    padding-top: 7.5em;
+    padding-left: 0;
+    padding-right: 0;
+}
+.mainBox {
+    width: 100%;
+    min-height: 679px;
+    padding: 32px 35px 42px 35px;
+    border-radius: 16px;
+    border: 1px solid #FFFFFF14;
+    gap: 16px;
+}
+.mainColor {
+    color: #795FF3;
+}
+.title {
+    color: #FFFFFF;
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 73px;
+    text-align: left;
+}
+.subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.36px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #FFFFFF;
+}
+.description p {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    text-align: left;
+    color: #b6b6b7;
+    padding-bottom: 18px;
+}
+.bright {
+    color: #F5F9FC;
+}
+.try {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+.last {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+.console {
+    color: #7E64F7;
+    background-color: #7E64F729;
+    font-weight: 500;
+    width: 148px;
+    height: 48px;
+    border-radius: 8px;
+    Gap: 4px;
+}
+.copyright {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    padding-bottom: 48px;
+    color: #F5F9FC;
+    height: 20px;
+}
+.imgBtn {
+    background-color: rgba(126, 100, 247, 0.16);
+    height: 42px;
+    width: 42px;
+    border-radius: 8px;
+    gap: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    margin-left: 12px;
+    margin-top: 15.5px;
+    cursor: pointer;
+}
+.readMore {
+    display: none;
+    color: #795FF3;
+    margin-bottom: 24px;
+    padding: 0;
+}
+
+@media only screen and (max-width: 1200px) {
+    .title {
+        font-size: 40px;
+        line-height: 48.41px;
+    }
+    .imgBtn {
+        margin-top: 3px;
+    }
+    .mainContainer {
+        padding-left: 28px;
+        padding-right: 28px;
+    }
+    .description {
+        padding-right: 0;
+    }
+    .mainBox {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+    .description p {
+        display: none;
+    }
+    .description p:first-child {
+        display: block;
+        padding-bottom: 10px;
+    }
+    .readMore {
+        display: inline-block;
+    }
+    .descriptionRead p {
+        display: block;
+    }
+    .descriptionRead .readMore {
+        display: none;
+    }
+}

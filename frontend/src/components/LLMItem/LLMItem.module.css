@@ -1,0 +1,136 @@
+.item, .item2 {
+    background-color: #1E232B;
+    border: 1px solid #FFFFFF0F;
+    border-radius: 8px;
+    padding: 16px;
+    height: 72px;
+}
+.item2 {
+    padding: 15px 16px;
+}
+.item, .item2 {
+    margin-top: 8px;
+}
+.itemText {
+    color: #F5F9FC;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-align: left;
+    vertical-align: middle;
+}
+.itemBoxText {
+    display: inline-flex;
+    letter-spacing: 0;
+    height: 40px;
+    width: calc(100% - 200px);
+    flex-wrap: wrap;
+    vertical-align: top;
+}
+.itemBoxTextTitle {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    height: 24px;
+    color: #F5F9FC;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    white-space: nowrap;
+}
+.itemBoxTextSub {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 15.73px;
+    color: #BABBBF;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    white-space: nowrap;
+}
+.listBtn {
+    width: 32px;
+    padding: 0;
+    margin-left: 8px;
+    border-radius: 4px;
+}
+.listBtn:hover {
+    background-color: #2B3139;
+    color: #F5F9FC;
+}
+
+.llmForm {
+    color: #F5F9FC;
+}
+.llmForm label {
+    margin-bottom: 6px;
+}
+.displayInline {
+    display: inline;
+}
+.floatRight {
+    float: right;
+}
+.textMiddle {
+    vertical-align: middle;
+}
+.floatLeft {
+    float: left;
+}
+.clearBoth {
+    clear: both;
+}
+.styleModal section {
+    background-color: #12171d;
+}
+.styleModal section > div:first-child {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 0;
+    padding-top: 8px;
+    background-color: #12171d;
+}
+.styleModal section > div:first-child button {
+    position: relative;
+    top: 8px;
+}
+.styleModal section > div:nth-child(2) {
+    padding-left: 36px;
+    padding-right: 36px;
+    padding-bottom: 36px;
+}
+.styleModal section input, .styleModal section textarea {
+    background-color: transparent;
+}
+.configList {
+    margin-top: 12px;
+}
+.configListRow1, .configListRow2 {
+    width: calc(100% - 108px);
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.configListRow1 {
+    font-weight: 500;
+    line-height: 24px;
+    color: #F5F9FC;
+}
+.configListRow2 {
+    height: 16px;
+    line-height: 16px;
+    position: relative;
+    top: -4px;
+}
+.useIt {
+    border-radius: 8px;
+    height: 32px;
+    margin-top: 5px;
+}
+.warning {
+    border-color: #991B1B;
+}

@@ -1,0 +1,39 @@
+.resultTableProgress {
+  background-color: transparent;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.resultTableProgressSection {
+  border-top-left-radius: 0;
+  border-top-right-radius: 22px;
+  border-bottom-right-radius: 44px;
+  border-bottom-left-radius: 0;
+  overflow: initial;
+}
+
+.resultTableProgressLabel {
+  color: #F5F9FC;
+  size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  overflow: initial;
+  margin-right: 12px;
+}
+
+.resultTableValue {
+  display: none;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #73757A;
+}
+
+@media only screen and (max-width: 960px) {
+  .resultTableProgress {
+      display: none;
+  }
+  .resultTableValue {
+      display: block;
+  }
+}

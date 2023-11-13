@@ -1,0 +1,236 @@
+.bodyContainer {
+    font-family: sans-serif;
+}
+.mainContainer {
+    padding-top: 24px;
+    padding-left: 0;
+    padding-right: 0;
+}
+.mainBox {
+    width: 100%;
+    min-height: 679px;
+    padding: 32px 36px 42px 36px;
+    border-radius: 16px;
+    border: 1px solid #FFFFFF14;
+    gap: 16px;
+}
+.mainColor {
+    color: #795FF3;
+}
+.newTest {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    width: 107px;
+    padding: 0;
+    margin-bottom: 21px;
+}
+.newTestSpan {
+    padding-right: 4px;
+    font-size: 21px;
+    font-weight: 400;
+    position: relative;
+    top: -2px;
+}
+.title {
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 29.05px;
+    letter-spacing: 0;
+    text-align: left;
+    display: inline;
+}
+.title:hover {
+    cursor: pointer;
+}
+.subtitle {
+    color: #73757A;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 33.89px;
+    letter-spacing: 0;
+    text-align: left;
+}
+.navLink {
+    color: #F5F9FC;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0;
+    border-radius: 8px;
+    height: 44px;
+}
+.navLink [data-position] {
+    margin-right: 5px;
+}
+.form, .form1 {
+    background: #181C22;
+    border-radius: 8px;
+    padding: 16px 8px 16px 16px;
+    height: 660px;
+}
+.testcaseForm {
+    background: #1E222A;
+    border-radius: 8px;
+    padding: 16px;
+}
+.formHead {
+    margin-top: 16px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.checkbox {
+    height: 32px;
+    gap: 8px;
+    color: #F5F9FC;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    margin: 6px 0;
+}
+.checkbox label {
+    padding-left: 8px;
+}
+.checkbox input:checked, .checkbox [data-indeterminate] {
+    --_checkbox-bg: #795FF3 !important;
+    --_checkbox-bd-color: #795FF3 !important;
+}
+.testCases {
+    height: calc(100% - 66px);
+    overflow: auto;
+}
+.header {
+    color: #F5F9FC;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0;
+    text-align: left;
+}
+.itemList {
+    height: calc(100% - 213px);
+    overflow: auto;
+    padding-right: 12px;
+}
+.duplicationBtn, .runBtn, .deleteBtn {
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+}
+.runBtn {
+    padding: 0 19px;
+}
+.duplicationBtn {
+    padding: 0 12px;
+    width: 133px;
+}
+.deleteBtn {
+    padding: 0 12px;
+    width: 68px;
+}
+.carousel {
+    width: 100%;
+}
+.carousel [data-inactive] {
+    opacity: 0;
+    cursor: default;
+}
+.carousel [type="button"]{
+    background: rgba(24, 28, 35, 1);
+    height: 113px;
+    width: 24px;
+    border-radius: 0;
+    border: none;
+    position: relative;
+    top: -44px;
+}
+.carousel [type="button"]:first-child {
+    right: 12px;
+}
+.carousel [type="button"]:last-child {
+    left: 12px;
+}
+.carousel [type="button"] svg {
+    color: #fff;
+    height: 20px;
+    width: 20px !important;
+    height: 20px !important;
+}
+.nbsp1 {
+    display: block;
+}
+.nbsp2 {
+    display: none;
+}
+.navLinkList {
+    overflow: auto;
+    height: calc(100% - 53px);
+}
+.selectItems {
+    width: 235px;
+    display: none;
+}
+.selectItems input {
+    color: #F5F9FC;
+    font-size: 14px;
+    font-weight: 400;
+    height: 32px;
+    line-height: 32px;
+    min-height: 32px;
+}
+.imgBtn {
+    background-color: rgba(126, 100, 247, 0.16);
+    height: 42px;
+    width: 42px;
+    border-radius: 8px;
+    gap: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    margin-left: 12px;
+    margin-top: 15.5px;
+    cursor: pointer;
+}
+.copyright {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    padding-bottom: 48px;
+    color: #F5F9FC;
+    height: 20px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .selectItems {
+        display: inline-block;
+    }
+    .mainContainer {
+        padding-top: 64px;
+        padding-left: 28px;
+        padding-right: 28px;
+    }
+    .newTest {
+        margin-bottom: 0;
+        float: right;
+    }
+    .navLinkList {
+        display: none;
+    }
+    .form {
+        height: 300px;
+    }
+    .form1 {
+        height: 540px;
+    }
+    .nbsp1 {
+        display: none;
+    }
+    .nbsp2 {
+        display: block;
+    }
+}
