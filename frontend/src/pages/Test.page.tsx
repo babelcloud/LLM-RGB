@@ -284,19 +284,28 @@ export function TestPage() {
     } else {
       newTestCase[fieldName] = newValue;
     }
-    const newTestCaseList = testCaseList.map(testCase => {
-      if (testCase.created !== currentTestCase.created) {
-        return testCase;
-      }
-      return newTestCase;
-    });
 
-    clearTimeout(changeTimeout);
-    changeTimeout = setTimeout(() => {
-      setCurrentTestCase(newTestCase);
-      setTestCaseList.setState(newTestCaseList);
+    const refresh = () => {
+      let updateTestCaseIndex: number = -1;
+      testCaseList.find((testCase, index) => {
+        if (currentTestCase.created === testCase.created) {
+          updateTestCaseIndex = index;
+        }
+        return false;
+      });
+      if (updateTestCaseIndex >= 0) {
+        setTestCaseList.setItem(updateTestCaseIndex, newTestCase);
+      }
       testCaseService.set(newTestCase);
-    }, 2000);
+      setCurrentTestCase(newTestCase);
+    };
+
+    if (fieldName.startsWith('assert') && fieldName.endsWith('value')) {
+      clearTimeout(changeTimeout);
+      changeTimeout = setTimeout(refresh, 2000);
+    } else {
+      refresh();
+    }
     return true;
   }
 
@@ -324,7 +333,7 @@ export function TestPage() {
       top: testCaseListViewport.current!.scrollHeight,
       behavior: 'smooth',
     });
-    }, 10);
+    }, 0);
   }
 
   function addTestCaseAssert() {
