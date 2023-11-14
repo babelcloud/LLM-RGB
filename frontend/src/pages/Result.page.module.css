@@ -1,0 +1,247 @@
+.bodyContainer {
+    font-family: sans-serif;
+}
+.mainContainer {
+    padding-top: 24px;
+    position: relative;
+}
+.mainBox {
+    width: 100%;
+    min-height: 679px;
+    padding: 32px 36px 42px 36px;
+    border-radius: 16px;
+    border: 1px solid #FFFFFF14;
+    gap: 16px;
+}
+.resultBox {
+    padding: 24px;
+    border-radius: 8px;
+    border: 0px 0px 1px 0px;
+    gap: 16px;
+    background-color: #181C23;
+}
+.resultTable {
+    background-color: #1E232B;
+}
+.mainColor {
+    color: #795FF3;
+}
+.title {
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 29px;
+    letter-spacing: 0;
+    text-align: left;
+    display: inline;
+}
+.hand:hover {
+    cursor: pointer;
+}
+.subtitle {
+    color: #73757A;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 34px;
+    letter-spacing: 0;
+    text-align: left;
+}
+.subtitleName {
+    color: #BABBBF;
+}
+.subtitleTime {
+    display: inline-block;
+    margin-left: 12px;
+}
+.subtitleTime p {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #73757A;
+}
+.header {
+    color: #F5F9FC;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0;
+    text-align: left;
+}
+.tabsList::before {
+    border-width: 1px;
+    border-color: #FFFFFF0F
+}
+.tabsTab {
+    padding: 0 8px;
+    height: 36px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #BABBBF;
+    margin-right: 12px;
+    border-color: transparent;
+    position: relative;
+}
+.tabsTab[data-active] {
+    color: #F5F9FC;
+}
+.tabsTab[data-active]::after {
+    content: ' ';
+    background-color: #795FF3;
+    position: absolute;
+    width: calc(100% - 16px);
+    height: 2px;
+    bottom: -1px;
+    left: 8px;
+}
+.tabsListLeft {
+    margin-right: 16px;
+}
+.tabsListLeft::before {
+    border: none;
+}
+.navLink {
+    height: 44px;
+    color: #F5F9FC;
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 8px;
+}
+.navLink[data-active] {
+    background-color: #353C46;
+}
+.description, .config {
+    background-color: #181C23;
+    border-radius: 8px;
+    margin-top: 24px;
+    padding: 16px;
+}
+.config {
+    margin-left: 203px;
+}
+.description {
+    min-height: 721px;
+}
+.descriptionSub, .configTitle {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 18px;
+}
+.descriptionTitle, .configTitle {
+    color: #F5F9FC;
+    margin-bottom: 14px;
+    position: relative;
+}
+.descriptionTitle::before, .configTitle::before {
+    content: ' ';
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    bottom: -14px;
+    background-color: #FFFFFF0F
+}
+.descriptionSub {
+    color: #73757A;
+    margin-top: 16px;
+    display: inline-block;
+}
+.descriptionText {
+    color: #F5F9FC;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+.selectItems {
+    display: none;
+    margin-top: 28px;
+}
+.selectItems input {
+    color: #F5F9FC;
+    font-size: 14px;
+    font-weight: 400;
+    height: 32px;
+    line-height: 32px;
+    min-height: 32px;
+}
+.dot {
+    margin-top: 7px;
+    display: inline-flex;
+    width: 28px;
+    height: 27px;
+    position: relative;
+    justify-content: center;
+}
+.dot::before {
+    position: absolute;
+    content: ' ';
+    width: 4px;
+    height: 4px;
+    background-color: #73757A;
+    top: 16px;
+    border-radius: 50%;
+}
+.share {
+    position: absolute;
+    right: 124px;
+    top: 40px;
+    height: 40px;
+    border-radius: 8px;
+}
+.subtitleInfo {
+    display: inline-block;
+}
+.copyright {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    padding-bottom: 48px;
+    color: #F5F9FC;
+    height: 20px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .selectItems {
+        display: block;
+    }
+    .resultBox {
+        padding: 24px 16px;
+    }
+    .mainContainer {
+        padding-left: 28px;
+        padding-right: 28px;
+    }
+    .tabsListLeft {
+        display: none;
+    }
+    .description, .config {
+        margin-left: 0;
+        margin-top: 12px;
+        min-height: 300px;
+    }
+    .subtitleInfo {
+        margin-top: 25px;
+        display: block;
+    }
+    .shareLast, .dot {
+        display: none;
+    }
+    .imgBtn {
+        margin-top: 3px;
+    }
+}
+
+.imgBtn {
+    background-color: rgba(126, 100, 247, 0.16);
+    height: 42px;
+    width: 42px;
+    border-radius: 8px;
+    gap: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    margin-left: 12px;
+    margin-top: 15.5px;
+    cursor: pointer;
+}

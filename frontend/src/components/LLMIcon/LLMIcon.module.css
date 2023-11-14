@@ -1,0 +1,24 @@
+.frameEnable {
+    opacity: .5;
+}
+.frameDisable, .frameEnable {
+    color: #FFFFFF;
+    width: 100px;
+    height: 113px;
+    padding: 20px 0 20px 0;
+    border-radius: 8px;
+    border: 1px solid #FFFFFF06;
+    gap: 16px;
+    text-align: center;
+    letter-spacing: 0;
+    background-color: #1d232a;
+}
+.displayInline {
+    display: inline;
+}
+.frameLabel {
+    font-size: 14px;
+    font-weight: 400;
+    height: 17px;
+    line-height: 16.94px;
+}

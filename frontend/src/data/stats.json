@@ -1,0 +1,1 @@
+{"llms":["gpt-3.5","gpt-4","cohere","minimax","baidu","aliqwen","chatglm","baichuan2","llama2-70b-v2-chat"],"max_total_score":5,"max_context_length":1,"max_reasoning_depth":2,"max_instruction_compliance":2,"testcases":[{"name":"001_requirement_check","max_score":5,"difficulties":{"context-length":1,"reasoning-depth":2,"instruction-compliance":2}}]}
