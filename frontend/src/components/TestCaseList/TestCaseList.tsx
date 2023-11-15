@@ -19,14 +19,14 @@ export function TestCaseList(props: TestCaseListProps) {
   const { active, onChange } = props;
   return (
     <div>
-      {props.testCases.map((item) => (
+      {props.testCases.map((item, index) => (
       <NavLink
         key={item.created}
         mb={8}
         className={style.navLink}
         label={item.name}
         active={item.created === active.created}
-        onClick={() => onChange(item)}
+        onClick={() => onChange(item, index)}
       />
       ))}
     </div>

@@ -33,7 +33,7 @@ import TestResultRaw from '@models/TestResultRaw';
 import { LLMItemConfig } from '@components/LLMItemConfig/LLMItemConfig';
 import { TestRunService } from '@services/TestRunService';
 import { TestRun } from '@models/TestRun';
-import { TestCaseService } from '@services/TestCaseService';
+import { testCaseService } from '@services/TestCaseService';
 import style from './Result.page.module.css';
 import GithubLogo from './assets/GithubLogo.png';
 import Vector from './assets/Vector.png';
@@ -122,7 +122,6 @@ export function ResultPage(props: ResultPageProps) {
   if (!llms) {
     llms = [];
   }
-  const testCaseService = new TestCaseService();
   const testCases = testCaseService.list();
 
   if (props.readonly) {

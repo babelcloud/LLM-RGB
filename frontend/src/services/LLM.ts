@@ -84,7 +84,7 @@ export function getLLMs(): LLM[] {
       'moonshot',
       'Moonshot',
       moonshot,
-      new LLMConfig('', undefined, undefined, undefined, undefined, '')
+      new LLMConfig('')
     ),
     new LLM(
       'webhook:https://llm-proxy.babel.run/sensenova',
@@ -98,14 +98,14 @@ export function getLLMs(): LLM[] {
       'hunyuan',
       'HunYuan',
       hunyuan,
-      new LLMConfig('', undefined, undefined, undefined, undefined, '')
+      new LLMConfig(undefined, undefined, undefined, undefined, undefined, undefined, '', '', '')
     ),
     new LLM(
       'custom',
       'custom',
       'Custom',
       robot,
-      new LLMConfig(undefined, undefined, undefined, undefined, undefined, undefined, '', '', '')
+      new LLMConfig(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, '', '', '')
     ),
   ];
 }

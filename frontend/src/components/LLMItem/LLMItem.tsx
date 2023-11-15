@@ -51,6 +51,9 @@ export function LLMItem(props: LLMItemProps) {
     groupId: data.config.groupId,
     maxOutputTokens: data.config.maxOutputTokens,
     secretKey: data.config.secretKey,
+    secret_id: data.config.secret_id,
+    secret_key: data.config.secret_key,
+    app_id: data.config.app_id,
     id: data.config.id,
     url: data.config.url,
     config: data.config.config,
@@ -90,6 +93,9 @@ export function LLMItem(props: LLMItemProps) {
         form.values.groupId === null ? undefined : form.values.groupId,
         form.values.maxOutputTokens === null ? undefined : form.values.maxOutputTokens,
         form.values.secretKey === null ? undefined : form.values.secretKey,
+        form.values.secret_id === null ? undefined : form.values.secret_id,
+        form.values.secret_key === null ? undefined : form.values.secret_key,
+        form.values.app_id === null ? undefined : form.values.app_id,
         form.values.id === null ? undefined : form.values.id,
         form.values.url === null ? undefined : form.values.url,
         form.values.config === null ? undefined : form.values.config,
@@ -248,6 +254,42 @@ export function LLMItem(props: LLMItemProps) {
                   placeholder="Please input the secret key"
                   inputWrapperOrder={['label', 'error', 'input', 'description']}
                   {...form.getInputProps('secretKey')}
+                />
+              ) : (
+                ''
+              )}
+              {data.config.secret_id !== undefined ? (
+                <TextInput
+                  disabled={disable}
+                  mt={20}
+                  label="Secret ID"
+                  placeholder="Please input the secret id"
+                  inputWrapperOrder={['label', 'error', 'input', 'description']}
+                  {...form.getInputProps('secret_id')}
+                />
+              ) : (
+                ''
+              )}
+              {data.config.secret_key !== undefined ? (
+                <TextInput
+                  disabled={disable}
+                  mt={20}
+                  label="Secret Key"
+                  placeholder="Please input the secret key"
+                  inputWrapperOrder={['label', 'error', 'input', 'description']}
+                  {...form.getInputProps('secret_key')}
+                />
+              ) : (
+                ''
+              )}
+              {data.config.app_id !== undefined ? (
+                <TextInput
+                  disabled={disable}
+                  mt={20}
+                  label="App ID"
+                  placeholder="Please input the app id"
+                  inputWrapperOrder={['label', 'error', 'input', 'description']}
+                  {...form.getInputProps('app_id')}
                 />
               ) : (
                 ''

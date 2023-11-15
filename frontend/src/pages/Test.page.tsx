@@ -10,11 +10,12 @@ import {
   Group,
   Select,
   Modal,
-  Progress, ActionIcon, ScrollArea,
+  Progress,
+  ActionIcon,
 } from '@mantine/core';
 import '@mantine/carousel/styles.css';
 import { Carousel } from '@mantine/carousel';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { randomId, useDisclosure, useListState } from '@mantine/hooks';
 import { useNavigate } from 'react-router-dom';
 import { TestRun } from '@models/TestRun';
@@ -28,10 +29,8 @@ import { TestRunService } from '@services/TestRunService';
 import LLMConfig from '@models/LLMConfig';
 import { GetTestResultStats } from '@services/TestResultStats';
 import { IconPencil } from '@tabler/icons-react';
-import { TestCaseList } from '@components/TestCaseList/TestCaseList';
-import { TestCaseForm } from '@components/TestCaseForm/TestCaseForm';
-import { TestCaseService } from '@services/TestCaseService';
-import { TestCaseAssert } from '@models/TestCaseAssert';
+import { testCaseService } from '@services/TestCaseService';
+import { TestCaseManage } from '@components/TestCaseManage/TestCaseManage';
 import GithubLogo from './assets/GithubLogo.png';
 import Vector from './assets/Vector.png';
 import style from './Test.page.module.css';
@@ -97,7 +96,6 @@ export function TestPage() {
 
   // 测试用例部分开始
 
-  const testCaseService = new TestCaseService();
   const testCases: TestCase[] = testCaseService.list();
   const [testCaseList, setTestCaseList] = useListState(testCases);
 
@@ -259,95 +257,9 @@ export function TestPage() {
     close: closeManage,
   }] = useDisclosure(false);
 
-  const firstTestCase = testCaseList[0];
-  const [currentTestCase, setCurrentTestCase] = useState(firstTestCase);
-  const testCaseListViewport = useRef<HTMLDivElement>(null);
-
-  function changeCurrentTestCase(testCase: TestCase) {
-    setCurrentTestCase(testCase);
-  }
-
-  let changeTimeout: NodeJS.Timeout;
-
-  function changeTestCaseField(fieldName: string, newValue: string) {
-    const newTestCase = Object.create(TestCase.prototype);
-    Object.assign(newTestCase, currentTestCase);
-
-    if (fieldName.startsWith('assert')) {
-      const regex = /([a-z]+)\[([0-9+]+)\]([a-z]+)/;
-      const found = fieldName.match(regex);
-      if (found !== null) {
-        const index = parseInt(found[2], 10);
-        const assertFieldName = found[3];
-        newTestCase.asserts[index][assertFieldName] = newValue;
-      }
-    } else {
-      newTestCase[fieldName] = newValue;
-    }
-
-    const refresh = () => {
-      let updateTestCaseIndex: number = -1;
-      testCaseList.find((testCase, index) => {
-        if (currentTestCase.created === testCase.created) {
-          updateTestCaseIndex = index;
-        }
-        return false;
-      });
-      if (updateTestCaseIndex >= 0) {
-        setTestCaseList.setItem(updateTestCaseIndex, newTestCase);
-      }
-      testCaseService.set(newTestCase);
-      setCurrentTestCase(newTestCase);
-    };
-
-    if (fieldName.startsWith('assert') && fieldName.endsWith('value')) {
-      clearTimeout(changeTimeout);
-      changeTimeout = setTimeout(refresh, 2000);
-    } else {
-      refresh();
-    }
-    return true;
-  }
-
-  function removeTestCase(testCase: TestCase) {
-    if (testCaseList.length <= 1) {
-      alert('Cannot delete last test case');
-    } else {
-      setTestCaseList.filter(item => item.created !== testCase.created);
-      testCaseService.del(testCase);
-      const nextTestCase = testCaseList.at(0);
-      if (nextTestCase !== undefined) {
-        setCurrentTestCase(nextTestCase);
-      }
-    }
-  }
-
-  function addTestCase() {
-    const newTestCase = testCaseService.create();
-    testCases.push(newTestCase);
-    setTestCaseList.append(newTestCase);
-    testCaseService.set(newTestCase);
-    setCurrentTestCase(newTestCase);
-    setTimeout(() => {
-    testCaseListViewport.current!.scrollTo({
-      top: testCaseListViewport.current!.scrollHeight,
-      behavior: 'smooth',
-    });
-    }, 0);
-  }
-
-  function addTestCaseAssert() {
-    const newTestCase = Object.create(TestCase.prototype);
-    Object.assign(newTestCase, currentTestCase);
-    newTestCase.asserts.push(new TestCaseAssert());
-    setCurrentTestCase(newTestCase);
-  }
-
-  function delTestCaseAssert(assert: TestCaseAssert) {
-    const newTestCase = Object.create(TestCase.prototype);
-    Object.assign(newTestCase, currentTestCase);
-    newTestCase.asserts = currentTestCase.asserts.filter(value => value.id !== assert.id);
-    setCurrentTestCase(newTestCase);
+  function saveTestCaseList(newTestCaseList: TestCase[]) {
+    testCaseService.setList(newTestCaseList);
+    setTestCaseList.setState(newTestCaseList);
   }
 
   // Test Case 管理结束
@@ -459,79 +371,7 @@ export function TestPage() {
                     />
                   </ActionIcon>
                   <Modal opened={showManage} onClose={closeManage} title="Test Case Management" size="1200" centered>
-                    <Grid gutter="16">
-                      <Grid.Col
-                        span={{
-                          base: 12,
-                          lg: 3,
-                        }}
-                      >
-                        <Button
-                          className={style.newTest}
-                          size="2rem"
-                          color="#795FF3"
-                          radius="8"
-                          onClick={addTestCase}
-                        >
-                          Add
-                        </Button>
-                      </Grid.Col>
-                      <Grid.Col
-                        span={{
-                          base: 12,
-                          lg: 9,
-                        }}
-                        style={{ textAlign: 'right' }}
-                      >
-                        &nbsp;
-                      </Grid.Col>
-                    </Grid>
-                    <Grid gutter="16">
-                      <Grid.Col
-                        span={{
-                          base: 12,
-                          lg: 3,
-                        }}
-                      >
-                        <ScrollArea
-                          h={600}
-                          viewportRef={testCaseListViewport}
-                        >
-                          <Box
-                            className={style.testcaseForm}
-                            style={{
-                            height: '50%',
-                            overflowY: 'auto',
-                          }}
-                          >
-                            <TestCaseList
-                              testCases={testCaseList}
-                              active={currentTestCase}
-                              onChange={changeCurrentTestCase}
-                            />
-                          </Box>
-                        </ScrollArea>
-                      </Grid.Col>
-                      <Grid.Col
-                        span={{
-                          base: 12,
-                          lg: 9,
-                        }}
-                      >
-                        <ScrollArea h={600}>
-                          <Box className={style.testcaseForm}>
-                            <TestCaseForm
-                              disabled={currentTestCase.readonly}
-                              testCase={currentTestCase}
-                              onChange={changeTestCaseField}
-                              onDelete={removeTestCase}
-                              onAddAssert={addTestCaseAssert}
-                              onDelAssert={delTestCaseAssert}
-                            />
-                          </Box>
-                        </ScrollArea>
-                      </Grid.Col>
-                    </Grid>
+                    <TestCaseManage testCases={testCaseList} onSave={saveTestCaseList} />
                   </Modal>
                 </Box>
                 <Text className={style.header}>Select Test Cases</Text>

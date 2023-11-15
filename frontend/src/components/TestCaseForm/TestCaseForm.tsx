@@ -11,28 +11,69 @@ import {
   TextInput,
   Tooltip,
 } from '@mantine/core';
+import { useForm } from '@mantine/form';
+import React, { useEffect, useState } from 'react';
 import { TestCaseFormAssert } from '@components/TestCaseFormAssert/TestCaseFormAssert';
-import { randomId } from '@mantine/hooks';
+import { TestCaseAssert } from '@models/TestCaseAssert';
+import style from '@pages/Test.page.module.css';
+
+interface OnTestCaseSave {
+  (testCase: TestCase): void;
+}
+
+interface OnTestCaseDelete {
+  (testCase: TestCase): void;
+}
 
 interface TestCaseFormProps {
   testCase: TestCase;
-  onChange: Function;
-  onDelete: Function;
-  onAddAssert: Function;
-  onDelAssert: Function;
+  onSave: OnTestCaseSave;
+  onDelete: OnTestCaseDelete;
   disabled?: boolean;
 }
 
 export function TestCaseForm({
                                testCase,
-                               onChange,
+                               onSave,
                                onDelete,
-                               onAddAssert,
-                               onDelAssert,
                                disabled = false,
                              }: TestCaseFormProps) {
+  const [updated, setUpdated] = useState(false);
+
+  const form = useForm({
+    initialValues: testCase,
+  });
+
+  function canSave() {
+    if (form.isDirty()) {
+      setUpdated(true);
+    } else {
+      setTimeout(() => {
+        canSave();
+      }, 100);
+    }
+  }
+
+  useEffect(() => {
+    canSave();
+  });
+
+  function saveTestCase() {
+    const newTestCase = Object.create(TestCase.prototype);
+    Object.assign(newTestCase, form.values);
+    onSave(newTestCase);
+  }
+
+  function addAssert() {
+    form.insertListItem('asserts', new TestCaseAssert('equals', '', 1));
+  }
+
+  function deleteAssert(index: number) {
+    form.removeListItem('asserts', index);
+  }
+
   return (
-    <div>
+    <>
       <div style={{ float: 'right' }}>
         <Tooltip label="Delete this test case">
           <CloseButton disabled={disabled} size="xs" onClick={() => onDelete(testCase)} />
@@ -43,14 +84,12 @@ export function TestCaseForm({
           <SimpleGrid cols={2}>
             <TextInput
               label="Name"
-              value={testCase.name}
               inputWrapperOrder={['label', 'error', 'input', 'description']}
               disabled={disabled}
-              onChange={(e) => onChange('name', e.currentTarget.value)}
+              {...form.getInputProps('name')}
             />
             <NumberInput
               label="Threshold"
-              value={testCase.threshold}
               inputWrapperOrder={['label', 'error', 'input', 'description']}
               decimalScale={1}
               fixedDecimalScale
@@ -58,18 +97,17 @@ export function TestCaseForm({
               min={0.1}
               max={1}
               disabled={disabled}
-              onChange={(e) => onChange('threshold', e)}
+              {...form.getInputProps('threshold')}
             />
           </SimpleGrid>
           <Textarea
             label="Description"
-            value={testCase.description ?? ''}
             inputWrapperOrder={['label', 'error', 'input', 'description']}
             minRows={2}
             maxRows={10}
             autosize
             disabled={disabled}
-            onChange={(e) => onChange('description', e.currentTarget.value)}
+            {...form.getInputProps('description')}
           />
         </Box>
         <Box mt={32}>
@@ -77,69 +115,79 @@ export function TestCaseForm({
           <SimpleGrid cols={3}>
             <NumberInput
               label="Context Length"
-              value={testCase.contextLength}
               inputWrapperOrder={['label', 'error', 'input', 'description']}
               min={1}
               max={5}
               disabled={disabled}
-              onChange={(e) => onChange('contextLength', e)}
+              {...form.getInputProps('contextLength')}
             />
             <NumberInput
               label="Reasoning Depth"
-              value={testCase.reasoningDepth}
               inputWrapperOrder={['label', 'error', 'input', 'description']}
               min={1}
               max={5}
               disabled={disabled}
-              onChange={(e) => onChange('reasoningDepth', e)}
+              {...form.getInputProps('reasoningDepth')}
             />
             <NumberInput
               label="Instruction Compliance"
-              value={testCase.instructionCompliance}
               inputWrapperOrder={['label', 'error', 'input', 'description']}
               min={1}
               max={5}
               disabled={disabled}
-              onChange={(e) => onChange('instructionCompliance', e)}
+              {...form.getInputProps('instructionCompliance')}
             />
           </SimpleGrid>
           <Textarea
             label="Prompt"
-            value={testCase.prompt}
             inputWrapperOrder={['label', 'error', 'input', 'description']}
             mt={32}
             minRows={2}
             maxRows={10}
             autosize
             disabled={disabled}
-            onChange={(e) => onChange('prompt', e.currentTarget.value)}
+            {...form.getInputProps('prompt')}
           />
         </Box>
         <Box mt={32}>
           {disabled ? '' : (
-            <Button size="xs" color="#795FF3" style={{ float: 'right' }} onClick={() => onAddAssert()}>Add</Button>
+            <Button size="xs" color="#795FF3" style={{ float: 'right' }} onClick={() => addAssert()}>Add</Button>
           )}
           <Text style={{ lineHeight: '30px' }}>Asserts</Text>
           <div style={{ clear: 'both' }} />
-          {testCase.asserts.map((assert, index) => (
-            <div key={randomId()}>
+          {form.values.asserts.map((assert, index) => (
+            <div key={assert.id}>
               <Divider mt={16} mb={8} />
               <div style={{ float: 'right' }}>
                 <Tooltip label="Delete this assert">
-                  <CloseButton disabled={disabled} size="xs" onClick={() => onDelAssert(assert)} />
+                  <CloseButton disabled={disabled} size="xs" onClick={() => deleteAssert(index)} />
                 </Tooltip>
               </div>
               <TestCaseFormAssert
-                key={randomId()}
+                form={form}
                 assert={assert}
-                disabled={disabled}
                 index={index}
-                onChange={onChange}
+                disabled={disabled}
               />
             </div>
           ))}
         </Box>
       </form>
-    </div>
+      {disabled ? '' : (
+        <Box mt={16} style={{ textAlign: 'right' }}>
+          <Divider />
+          <Button
+            mt={16}
+            className={style.newTest}
+            size="2rem"
+            color="#795FF3"
+            radius="8"
+            disabled={!updated}
+            onClick={saveTestCase}
+          >Save
+          </Button>
+        </Box>
+      )}
+    </>
   );
 }
