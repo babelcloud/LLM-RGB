@@ -72,6 +72,9 @@ const llmNameMap: { [name: string]: string } = {
   baidu: 'Baidu',
   baichuan2: 'Baichuan2',
   aliqwen: 'Aliqwen',
+  moonshot: 'Moonshot',
+  sensenova: 'SenseNova',
+  hunyuan: 'HunYuan',
 };
 
 class ResultPageProps {

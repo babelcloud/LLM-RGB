@@ -12,6 +12,9 @@ import palm2 from '@components/assets/palm2.png';
 import aliqwen from '@components/assets/aliqwen.png';
 import baichuan2 from '@components/assets/baichuan2.png';
 import baidu from '@components/assets/baidu.png';
+import moonshot from '@components/assets/moonshot.png';
+import sensenova from '@components/assets/sensenova.png';
+import hunyuan from '@components/assets/hunyuan.png';
 import robot from '@components/assets/robot.png';
 
 export function getLLMs(): LLM[] {
@@ -74,6 +77,27 @@ export function getLLMs(): LLM[] {
       'baidu',
       'Baidu',
       baidu,
+      new LLMConfig('', undefined, undefined, undefined, undefined, '')
+    ),
+    new LLM(
+      'webhook:https://llm-proxy.babel.run/moonshot',
+      'moonshot',
+      'Moonshot',
+      moonshot,
+      new LLMConfig('', undefined, undefined, undefined, undefined, '')
+    ),
+    new LLM(
+      'webhook:https://llm-proxy.babel.run/sensenova',
+      'sensenova',
+      'SenseNova',
+      sensenova,
+      new LLMConfig('', undefined, undefined, undefined, undefined, '')
+    ),
+    new LLM(
+      'webhook:https://llm-proxy.babel.run/hunyuan',
+      'hunyuan',
+      'HunYuan',
+      hunyuan,
       new LLMConfig('', undefined, undefined, undefined, undefined, '')
     ),
     new LLM(
