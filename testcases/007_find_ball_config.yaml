@@ -1,4 +1,4 @@
-- description: 
+- description: This test mainly focuses on reasoning-depth. It requires the LLM has the common sense that ball should fall out of the cup when the cup is reversed. 
   threshold: 0.6
   vars: 
     name: 007_find_ball
