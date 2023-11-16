@@ -1,1 +1,158 @@
-{"llms":["gpt-3.5","gpt-4","cohere","minimax","baidu","aliqwen","chatglm","baichuan2","llama2-70b-v2-chat"],"max_total_score":5,"max_context_length":1,"max_reasoning_depth":2,"max_instruction_compliance":2,"testcases":[{"name":"001_requirement_check","max_score":5,"difficulties":{"context-length":1,"reasoning-depth":2,"instruction-compliance":2}}]}
+{
+    "llms": [
+        "gpt-4",
+        "gpt-3.5",
+        "claude2",
+        "minimax",
+        "cohere",
+        "palm2",
+        "chatglm",
+        "baidu",
+        "aliqwen",
+        "llama2",
+        "baichuan2"
+    ],
+    "max_total_score": 100,
+    "max_context_length": 27,
+    "max_reasoning_depth": 44,
+    "max_instruction_compliance": 29,
+    "testcases": [
+        {
+            "name": "001_requirement_check",
+            "max_score": 5,
+            "difficulties": {
+                "context-length": 1,
+                "reasoning-depth": 2,
+                "instruction-compliance": 2
+            }
+        },
+        {
+            "name": "002_code_completion",
+            "max_score": 7,
+            "difficulties": {
+                "context-length": 1,
+                "reasoning-depth": 4,
+                "instruction-compliance": 2
+            }
+        },
+        {
+            "name": "003_context_code_fix",
+            "max_score": 6,
+            "difficulties": {
+                "context-length": 1,
+                "reasoning-depth": 4,
+                "instruction-compliance": 1
+            }
+        },
+        {
+            "name": "004_sed_command",
+            "max_score": 5,
+            "difficulties": {
+                "context-length": 1,
+                "reasoning-depth": 2,
+                "instruction-compliance": 2
+            }
+        },
+        {
+            "name": "005_babel_elements",
+            "max_score": 10,
+            "difficulties": {
+                "context-length": 3,
+                "reasoning-depth": 4,
+                "instruction-compliance": 3
+            }
+        },
+        {
+            "name": "006_reading_comprehension",
+            "max_score": 8,
+            "difficulties": {
+                "context-length": 3,
+                "reasoning-depth": 2,
+                "instruction-compliance": 3
+            }
+        },
+        {
+            "name": "007_birthday_paradox",
+            "max_score": 4,
+            "difficulties": {
+                "context-length": 1,
+                "reasoning-depth": 2,
+                "instruction-compliance": 1
+            }
+        },
+        {
+            "name": "008_email_assistant",
+            "max_score": 4,
+            "difficulties": {
+                "context-length": 1,
+                "reasoning-depth": 2,
+                "instruction-compliance": 1
+            }
+        },
+        {
+            "name": "009_customer_service",
+            "max_score": 7,
+            "difficulties": {
+                "context-length": 1,
+                "reasoning-depth": 3,
+                "instruction-compliance": 3
+            }
+        },
+        {
+            "name": "010_trip_plan",
+            "max_score": 8,
+            "difficulties": {
+                "context-length": 3,
+                "reasoning-depth": 4,
+                "instruction-compliance": 1
+            }
+        },
+        {
+            "name": "011_tool_using",
+            "max_score": 9,
+            "difficulties": {
+                "context-length": 2,
+                "reasoning-depth": 4,
+                "instruction-compliance": 3
+            }
+        },
+        {
+            "name": "012_linux_terminal",
+            "max_score": 6,
+            "difficulties": {
+                "context-length": 1,
+                "reasoning-depth": 2,
+                "instruction-compliance": 3
+            }
+        },
+        {
+            "name": "013_conversation_sanitizer",
+            "max_score": 6,
+            "difficulties": {
+                "context-length": 3,
+                "reasoning-depth": 1,
+                "instruction-compliance": 2
+            }
+        },
+        {
+            "name": "014_jailbreak",
+            "max_score": 7,
+            "difficulties": {
+                "context-length": 2,
+                "reasoning-depth": 4,
+                "instruction-compliance": 1
+            }
+        },
+        {
+            "name": "015_simple_mahjong",
+            "max_score": 8,
+            "difficulties": {
+                "context-length": 3,
+                "reasoning-depth": 4,
+                "instruction-compliance": 1
+            }
+        }
+    ],
+    "startTime": 1697963681552,
+    "endTime": 1697978781531
+}

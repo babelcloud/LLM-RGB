@@ -151,10 +151,11 @@ export function TestCaseManage(props: TestCaseManageProps) {
             <Box className={style.testcaseForm}>
               <TestCaseForm
                 key={randomId()}
-                disabled={currentTestCase.readonly}
                 testCase={currentTestCase}
+                testCaseList={testCaseList}
                 onSave={saveTestCase}
                 onDelete={deleteTestCase}
+                disabled={currentTestCase.readonly}
               />
             </Box>
           </ScrollArea>

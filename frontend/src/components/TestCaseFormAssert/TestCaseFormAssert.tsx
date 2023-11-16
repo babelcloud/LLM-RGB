@@ -74,7 +74,6 @@ export function TestCaseFormAssert(props: TestCaseFormAssertProps) {
       ) : (
         <Textarea
           label="Value"
-          inputWrapperOrder={['label', 'error', 'input', 'description']}
           autosize
           minRows={1}
           maxRows={10}
