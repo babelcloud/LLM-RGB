@@ -17,6 +17,7 @@ fs.readFile(resultFileName, 'utf8', (err, jsonString) => {
         const endTime = Date.now();
         const result = raw.results;
         console.log("Data loaded from JSON file:", resultFileName);
+        resultLaundry(result);
         const extractedProviders = extractLLMs(result);
         const extractedTestcases = extractTestcases(result);
 
@@ -54,6 +55,17 @@ fs.readFile(resultFileName, 'utf8', (err, jsonString) => {
         console.log('Error parsing JSON string:', err);
     }
 });
+
+function resultLaundry(result) {
+    delete result.table;
+    delete result.stats;
+    result.results.forEach(result => {
+        if (result.vars && result.vars._conversation) {
+            delete result.vars.prompt;
+            delete result.vars._conversation;
+        }
+    });
+}
 
 function extractLLMs(result) {
     const providers = new Set();

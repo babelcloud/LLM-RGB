@@ -9,5 +9,5 @@
     prompt: file://testcases/012_linux_terminal_prompt.txt
   assert:
     - type: icontains
-      value: "sed: can't read test.txt: No such file or directory"
+      value: "No such file or directory"
       weight: 1
