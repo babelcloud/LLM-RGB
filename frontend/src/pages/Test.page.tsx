@@ -201,7 +201,7 @@ export function TestPage() {
 
     const requestTestCaseList = testCaseList.filter(t =>
     currentTestRun.testCaseList.some(ct =>
-        ct.created === t.created
+        ct.name === t.name
     ));
 
     const invalidLLMs = currentTestRun.llmList.filter((l) => {

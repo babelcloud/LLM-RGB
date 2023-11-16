@@ -1,6 +1,7 @@
 import LLM from '@models/LLM';
 import TestCase from '@models/TestCase';
 import YAML from 'yaml';
+import { AssertMap } from '@services/TestCaseData';
 
 function encode(data: string): string {
   return btoa(unescape(encodeURIComponent(data)));
@@ -80,8 +81,16 @@ export async function runTest(
   const customTestCases: CustomTestCaseRequest[] = [];
 
   tests.map((test) => {
+    let assertJs = '';
     const assets = test.asserts.map(a => {
       const { id: _, ...requestAssert } = a;
+      // Use external assert js for default test case
+      if (test.readonly && a.type === 'javascript') {
+        assertJs = AssertMap.get(`${test.name}_assert`) ?? '';
+        if (assertJs !== '') {
+          requestAssert.value = `file://testcases/${test.name}_assert.js`;
+        }
+      }
       return requestAssert;
     });
 
@@ -104,7 +113,7 @@ export async function runTest(
         test.name,
         encode(configYaml),
         encode(test.prompt),
-        '',
+        assertJs,
       )
     );
     console.log(configYaml);
