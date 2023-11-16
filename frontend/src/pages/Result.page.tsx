@@ -260,7 +260,7 @@ export function ResultPage(props: ResultPageProps) {
                 testResultRaw.results.find((rawItem) => rawItem.provider.id === item)?.vars.name
             );
             return (
-              <Tabs.Panel key={randomId()} value={item.toLowerCase()}>
+              <Tabs.Panel key={randomId()} value={item}>
                 <Grid gutter="16">
                   <Grid.Col
                     span={{
@@ -273,6 +273,7 @@ export function ResultPage(props: ResultPageProps) {
                       defaultValue={activeTab}
                       data={testResultRaw.results
                         .filter((rawItem) => rawItem.provider.id === item)
+                        .sort((a, b) => parseInt(a.vars.name, 10) - parseInt(b.vars.name, 10))
                         .map((rawItem) => ({
                           value: item + rawItem.vars.name,
                           label: rawItem.vars.name,
@@ -294,6 +295,7 @@ export function ResultPage(props: ResultPageProps) {
                       <Tabs.List className={style.tabsListLeft} mt={24}>
                         {testResultRaw.results
                           .filter((rawItem) => rawItem.provider.id === item)
+                          .sort((a, b) => parseInt(a.vars.name, 10) - parseInt(b.vars.name, 10))
                           .map((rawItem) => (
                             <Tabs.Tab
                               key={item + rawItem.vars.name}
