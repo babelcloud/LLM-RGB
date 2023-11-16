@@ -198,6 +198,12 @@ export function TestPage() {
       alert('No Test Cases selected');
       return;
     }
+
+    const requestTestCaseList = testCaseList.filter(t =>
+    currentTestRun.testCaseList.some(ct =>
+        ct.created === t.created
+    ));
+
     const invalidLLMs = currentTestRun.llmList.filter((l) => {
       if (l.config.apiKey !== undefined) {
         return l.config.apiKey?.trim() === '';
@@ -215,7 +221,7 @@ export function TestPage() {
     const startTime = new Date().getTime();
     const testId: string = await runTest(
       currentTestRun.llmList,
-      currentTestRun.testCaseList,
+      requestTestCaseList,
       (r) => {
         console.log(r);
         setProgress((r.progress / r.total) * 100);
@@ -231,6 +237,7 @@ export function TestPage() {
         if (stats.llms !== undefined && stats.llms.length > 0) {
           closeRunning();
           currentTestRun.setReportId(testId);
+          currentTestRun.setTestCaseList(requestTestCaseList);
           testRunService.update(currentTestRun);
           setCurrent(currentTestRun);
           view();
