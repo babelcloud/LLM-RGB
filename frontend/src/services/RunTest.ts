@@ -80,14 +80,8 @@ export async function runTest(
   const customTestCases: CustomTestCaseRequest[] = [];
 
   tests.map((test) => {
-    let jsAssert = '';
-
     const assets = test.asserts.map(a => {
       const { id: _, ...requestAssert } = a;
-      if (a.type === 'javascript') {
-        jsAssert = a.value ?? '';
-        requestAssert.value = `file://testcases/${test.name}_assert.js`;
-      }
       return requestAssert;
     });
 
@@ -110,7 +104,7 @@ export async function runTest(
         test.name,
         encode(configYaml),
         encode(test.prompt),
-        encode(jsAssert),
+        '',
       )
     );
     console.log(configYaml);

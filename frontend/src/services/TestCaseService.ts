@@ -1,7 +1,7 @@
 import store from 'store2';
 import YAML from 'yaml';
 import TestCase from '@models/TestCase';
-import { ConfigMap, PromptMap } from '@services/TestCaseData';
+import { AssertMap, ConfigMap, PromptMap } from '@services/TestCaseData';
 import { TestCaseAssert } from '@models/TestCaseAssert';
 
 class TestCaseService {
@@ -53,8 +53,17 @@ class TestCaseService {
       const item = data.pop();
       const asserts: TestCaseAssert[] = [];
       if (Array.isArray(item.assert)) {
-        item.assert.map((assert: TestCaseAssert) =>
-          asserts.push(new TestCaseAssert(assert.type, assert.value, assert.weight))
+        item.assert.map((assert: TestCaseAssert) => {
+          let assertValue = assert.value;
+          if (assert.type === 'javascript') {
+            const assertFile = AssertMap.get(key.replace('_config', '_assert'));
+            if (assertFile !== undefined) {
+              assertValue = this.decode(assertFile);
+            }
+          }
+          asserts.push(new TestCaseAssert(assert.type, assertValue ?? '', assert.weight ?? 1));
+          return assert;
+          }
         );
       }
 

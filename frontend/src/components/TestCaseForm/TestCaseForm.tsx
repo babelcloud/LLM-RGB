@@ -80,6 +80,11 @@ export function TestCaseForm({
     canSave();
   });
 
+  function resetForm() {
+      form.reset();
+      setUpdated(false);
+  }
+
   function saveTestCase() {
     if (!form.isValid()) {
       return;
@@ -99,11 +104,6 @@ export function TestCaseForm({
 
   return (
     <>
-      <div style={{ float: 'right' }}>
-        <Tooltip label="Delete this test case">
-          <CloseButton disabled={disabled} size="xs" onClick={() => onDelete(testCase)} />
-        </Tooltip>
-      </div>
       <form>
         <Box>
           <SimpleGrid cols={2}>
@@ -192,10 +192,20 @@ export function TestCaseForm({
         </Box>
       </form>
       {disabled ? '' : (
-        <Box mt={16} style={{ textAlign: 'right' }}>
+        <Box mt={16}>
           <Divider />
+          <Box mt={16} style={{ float: 'right' }}>
           <Button
-            mt={16}
+            mr={16}
+            className={style.newTest}
+            size="2rem"
+            color="gray"
+            radius="8"
+            disabled={!updated}
+            onClick={resetForm}
+          >Cancel
+          </Button>
+          <Button
             className={style.newTest}
             size="2rem"
             color="#795FF3"
@@ -204,6 +214,19 @@ export function TestCaseForm({
             onClick={saveTestCase}
           >Save
           </Button>
+          </Box>
+          <Box mt={16}>
+            <Button
+              className={style.newTest}
+              size="2rem"
+              color="pink"
+              radius="8"
+              disabled={disabled}
+              onClick={() => onDelete(testCase)}
+            >
+              Delete
+            </Button>
+          </Box>
         </Box>
       )}
     </>
