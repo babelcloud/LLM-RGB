@@ -4,7 +4,7 @@ import TestCase from '@models/TestCase';
 import { ConfigMap, PromptMap } from '@services/TestCaseData';
 import { TestCaseAssert } from '@models/TestCaseAssert';
 
-export class TestCaseService {
+class TestCaseService {
   private readonly NAMESPACE = 'test.case';
   private readonly store;
   private readonly defaultList: TestCase[];
@@ -27,27 +27,18 @@ export class TestCaseService {
     )];
   }
 
-  public create(): TestCase {
-    let lastNumber = 0;
-    this.list()
-      .map(testCase => {
-        const found = testCase.name.match('^[0-9]+');
-        if (found !== null) {
-          const number = parseInt(found[0], 10);
-          if (number >= lastNumber) {
-            lastNumber = number;
-          }
-        }
-        return testCase;
-      });
-    lastNumber += 1;
-    const index = String(lastNumber)
-      .padStart(3, '0');
-    return new TestCase(`${index}_test_case`, 1, 1, 1, 1);
-  }
-
   public set(testCase: TestCase): void {
     this.store.set(this.key(testCase.created), testCase);
+  }
+
+  public setList(testCases: TestCase[]): void {
+    this.store.clearAll();
+    testCases.map(testCase => {
+      if (!testCase.readonly) {
+        this.set(testCase);
+      }
+      return testCase;
+    });
   }
 
   public del(testCase: TestCase) {
@@ -89,3 +80,7 @@ export class TestCaseService {
     return decodeURIComponent(escape(atob(data)));
   }
 }
+
+const testCaseService = new TestCaseService();
+
+export { testCaseService };

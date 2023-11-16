@@ -1,24 +1,32 @@
 import { Box, NumberInput, Select, SimpleGrid, Textarea } from '@mantine/core';
 import { AssertTypes, TestCaseAssert } from '@models/TestCaseAssert';
 import Editor from '@monaco-editor/react';
+import { UseFormReturnType } from '@mantine/form/lib/types';
+import TestCase from '@models/TestCase';
 
 class TestCaseFormAssertProps {
+  form: UseFormReturnType<TestCase>;
   assert: TestCaseAssert;
-  onChange: Function;
   index: number;
   disabled: boolean = false;
 
-  constructor(assert: TestCaseAssert, onChange: Function, index: number) {
+  constructor(form: UseFormReturnType<TestCase>,
+              assert: TestCaseAssert,
+              index: number,
+              disabled?: boolean) {
+    this.form = form;
     this.assert = assert;
-    this.onChange = onChange;
     this.index = index;
+    if (disabled !== undefined) {
+      this.disabled = disabled;
+    }
   }
 }
 
 export function TestCaseFormAssert(props: TestCaseFormAssertProps) {
   const {
+    form,
     assert,
-    onChange,
     index,
     disabled,
   } = props;
@@ -37,7 +45,7 @@ export function TestCaseFormAssert(props: TestCaseFormAssertProps) {
           data={AssertTypes}
           defaultValue={assert.type}
           disabled={disabled}
-          onChange={(value) => onChange(`assert[${index}]type`, value ?? '')}
+          {...form.getInputProps(`asserts.${index}.type`)}
         />
         <NumberInput
           label="Weight"
@@ -47,33 +55,31 @@ export function TestCaseFormAssert(props: TestCaseFormAssertProps) {
           min={0.1}
           max={10}
           disabled={disabled}
-          onChange={(e) => onChange(`assert[${index}]weight`, e)}
+          {...form.getInputProps(`asserts.${index}.weight`)}
         />
       </SimpleGrid>
       {assert.type === 'javascript' ? (
         <Box mt={16}>
-        <Editor
-          height="50vh"
-          language="javascript"
-          theme="vs-dark"
-          value={assert.value ?? ''}
-          options={monacoOptions}
-          onMount={(editor) => {
-            editor.updateOptions({ readOnly: disabled });
-          }}
-          onChange={(e) => onChange(`assert[${index}]value`, e)}
-        />
+          <Editor
+            height="50vh"
+            language="javascript"
+            theme="vs-dark"
+            options={monacoOptions}
+            onMount={(editor) => {
+              editor.updateOptions({ readOnly: disabled });
+            }}
+            {...form.getInputProps(`asserts.${index}.value`)}
+          />
         </Box>
       ) : (
         <Textarea
           label="Value"
           inputWrapperOrder={['label', 'error', 'input', 'description']}
-          defaultValue={assert.value ?? ''}
           autosize
           minRows={1}
           maxRows={10}
           disabled={disabled}
-          onChange={(e) => onChange(`assert[${index}]value`, e.currentTarget.value)}
+          {...form.getInputProps(`asserts.${index}.value`)}
         />
       )}
     </>
