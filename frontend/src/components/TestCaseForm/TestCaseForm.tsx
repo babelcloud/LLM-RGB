@@ -27,6 +27,7 @@ interface OnTestCaseDelete {
 
 interface TestCaseFormProps {
   testCase: TestCase;
+  testCaseList: TestCase[];
   onSave: OnTestCaseSave;
   onDelete: OnTestCaseDelete;
   disabled?: boolean;
@@ -34,6 +35,7 @@ interface TestCaseFormProps {
 
 export function TestCaseForm({
                                testCase,
+                               testCaseList,
                                onSave,
                                onDelete,
                                disabled = false,
@@ -42,6 +44,26 @@ export function TestCaseForm({
 
   const form = useForm({
     initialValues: testCase,
+    validateInputOnChange: true,
+    validate: {
+      name: (value, values) => {
+        if (testCaseList.filter(t => t.name === value && t.created !== values.created).length > 0) {
+          return 'Name exists';
+        }
+        return null;
+      },
+      asserts: {
+        type: (value, values) => {
+          if (value !== 'javascript') {
+            return null;
+          }
+          if (values.asserts.filter(a => a.type === 'javascript').length < 2) {
+            return null;
+          }
+          return 'Not allow to add one more javascript asset';
+        },
+      },
+    },
   });
 
   function canSave() {
@@ -59,6 +81,9 @@ export function TestCaseForm({
   });
 
   function saveTestCase() {
+    if (!form.isValid()) {
+      return;
+    }
     const newTestCase = Object.create(TestCase.prototype);
     Object.assign(newTestCase, form.values);
     onSave(newTestCase);
@@ -84,13 +109,11 @@ export function TestCaseForm({
           <SimpleGrid cols={2}>
             <TextInput
               label="Name"
-              inputWrapperOrder={['label', 'error', 'input', 'description']}
               disabled={disabled}
               {...form.getInputProps('name')}
             />
             <NumberInput
               label="Threshold"
-              inputWrapperOrder={['label', 'error', 'input', 'description']}
               decimalScale={1}
               fixedDecimalScale
               step={0.1}
@@ -102,7 +125,6 @@ export function TestCaseForm({
           </SimpleGrid>
           <Textarea
             label="Description"
-            inputWrapperOrder={['label', 'error', 'input', 'description']}
             minRows={2}
             maxRows={10}
             autosize
@@ -115,7 +137,6 @@ export function TestCaseForm({
           <SimpleGrid cols={3}>
             <NumberInput
               label="Context Length"
-              inputWrapperOrder={['label', 'error', 'input', 'description']}
               min={1}
               max={5}
               disabled={disabled}
@@ -123,7 +144,6 @@ export function TestCaseForm({
             />
             <NumberInput
               label="Reasoning Depth"
-              inputWrapperOrder={['label', 'error', 'input', 'description']}
               min={1}
               max={5}
               disabled={disabled}
@@ -131,7 +151,6 @@ export function TestCaseForm({
             />
             <NumberInput
               label="Instruction Compliance"
-              inputWrapperOrder={['label', 'error', 'input', 'description']}
               min={1}
               max={5}
               disabled={disabled}
@@ -140,7 +159,6 @@ export function TestCaseForm({
           </SimpleGrid>
           <Textarea
             label="Prompt"
-            inputWrapperOrder={['label', 'error', 'input', 'description']}
             mt={32}
             minRows={2}
             maxRows={10}

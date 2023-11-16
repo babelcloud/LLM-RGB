@@ -73,13 +73,24 @@ export async function runTest(
         },
       };
     }
-    console.log(targetItem);
     llmItems.push(targetItem);
     return false;
   });
 
   const customTestCases: CustomTestCaseRequest[] = [];
+
   tests.map((test) => {
+    let jsAssert = '';
+
+    const assets = test.asserts.map(a => {
+      const { id: _, ...requestAssert } = a;
+      if (a.type === 'javascript') {
+        jsAssert = a.value ?? '';
+        requestAssert.value = `file://testcases/${test.name}_assert.js`;
+      }
+      return requestAssert;
+    });
+
     const configYaml = YAML.stringify([{
       description: test.description,
       threshold: test.threshold,
@@ -92,22 +103,21 @@ export async function runTest(
         },
         prompt: `file://testcases/${test.name}_prompt.txt`,
       },
-      assert: test.asserts,
+      assert: assets,
     }]);
-    console.log(configYaml);
     customTestCases.push(
       new CustomTestCaseRequest(
         test.name,
         encode(configYaml),
         encode(test.prompt),
-        ''
+        encode(jsAssert),
       )
     );
+    console.log(configYaml);
     return true;
   });
 
   const request = new RunTestRequest(llmItems, customTestCases);
-
   console.log(JSON.stringify(request));
 
   const response = await fetch('/run-test', {
