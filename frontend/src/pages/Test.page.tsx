@@ -293,7 +293,12 @@ export function TestPage() {
           Test Console
         </Text>
         <Box pos="relative">
-          <Modal opened={running} onClose={closeRunning} withCloseButton={false}>
+          <Modal
+            opened={running}
+            onClose={closeRunning}
+            withCloseButton={false}
+            closeOnClickOutside={false}
+          >
             <Progress value={progress} />
           </Modal>
           <Grid gutter="16" mt={40}>
