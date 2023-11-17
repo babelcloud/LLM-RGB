@@ -1,7 +1,7 @@
 import LLM from '@models/LLM';
 import TestCase from '@models/TestCase';
 import YAML from 'yaml';
-import { AssertMap } from '@services/TestCaseData';
+import { AssertMap } from '@TestCaseData';
 
 function encode(data: string): string {
   return btoa(unescape(encodeURIComponent(data)));
