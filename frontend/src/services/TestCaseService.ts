@@ -1,7 +1,7 @@
 import store from 'store2';
 import YAML from 'yaml';
 import TestCase from '@models/TestCase';
-import { AssertMap, ConfigMap, PromptMap } from '@services/TestCaseData';
+import { AssertMap, ConfigMap, PromptMap } from '@TestCaseData';
 import { TestCaseAssert } from '@models/TestCaseAssert';
 
 class TestCaseService {

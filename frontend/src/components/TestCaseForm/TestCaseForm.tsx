@@ -50,7 +50,7 @@ export function TestCaseForm({
         if (testCaseList.filter(t => t.name === value && t.created !== values.created).length > 0) {
           return 'Duplicate names are not allowed';
         }
-        if (!/^[0-9]{3}_/.test(value)) {
+        if (!/^[0-9]{3,}_/.test(value)) {
           return 'Must contain at least 3 digits with leading zeros and an underscore';
         }
         return null;

@@ -1,6 +1,7 @@
 import * as path from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import testcasePlugin from './src/vite-plugin-testcase';
 
 // https://vitejs.dev/config/
 const baseUrl = 'https://llm-rgb.babel.run';
@@ -16,7 +17,7 @@ export default defineConfig({
       '@testcases': path.resolve(__dirname, '../testcases'),
     },
   },
-  plugins: [react()],
+  plugins: [react(), testcasePlugin()],
   build: {
     rollupOptions: {
       output: {
