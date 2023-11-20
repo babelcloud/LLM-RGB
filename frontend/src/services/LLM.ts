@@ -19,8 +19,8 @@ import robot from '@components/assets/robot.png';
 
 export function getLLMs(): LLM[] {
   return [
-    new LLM('openai:gpt-4-0613', 'gpt-4', 'GPT-4', gpt4, new LLMConfig('', 0)),
-    new LLM('openai:gpt-3.5-turbo-16k-0613', 'gpt-3.5', 'GPT-3.5', gpt35, new LLMConfig('', 0)),
+    new LLM('openai:gpt-4', 'gpt-4', 'GPT-4', gpt4, new LLMConfig('', 0)),
+    new LLM('openai:gpt-3.5-turbo-16k', 'gpt-3.5', 'GPT-3.5', gpt35, new LLMConfig('', 0)),
     new LLM(
       'replicate:meta/llama-2-70b-chat:35042c9a33ac8fd5e29e27fb3197f33aa483f72c2ce3b0b9d201155c7fd2a287',
       'llama2-70b-v2-chat',

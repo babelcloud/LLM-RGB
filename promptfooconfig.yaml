@@ -1,11 +1,11 @@
 prompts: prompt.txt
 providers: 
-  - openai:gpt-3.5-turbo-16k-0613:
+  - openai:gpt-3.5-turbo-16k:
       id: gpt-3.5
       config:
         apiKey: 
         temperature: 0
-  - openai:gpt-4-0613:
+  - openai:gpt-4:
       id: gpt-4
       config:
         apiKey: 
