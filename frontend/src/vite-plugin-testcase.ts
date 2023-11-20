@@ -9,7 +9,7 @@ type FileData = {
 
 function listFiles(filePath: string): string[] {
   const files: string[] = [];
-  fs.readdirSync(filePath).forEach(file => {
+  fs.readdirSync(filePath).forEach((file: string) => {
       files.push(file);
   });
   return files;
@@ -50,7 +50,7 @@ function buildModuleContent(filePath: string) {
 
   const files = listFiles(filePath);
   const setters: string[] = [];
-  files.map(file => {
+  files.map((file: string) => {
     const fileData = resolveFileData(filePath, file);
     const setter = assembleSetter(fileData);
     setters.push(setter);
@@ -66,13 +66,13 @@ export default function testcasePlugin() {
 
   return {
     name: 'testcase-plugin', // required, will show up in warnings and errors
-    resolveId(id) {
+    resolveId(id: string) {
       if (id === moduleId) {
         return resolvedModuleId;
       }
       return null;
     },
-    load(id) {
+    load(id: string) {
       if (id === resolvedModuleId) {
         return buildModuleContent(testcasePath);
       }
