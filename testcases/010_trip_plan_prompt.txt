@@ -1,4 +1,4 @@
-The following is an introduction to Koshi-Tul. Please make a three-day travel plan based on this introduction for a couple. The budget is $1500.
+The following is an introduction to Koshi-Tul. Tell me, if I want to see corals, where should I go diving? And please make a three-day travel plan based on this introduction for a couple. The budget is $1500.
 ###
 Koshi-Tul
 Koshi-Tul is a city nestled where mountains meet the sea, renowned for its beautiful natural landscapes and rich cultural traditions. Numerous islands scatter across the sea known as "The Sea of Tyul", while the city's lush mountains shimmer like emeralds under the sunlight, making Koshi-Tul visually distinct.
@@ -12,6 +12,7 @@ Main Tourist Attractions
 2. Ancient City Centre: The heart of the old city is a stone-paved plaza lined with historic buildings, including a magnificent cathedral and a city hall adorned with spectacular murals. In the summer evenings, the city hall platform hosts various street performances, attracting many tourists.
 3. Ekarl Art Museum: This significant modern art museum houses works from artists worldwide. The contemporary design of the museum contrasts starkly with the historic architecture of the old city, drawing many art enthusiasts and tourists.
 The cuisine, music, arts, and natural beauty all contribute to Koshi-Tul's unique appeal. Whether immersing oneself in the ancient architectural structures, enjoying the sunshine and beaches, or appreciating art at the museum, Koshi-Tul leaves visitors with unforgettable memories.
+
 Hotels
 Royal Island Hotel
 - Price: Starting from $320 per night
@@ -44,6 +45,7 @@ Artist's Residence
 - Special Feature: Owned by a local artist. The artist's works are hung on the wall, and the interior decoration is full of artistic atmosphere.
 - Distance from key attractions: About a 10-minute walk to the Ekar Art Museum.
 - Distance from airport/train station: Approximately 14 km from Koshi-Tul Airport.
+
 Restaurants
 Royal Island Seafood Tower
 - Price: Starting from $50 per person
@@ -69,6 +71,7 @@ Fish Market Japanese Cuisine
 - Features: Fresh sushi and sashimi, prepared daily from the selection at the market. They have a great selection of sake.
 - Location: 1 km from the Seaside Fisherman's Cottage.
 - Recommended dining time: Lunch or dinner
+
 Snacks
 Crab Fried Rice
 - Price: $10
@@ -81,33 +84,35 @@ Fish and Chips
 - A special snack in Koshi-Tul, consisting of locally sourced fish deep-fried to perfection, accompanied by fries and condiments. It is best enjoyed as a dinner dish.
 - Price: $5 per skewer
 - At the Night Market, you can find an assortment of skewers, including chicken, lamb, and even Argentine shrimp. This popular snack is best enjoyed during dinner or late-night snacking.
+
 Tourist Attractions
-Royal Island
-- Details: This island is one among the Koshi-Tul archipelago. It is renowned for its distinct ecosystem and variety of marine life—shallow coral reefs, a plethora of tropical fish, and occasional sightings of sea turtles and dolphins.
-- Opening hours: Open all day, with the last boat back to the island at 9:00 PM.
-- Acclaim: Visitors praise it as a perfect destination for diving and snorkeling, and appreciate it as a tranquil escape from the hustle and bustle of the main island.
-- Celebrity story: The famous marine biologist Jacques Cousteau reportedly conducted studies on this island, and gave high praise to its unique ecosystem.
-Old City Centre
-- Details: This old city centre sports unique Gothic and Baroque-style buildings. The cobblestone streets and aged buildings give you the feeling of stepping into a medieval European world.
-- Opening hours: Open all day.
-- Acclaim: The old city centre is highly praised by visitors for its historical and cultural significance. They claim that walking its streets can make you feel the traces of history and elegance of the past.
-- Celebrity story: It's said that the renowned architect Daniel Libeskind found his architectural inspirations here, which resulted in the basis for some of his acclaimed works.
+
+OOld City Centre
+- Details: Nestled within the heart of the city, the old city centre boasts a remarkable collection of Gothic and Baroque-style buildings that have withstood the test of time. As you wander through the charming cobblestone streets and admire the well-preserved structures, you'll feel as if you've been transported to a medieval European world.
+- Opening hours: Accessible all day, the old city centre welcomes visitors at any time to explore its rich history and architectural marvels.
+- Acclaim: The old city centre consistently receives high praise from visitors who appreciate its historical and cultural significance. Many claim that strolling through its streets allows them to feel the palpable traces of history and the elegance of a bygone era.
+- Celebrity story: The esteemed architect Daniel Libeskind is said to have found his architectural inspirations within the old city centre, with its unique designs serving as the foundation for some of his most celebrated works.
+
 Ekar Art Museum
-- Details: This museum possesses a vast amount of artistic collections, which include many classic works from the 19th and 20th centuries along with works from local artists.
-- Opening hours: Monday to Saturday from 10:00 AM to 6:00 PM; Sunday from 10:00 AM to 4:00 PM.
-- Acclaim: Visitors admire the wide range of art exhibited in the museum and its unique architecture. They find its variety of art styles and periods fascinating.
-- Celebrity story: Renowned artist Pablo Picasso once praised the collection and the architecture of the museum during his visit, calling it 'an essential trove of creativity'.
+- Details: The Ekar Art Museum is home to an impressive array of artistic collections, featuring an extensive range of classic works from the 19th and 20th centuries, as well as creations from talented local artists. The museum offers visitors an immersive experience in art history and contemporary creativity.
+- Opening hours: Open Monday to Saturday from 10:00 AM to 6:00 PM, and Sunday from 10:00 AM to 4:00 PM, the museum welcomes art enthusiasts to explore its diverse collections.
+- Acclaim: Visitors to the Ekar Art Museum often express admiration for both the wide range of art on display and the museum's unique architectural design. The variety of art styles and periods represented within the museum captivates and fascinates its patrons.
+- Celebrity story: The legendary artist Pablo Picasso once praised the Ekar Art Museum's collection and architecture during a visit, describing it as 'an essential trove of creativity'.
+
 Crystal Caverns
-- Details: An extensive network of natural caves known for its translucent crystal formations and stalagmites. Wildlife includes small species of bats and insects unique to the caves.
-- Opening hours: Daily from 9:00 AM to 5:00 PM; guided tours are scheduled every hour.
-- Acclaim: Tourists marvel at the natural beauty of the crystal formations and the overall surreal experience within the caves.
-- Celebrity Story: Famed naturalist Charles Darwin reportedly explored the caves during his global voyage, and documented many of its unique species in his field journal.
+- Details: The Crystal Caverns are an expansive network of natural caves, renowned for their breathtaking translucent crystal formations and impressive stalagmites. The caves also host a variety of wildlife, including small bat species and insects unique to this subterranean environment.
+- Opening hours: Open daily from 9:00 AM to 5:00 PM, with guided tours scheduled every hour to help visitors safely navigate and appreciate the caverns' natural wonders.
+- Acclaim: Tourists visiting the Crystal Caverns are often left in awe of the natural beauty of the crystal formations and the surreal, otherworldly atmosphere within the caves.
+- Celebrity Story: The famous naturalist Charles Darwin is said to have explored the Crystal Caverns during his global voyage, documenting many of the caves' unique species in his field journal.
+
 The Flamingo Lagoon
-- Details: A natural lagoon and birdwatcher's paradise offering sightings of multiple species of flamingos and other migrating birds against a backdrop of beautiful mangrove trees.
-- Opening hours: Open all day, with guided birdwatching tours taking place at sunrise and sunset.
-- Acclaim: Birdwatching enthusiasts and nature lovers praise it highly for its biodiversity and stunning landscapes, with the flaming sunset regarded as a highlight of the visit.
-- Celebrity story: Renowned British broadcaster and natural historian David Attenborough once filmed a documentary here, focusing on the migratory patterns of the flamingos.
+- Details: The Flamingo Lagoon is a natural haven for birdwatchers and nature enthusiasts alike. This picturesque lagoon offers visitors the opportunity to observe multiple species of flamingos, as well as other migrating birds, framed by a stunning backdrop of lush mangrove trees.
+- Opening hours: Open all day, the Flamingo Lagoon hosts guided birdwatching tours at sunrise and sunset, providing unforgettable experiences for its visitors.
+- Acclaim: Praised by birdwatching enthusiasts and nature lovers for its rich biodiversity and captivating landscapes, the Flamingo Lagoon is particularly well-known for its mesmerizing sunsets, which are considered a highlight of any visit.
+- Celebrity story: The esteemed British broadcaster and natural historian David Attenborough once filmed a documentary at the Flamingo Lagoon, focusing on the fascinating migratory patterns of the resident flamingos.
+
 Koshi-Tul August Performances Schedule
+
 Koshi-Tul Summer Music Festival
 - Date: 1st August - 3rd August
 - Time: 2:00 PM - 10:00 PM
@@ -128,6 +133,46 @@ Open Mic Night at Sol Bar
 - Date: Every Wednesday in August
 - Time: 8:00 PM - 11:00 PM
 - Location: Sol Bar, City Centre
+
+Subsidiary Islands
+
+- Emerald Isle: Emerald Isle is named for its abundant green vegetation, with many tropical plants and birds on the small island. Visitors can tour a tropical botanical garden and admire various unique flowers and trees.
+— Blue Moon Isle: Blue Moon Isle is known for its tranquil beaches and crystal-clear waters. Visitors can sunbathe, swim, or taste delicious seafood snacks at the island's food market.
+- Dragon Pearl Isle: Dragon Pearl Isle has an ancient temple that is said to be the location of a mysterious treasure. Visitors can explore the temple, learn about local legends, and hike the nearby hills for spectacular ocean views.
+- Coral Isle: Coral Isle is a small island known for its rich coral reefs. Visitors can snorkel or dive here to admire the colorful corals and tropical fish.
+
+About Diving
+
+- Diving sites: There are many diving sites around islands like Coral Isle and Blue Moon Isle, including shallow coral reefs, deep-sea diving areas, and shipwreck sites. These diving sites offer a variety of diving experiences for visitors.
+- Diving courses and training: In the Koshi-Tul archipelago, many diving centers offer various diving courses and training, including beginner experience courses, PADI diving certification courses, and advanced diving skills training. Experienced diving instructors provide professional guidance based on the visitor's level and needs.
+- Diving equipment: Diving centers usually provide the necessary diving equipment for visitors, such as diving masks, regulators, wetsuits, fins, and buoyancy control devices. This equipment ensures the safety and comfort of visitors during the dive.
+- Marine life observation: During the dive, visitors will have the opportunity to observe a wealth of marine life up close, such as colorful corals, tropical fish, sea turtles, sharks, and various marine invertebrates. Diving instructors will introduce the habits and characteristics of these creatures, making the diving experience more enriching and interesting.
+- Diving safety guidelines: Before participating in diving activities, visitors need to understand some basic diving safety guidelines. For example, do not touch corals and marine life during the dive to avoid causing them harm; follow the instructor's directions and maintain contact with the instructor and dive buddy; inform the instructor promptly if any discomfort occurs.
+- Underwater photography:Many visitors enjoy capturing beautiful underwater scenery and creatures during their dives. Diving centers typically offer rental services for waterproof cameras and camcorders, allowing visitors to capture unforgettable underwater moments. Additionally, some diving centers provide professional underwater photography courses, teaching visitors how to take high-quality underwater photos and videos.
+
+AboutKoshi-Tul Summer Music Festival 
+
+- Event time and location: The Koshi-Tul Summer Music Festival usually takes place between July and August, lasting for three days. The event is held at a large outdoor venue on Emerald Isle, accommodating thousands of spectators.
+- Music performances: The festival invites renowned musicians and bands from around the world, covering various music styles such as rock, pop, electronic, folk, and world music. Additionally, the festival provides a stage for local and emerging artists to showcase their talents.
+- Food and beverages: Various food stalls are set up at the festival, offering cuisine from around the world, including local specialties, barbecue, vegetarian dishes, and desserts. Additionally, bars and beverage stands provide beer, cocktails, and a variety of non-alcoholic drinks.
+- Art and handicraft market: An art and handicraft market is also available at the festival, selling unique art pieces, jewelry, clothing, and souvenirs. Visitors can purchase one-of-a-kind gifts and mementos here.
+
+Culture：
+
+- Dance culture: The dance culture in the Koshi-Tul region is heavily influenced by maritime culture, showcasing a unique island atmosphere. The dances here are characterized by lively rhythms and graceful movements, expressing the local residents' love for ocean life. The dances often depict scenes of fishermen catching fish and sailing at sea, demonstrating the richness and diversity of island life.
+- Music culture: The music culture of Koshi-Tul is also influenced by maritime culture. The local music features beautiful melodies and upbeat rhythms, full of vitality and energy. Traditional instruments such as bamboo flutes, conch shells, and drums play key roles in performances. Moreover, songs in the Koshi-Tul region often revolve around ocean themes, celebrating the magnificence and mystery of the sea.
+- Clothing culture: The clothing culture in the Koshi-Tul region attracts tourists with its unique styles and color combinations. Local residents prefer wearing lightweight, breathable clothing, such as cotton skirts and loose shirts. These garments are characterized by bright colors and patterns, featuring tropical fruits, fish, and floral designs. Additionally, the region has distinctive headdresses and accessories, such as shell necklaces and handwoven straw hats, which add a unique flair to the attire and are popular among tourists.
+
+Souvenirs:
+
+- Shell crafts: Koshi-Tul is famous for its beautiful beaches, and shell crafts are typical souvenirs from the region. Visitors can purchase shell products in various shapes, colors, and sizes, such as shell necklaces, earrings, and wind chimes.
+- Handwoven items: Handweaving skills are well-developed in Koshi-Tul, and woven items have a unique island style. Straw hats, baskets, and rugs are popular souvenirs.
+- Dried tropical fruits: Koshi-Tul is abundant in tropical fruits, and the local dried fruits are delicious and nutritious. Dried papaya, mango, and pineapple are popular souvenirs among tourists.
+- Local artwork: Local artists in Koshi-Tul showcase the island atmosphere through their unique creative styles. Visitors can purchase various hand-painted works, sculptures, and ceramics as souvenirs to take home.
+- Traditional clothing: Koshi-Tul's traditional clothing features bright colors and unique patterns, such as cotton skirts and loose shirts. Tourists can buy these regionally characteristic garments as special mementos.
+- Natural soaps and skincare products: Natural soaps and skincare products from Koshi-Tul are popular among tourists for their handmade, all-natural qualities. These products are typically based on natural ingredients like coconut oil, flowers, and herbs, offering unique fragrances and skincare benefits.
+- Local specialties: Koshi-Tul also has other local specialties, such as spices, coffee, and tea. These products make excellent choices for tourists to take home for personal enjoyment or as gifts.
+
 Price
 Central Highlands Hiking Tour: $50 per person. This cost includes a professional guide.
 Tropical Rainforest Wildlife Watching: $35 per person. This price includes a wildlife guide and admission fees.

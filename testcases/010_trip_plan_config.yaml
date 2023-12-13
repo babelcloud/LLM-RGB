@@ -33,3 +33,6 @@
 
         return score;
       weight: 1  
+    - type: icontains	
+      value: "Coral Isle"
+      weight: 1
