@@ -1,9 +1,14 @@
-The following is an introduction to Koshi-Tul. Tell me, if I want to see corals, where should I go diving? And please make a three-day travel plan based on this introduction for a couple. The budget is $1500.
+The following is an introduction to Koshi-Tul. Answer the questions:
+1. If I want to go Snorkeling to see corals, which island should I visit? And how much will it cost?
+2. I love spicy food, which snack would you recommend for me? How much does it cost?
+3. What are the two main languages spoken locally?
 ###
 Koshi-Tul
-Koshi-Tul is a city nestled where mountains meet the sea, renowned for its beautiful natural landscapes and rich cultural traditions. Numerous islands scatter across the sea known as "The Sea of Tyul", while the city's lush mountains shimmer like emeralds under the sunlight, making Koshi-Tul visually distinct.
 Koshi-Tul is a beautiful archipelago located in the tropical ocean, comprising several large islands and many smaller ones. An ancient city with many historic buildings and cultural sites can be found on the main island. The landscape of the archipelago is diverse, from golden beaches, tropical rainforests to rich coral reefs, providing abundant marine life resources. Moreover, Koshi-Tul is characterised by its hilly terrain, with the Central Highlands as one of its famous landmarks, hosting profound canyons and waterfalls.
 Located near the equator, the climate is warm and humid with abundant sunshine all year round. The average temperature normally ranges between 25 to 30 degrees Celsius and remains relatively stable. Koshi-Tul islands are surrounded by deep blue, ethereal seawater. The distinct tropical vegetation and vibrant marine life are a major highlight for travelers passionate about wildlife exploration.
+Koshi-Tul is a captivating, fictional island that has become a popular tourist destination in today's world. With a population of around 20,000 people, the island is home to both the native Koshians and a diverse group of immigrants, creating a unique cultural atmosphere. The official language is Koshi, which originates from the local indigenous people. However, due to the thriving tourism industry, many residents also speak fluent English, making communication easy for visitors.
+The economy of Koshi-Tul relies heavily on tourism, as the island attracts a large number of visitors with its beautiful beaches, coral reefs, and tropical rainforests. In addition to tourism, the island's economy is supported by fishing, agriculture, and the production of handicrafts such as woven goods, ceramics, and wood carvings, which are highly sought after by tourists. Koshi-Tul boasts a rich cultural heritage, including unique music, dance, and art. The island's residents are passionate about celebrating various festivals, such as the Koshi-Tul Summer Music Festival, a three-day extravaganza where tourists can enjoy local folk dances, music performances, and vibrant parades.
+Education is highly valued in Koshi-Tul, with the local government investing significant resources in basic education and vocational training. This ensures that the island's residents possess the professional skills and service-oriented mindset needed to cater to tourists from around the world.
 Koshi-Tul is warm throughout the year, making it suitable to visit in any season. However, the dry season from June to September has relatively lower rainfall, clear weather, and stable ocean conditions, making it an ideal time for underwater activities like snorkelling and diving. Additionally, sunsets during this period are particularly magnificent, making it especially suitable for photography enthusiasts.
 If you don't mind occasional tropical storms and have an interest in tropical rainforests and wildlife, the wet season at year-end (October to May of the following year) could also be a good choice. During this time, vegetational growth on the island is vigorous, and wildlife activities increase.
 Regardless of the season, Koshi-Tul provides unforgettable views and experiences to tourists.
@@ -47,63 +52,105 @@ Artist's Residence
 - Distance from airport/train station: Approximately 14 km from Koshi-Tul Airport.
 
 Restaurants
-Royal Island Seafood Tower
+
+1. Royal Island Seafood Tower
 - Price: Starting from $50 per person
 - Rating: 4.8 out of 5
-- Features: Specializes in seafood, with signature dishes like lobster and stewed fish fin. Restaurant sits on the seashore, offering stunning sea views.
-- Location: A 5-minute walk from the Royal Island Hotel.
--  Recommended dining time: Dinner
-City Axis Theatre Restaurant
+- Features: Royal Island Seafood Tower specializes in mouthwatering seafood dishes, with signature offerings like succulent lobster and delectable stewed fish fin. The restaurant is situated right on the seashore, providing diners with stunning sea views as they indulge in their exquisite meals.
+- Location: Conveniently located just a 5-minute walk from the luxurious Royal Island Hotel.
+- Recommended dining time: Dinner, to enjoy the breathtaking sunset over the ocean while savoring your meal.
+
+2. City Axis Theatre Restaurant
 - Price: Starting from $60 per person
 - Rating: 4.7 out of 5
-- Features: Fine French cuisine, with a stage inside the restaurant where small concerts or dramas are often performed during dinner time.
-- Location: A 2-minute walk from the Old City Centre Hotel.
-- Recommended dining time: Dinner
-George Steakhouse
+- Features: City Axis Theatre Restaurant offers an unforgettable fine dining experience, serving exquisite French cuisine in an elegant setting. The restaurant features a stage where small concerts or dramas are often performed during dinner time, adding a unique touch of entertainment to your meal.
+- Location: A mere 2-minute walk from the charming Old City Centre Hotel.
+- Recommended dining time: Dinner, to fully appreciate the delightful combination of gourmet food and live entertainment.
+
+3. George Steakhouse
 - Price: Starting from $70 per person
 - Rating: 4.9 out of 5
-- Features: Known for top-tier steaks, with a spacious open-air courtyard for customers to enjoy their food on tropical evenings.
-- Location: 1 km from the Art Star Hotel.
-- Recommended dining time: Dinner
-Fish Market Japanese Cuisine
+- Features: George Steakhouse is renowned for its top-tier steaks, expertly prepared to satisfy even the most discerning carnivores. The restaurant boasts a spacious open-air courtyard, allowing customers to enjoy their meals amidst the warm tropical breeze on balmy evenings.
+- Location: Just 1 km from the stylish Art Star Hotel, making it easily accessible for guests.
+- Recommended dining time: Dinner, to savor a sumptuous steak under the starlit sky.
+
+4. Fish Market Japanese Cuisine
 - Price: Starting from $60 per person
 - Rating: 4.7 out of 5
-- Features: Fresh sushi and sashimi, prepared daily from the selection at the market. They have a great selection of sake.
-- Location: 1 km from the Seaside Fisherman's Cottage.
-- Recommended dining time: Lunch or dinner
+- Features: Fish Market Japanese Cuisine is known for its fresh sushi and sashimi, expertly prepared daily from the finest selection at the market. The restaurant also offers a great selection of sake, perfectly complementing the delicate flavors of the dishes.
+- Location: Only 1 km from the quaint Seaside Fisherman's Cottage, providing a convenient dining option for guests.
+- Recommended dining time: Lunch or dinner, to enjoy the freshest seafood dishes and immerse yourself in the authentic Japanese culinary experience.
+
+5. Bella Italia Ristorante
+- Price: Starting from $45 per person
+- Rating: 4.6 out of 5
+- Features: Bella Italia Ristorante serves authentic Italian cuisine, with a menu featuring homemade pasta, wood-fired pizzas, and a variety of traditional Italian desserts. The cozy, rustic atmosphere and warm hospitality make it a favorite among locals and tourists alike.
+- Location: A 10-minute walk from the Island Paradise Resort, nestled in a charming side street.
+- Recommended dining time: Lunch or dinner, to savor the rich flavors of Italy in a relaxed setting.
+
+6. Spice Route Indian Bistro
+- Price: Starting from $40 per person
+- Rating: 4.5 out of 5
+- Features: Spice Route Indian Bistro offers an array of flavorful Indian dishes, from fragrant curries to delicious tandoori specialties. The restaurant also provides a wide selection of vegetarian and vegan options, catering to diverse dietary preferences.
+- Location: A 3-minute walk from the Tropical Garden Inn, making it a convenient choice for guests seeking a taste of India.
+- Recommended dining time: Dinner, to enjoy a leisurely meal filled with the exotic aromas and spices of Indian cuisine.
+
+7. Island Breeze Café
+- Price: Starting from $30 per person
+- Rating: 4.3 out of 5
+- Features: Island Breeze Café is a casual dining spot offering a variety of local and international dishes. The café's laid-back atmosphere, coupled with its outdoor seating area, makes it a perfect place to enjoy a leisurely brunch or lunch while taking in the island's vibrant ambiance.
+- Location: A 5-minute walk from the Palm Tree Villas, situated along the bustling island promenade.
+- Recommended dining time: Brunch or lunch, to sample an array of flavors while soaking up the island's lively atmosphere.
 
 Snacks
-Crab Fried Rice
+
+Mango Chili Popsicles
+- Price: $7
+- A refreshing and unique treat that combines the sweetness of ripe mangoes with a hint of chili spice. These popsicles are perfect for cooling down on a hot day while exploring the island's beautiful beaches.
+Tropical Fruit Salad
+- Price: $6
+- A colorful and healthy snack featuring a mix of fresh tropical fruits, such as pineapple, papaya, and guava, topped with a drizzle of honey and a sprinkle of shredded coconut. This light and nutritious option is ideal for a midday pick-me-up.
+Island-Style Empanadas
+- Price: $8
+- A local twist on the classic empanada, these fried pastries are filled with a delicious blend of seafood, vegetables, and island spices. They are often sold by street vendors and make for a satisfying snack any time of day.
+Coconut Shrimp
 - Price: $10
-- A simple but tasty dish that comprises of a wonderful combo of crab, eggs, vegetables, and spices. Vendors typically start their cooking as the sun goes down, which also makes for the perfect time to enjoy this dish.
-Seafood Bruschetta
-- Price: $15
-- A light snack featuring fresh local mussels, shrimps, and fish fillet, drizzled with olive oil and lemon juice. This snack is usually served at lunch and perfectly complements a sun-soaked day on the beach.
-Fish and Chips
-- Price: $12
-- A special snack in Koshi-Tul, consisting of locally sourced fish deep-fried to perfection, accompanied by fries and condiments. It is best enjoyed as a dinner dish.
-- Price: $5 per skewer
-- At the Night Market, you can find an assortment of skewers, including chicken, lamb, and even Argentine shrimp. This popular snack is best enjoyed during dinner or late-night snacking.
+- A popular island snack, coconut shrimp features succulent shrimp coated in a crispy coconut batter and deep-fried to golden perfection. Served with a tangy dipping sauce, this dish is a must-try for seafood lovers.
+Banana Fritters
+- Price: $5
+- A sweet and indulgent treat, banana fritters are made from ripe bananas dipped in a light batter and fried until crispy and golden. They are typically dusted with powdered sugar and best enjoyed as a dessert or a late-afternoon snack.
+Seaweed Rice Rolls
+- Price: $7
+- A healthy and flavorful snack, seaweed rice rolls consist of seasoned rice and a variety of fresh vegetables wrapped in a thin sheet of seaweed. This light and portable option is perfect for enjoying on the go while exploring the island's attractions.
 
 Tourist Attractions
 
-OOld City Centre
-- Details: Nestled within the heart of the city, the old city centre boasts a remarkable collection of Gothic and Baroque-style buildings that have withstood the test of time. As you wander through the charming cobblestone streets and admire the well-preserved structures, you'll feel as if you've been transported to a medieval European world.
-- Opening hours: Accessible all day, the old city centre welcomes visitors at any time to explore its rich history and architectural marvels.
-- Acclaim: The old city centre consistently receives high praise from visitors who appreciate its historical and cultural significance. Many claim that strolling through its streets allows them to feel the palpable traces of history and the elegance of a bygone era.
-- Celebrity story: The esteemed architect Daniel Libeskind is said to have found his architectural inspirations within the old city centre, with its unique designs serving as the foundation for some of his most celebrated works.
+Old City Centre
+- Details: The Old City Centre, nestled within the heart of the city, is a treasure trove of architectural wonders, featuring a remarkable collection of Gothic and Baroque-style buildings that have withstood the test of time. As you wander through the charming cobblestone streets and admire the well-preserved structures, you'll feel as if you've been transported to a medieval European world. This captivating area offers visitors an opportunity to explore the rich history and cultural heritage of the city, while also providing a picturesque backdrop for photography enthusiasts.
+
+- Opening hours: Accessible all day, the Old City Centre welcomes visitors at any time to explore its rich history and architectural marvels. Whether you prefer to visit during the day to witness the buildings bathed in sunlight or come at night to experience the romantic ambiance of the illuminated streets, this historic district is always open for exploration.
+
+- Acclaim: The Old City Centre consistently receives high praise from visitors who appreciate its historical and cultural significance. Many claim that strolling through its streets allows them to feel the palpable traces of history and the elegance of a bygone era. Numerous travel publications and websites have lauded the Old City Centre as a must-visit destination for those interested in architecture, history, and culture.
+
+- Celebrity story: The esteemed architect Daniel Libeskind is said to have found his architectural inspirations within the Old City Centre, with its unique designs serving as the foundation for some of his most celebrated works. The harmonious blend of Gothic and Baroque styles, as well as the intricate details found throughout the district, have had a profound impact on Libeskind's approach to design. As a result, the Old City Centre has become a significant point of reference for aspiring architects and designers worldwide.
 
 Ekar Art Museum
-- Details: The Ekar Art Museum is home to an impressive array of artistic collections, featuring an extensive range of classic works from the 19th and 20th centuries, as well as creations from talented local artists. The museum offers visitors an immersive experience in art history and contemporary creativity.
-- Opening hours: Open Monday to Saturday from 10:00 AM to 6:00 PM, and Sunday from 10:00 AM to 4:00 PM, the museum welcomes art enthusiasts to explore its diverse collections.
-- Acclaim: Visitors to the Ekar Art Museum often express admiration for both the wide range of art on display and the museum's unique architectural design. The variety of art styles and periods represented within the museum captivates and fascinates its patrons.
-- Celebrity story: The legendary artist Pablo Picasso once praised the Ekar Art Museum's collection and architecture during a visit, describing it as 'an essential trove of creativity'.
+- Details: The Ekar Art Museum is a celebration of the region's rich cultural and artistic heritage, showcasing an impressive array of local artistic collections. The museum features a diverse range of traditional and contemporary works created by talented local artists, providing visitors with an immersive experience in the unique art and culture of the area. The museum's galleries display everything from intricate handicrafts to innovative paintings, ensuring that there is something to inspire and captivate every visitor.
+
+- Opening hours: Open Monday to Saturday from 10:00 AM to 6:00 PM, and Sunday from 10:00 AM to 4:00 PM, the museum welcomes art and culture enthusiasts to explore its diverse collections. Whether you're a seasoned art aficionado or a curious newcomer, the Ekar Art Museum offers a memorable and enriching experience for everyone.
+
+- Acclaim: Visitors to the Ekar Art Museum often express admiration for both the wide range of local art on display and the museum's unique architectural design. The variety of art styles and techniques represented within the museum captivates and fascinates its patrons, who appreciate the opportunity to delve into the region's rich artistic traditions in a single location. The Ekar Art Museum has received numerous accolades and has been featured in various cultural publications, solidifying its reputation as a premier destination for showcasing local art and culture.
+
+- Celebrity story: The Ekar Art Museum has attracted the attention of renowned artists and cultural figures from around the world. During a visit, a famous artist remarked that the museum was 'a treasure trove of local creativity,' praising the quality and diversity of the works on display. This endorsement highlights the museum's significance in preserving and promoting the region's unique artistic heritage, attracting other artists and art enthusiasts to visit and further cementing its status as a must-see destination for those interested in local art and culture.
 
 Crystal Caverns
-- Details: The Crystal Caverns are an expansive network of natural caves, renowned for their breathtaking translucent crystal formations and impressive stalagmites. The caves also host a variety of wildlife, including small bat species and insects unique to this subterranean environment.
-- Opening hours: Open daily from 9:00 AM to 5:00 PM, with guided tours scheduled every hour to help visitors safely navigate and appreciate the caverns' natural wonders.
-- Acclaim: Tourists visiting the Crystal Caverns are often left in awe of the natural beauty of the crystal formations and the surreal, otherworldly atmosphere within the caves.
-- Celebrity Story: The famous naturalist Charles Darwin is said to have explored the Crystal Caverns during his global voyage, documenting many of the caves' unique species in his field journal.
+- Details: The Crystal Caverns are a magnificent and expansive network of natural caves, renowned for their breathtaking translucent crystal formations and impressive stalagmites. These awe-inspiring geological wonders create a magical, otherworldly atmosphere that captivates visitors from around the globe. In addition to the stunning crystal structures, the caves also host a variety of wildlife, including small bat species and insects unique to this subterranean environment, offering a fascinating glimpse into the diverse ecosystem that thrives within the caverns.
+
+- Opening hours: Open daily from 9:00 AM to 5:00 PM, the Crystal Caverns welcome visitors to explore their enchanting depths. Guided tours are scheduled every hour to help visitors safely navigate and appreciate the caverns' natural wonders, ensuring an unforgettable and educational experience for all ages.
+
+- Acclaim: Tourists visiting the Crystal Caverns are often left in awe of the natural beauty of the crystal formations and the surreal, otherworldly atmosphere within the caves. The caverns have received glowing reviews from travelers and have been featured in numerous travel publications, solidifying their status as a must-visit attraction for nature enthusiasts and adventure seekers alike.
+
+- Celebrity Story: The famous naturalist Charles Darwin is said to have explored the Crystal Caverns during his global voyage, documenting many of the caves' unique species in his field journal. Darwin's visit to the caverns highlights their scientific and historical significance, as well as their enduring appeal to those with a passion for understanding the natural world. His exploration of the Crystal Caverns has inspired generations of researchers and nature lovers to follow in his footsteps and experience the wonders of this extraordinary underground realm.
 
 The Flamingo Lagoon
 - Details: The Flamingo Lagoon is a natural haven for birdwatchers and nature enthusiasts alike. This picturesque lagoon offers visitors the opportunity to observe multiple species of flamingos, as well as other migrating birds, framed by a stunning backdrop of lush mangrove trees.
@@ -136,10 +183,13 @@ Open Mic Night at Sol Bar
 
 Subsidiary Islands
 
-- Emerald Isle: Emerald Isle is named for its abundant green vegetation, with many tropical plants and birds on the small island. Visitors can tour a tropical botanical garden and admire various unique flowers and trees.
-— Blue Moon Isle: Blue Moon Isle is known for its tranquil beaches and crystal-clear waters. Visitors can sunbathe, swim, or taste delicious seafood snacks at the island's food market.
-- Dragon Pearl Isle: Dragon Pearl Isle has an ancient temple that is said to be the location of a mysterious treasure. Visitors can explore the temple, learn about local legends, and hike the nearby hills for spectacular ocean views.
-- Coral Isle: Coral Isle is a small island known for its rich coral reefs. Visitors can snorkel or dive here to admire the colorful corals and tropical fish.
+- Emerald Isle: The Emerald Isle is a lush paradise, named after its abundant green vegetation that covers the landscape. The island is home to a variety of tropical plants and birds, making it a haven for nature enthusiasts. Visitors can tour a tropical botanical garden, where they can walk along winding paths and admire the various unique flowers and trees that flourish in this idyllic setting. In addition, birdwatching opportunities abound, allowing visitors to observe the diverse avian species that call this island home.
+
+- Blue Moon Isle: Known for its tranquil beaches and crystal-clear waters, Blue Moon Isle is the perfect destination for those seeking relaxation and serenity. Visitors can sunbathe on the pristine sandy shores, swim in the inviting turquoise waters, or take a leisurely stroll along the coastline. The island's food market offers a range of delicious seafood snacks, allowing visitors to indulge in the local cuisine while enjoying the breathtaking ocean views. Blue Moon Isle also hosts a vibrant music festival, celebrating local dance and music traditions, providing an unforgettable cultural experience for visitors.
+
+- Dragon Pearl Isle: Steeped in history and mystery, Dragon Pearl Isle is home to an ancient temple rumored to house a hidden treasure. Visitors can explore the temple's intricate architecture, learn about the local legends surrounding the treasure, and immerse themselves in the island's rich cultural heritage. For those seeking adventure, hiking trails lead to nearby hills, offering spectacular ocean views and the opportunity to discover more of the island's natural beauty.
+
+- Coral Isle: Coral Isle is a small, picturesque island renowned for its rich coral reefs teeming with life. Visitors can snorkel or dive in the vibrant underwater world, admiring the colorful corals and the diverse array of tropical fish that inhabit the reefs. For those who prefer to stay on land, the island also offers pristine beaches perfect for relaxing and soaking in the sun. The unique beauty of Coral Isle makes it a must-visit destination for anyone exploring the Koshi-Tul archipelago. The island is also known for its lively music scene, featuring local dance and music performances that showcase the rich cultural heritage of Koshi-Tul.
 
 About Diving
 

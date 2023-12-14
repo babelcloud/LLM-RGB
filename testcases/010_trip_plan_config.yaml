@@ -8,31 +8,22 @@
       instruction-compliance: 1
     prompt: file://testcases/010_trip_plan_prompt.txt
   assert:
-    - type: javascript
-      value: |
-        var lowerCaseStr = output.toLowerCase();
-        if (lowerCaseStr.length < 500){
-          return false;
-        }
-        var score = 0;
-        if (lowerCaseStr.includes("budget") || lowerCaseStr.includes("cost")){
-          score += 0.3;
-        }
-        if (lowerCaseStr.includes("day 3") || lowerCaseStr.includes("day three")){
-          score += 0.3
-          if (lowerCaseStr.includes("day 4") || lowerCaseStr.includes("day four")){
-            score -= 0.1
-          }
-          if (lowerCaseStr.includes("day 5") || lowerCaseStr.includes("day five")){
-            score -= 0.1
-          }
-        }
-        if (lowerCaseStr.includes("2 people") || lowerCaseStr.includes("two people") || lowerCaseStr.includes("a couple") || lowerCaseStr.includes("per person") || lowerCaseStr.includes("for two")){
-          score += 0.4
-        }
-
-        return score;
-      weight: 1  
+core;
     - type: icontains	
       value: "Coral Isle"
+      weight: 1
+    - type: icontains	
+      value: "$45"
+      weight: 1
+    - type: icontains	
+      value: "Mango Chili Popsicles"
+      weight: 1
+    - type: icontains	
+      value: "$7"
+      weight: 1
+    - type: icontains	
+      value: "English"
+      weight: 1
+    - type: icontains	
+      value: "Koshi"
       weight: 1
