@@ -8,7 +8,6 @@
       instruction-compliance: 1
     prompt: file://testcases/010_trip_plan_prompt.txt
   assert:
-core;
     - type: icontains	
       value: "Coral Isle"
       weight: 1
