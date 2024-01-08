@@ -12,5 +12,5 @@
       value: file://testcases/011_tool_using_assert.js
       weight: 3
     - type: starts-with
-      value: "tool_to_use:"
+      value: "command_to_call:"
       weight: 1

@@ -13,18 +13,16 @@ module.exports = (output, { vars }) => {
         }
     }
 
-    if (tool?.tool_to_use == "book_room") {
+    if (tool?.command_to_call == "finish") {
         score = score + 0.3;
-    }
-    if (Object.keys(tool?.parameters).length >= 3) {
-        score = score + 0.3;
-        if (tool.parameters.days == 4) {
+        if (Object.keys(tool.parameters).length >= 3) {
             score = score + 0.3;
-        }
-        if (tool.parameters.hotel_name == "Marriott") {
-            score = score + 0.1;
+            if (tool.parameters.status == "SUCCESS") {
+                score = score + 0.4;
+            }
         }
     }
+    
     return Number(score.toFixed(1));
   };
 

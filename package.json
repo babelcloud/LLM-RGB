@@ -7,7 +7,7 @@
     "eval": "promptfoo eval --no-cache",
     "render": "ts-node generateEvalScore.ts && ts-node render.ts",
     "share": "ts-node shareResult.ts",
-    "start": "npm run eval && npm run render && npm run share",
+    "start": "npm run eval;npm run render && npm run share",
     "start:noshare": "npm run eval && npm run render"
   },
   "repository": {
@@ -25,7 +25,7 @@
     "chalk": "^4.1.2",
     "cli-table3": "^0.6.3",
     "js-yaml": "^4.1.0",
-    "promptfoo": "~0.31.2",
+    "promptfoo": "~0.34.0",
     "ts-node": "^10.9.1"
   },
   "devDependencies": {

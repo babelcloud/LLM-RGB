@@ -17,23 +17,26 @@ module.exports = (output, { vars }) => {
     }
     if (babel?.dependencies) {
         score = score + 0.1;
-        if (Object.keys(babel.dependencies).length == 1){
+        if (Object.keys(babel.dependencies).length >= 1){
             score = score + 0.1;
         }
     }
     if (babel?.elements) {
         score = score + 0.1;
-        if (babel.elements.length >= 4) {
+        if (babel.elements.length >= 8) {
             score = score + 0.2;
         }
         var db = getElementByKind(babel.elements, "Database");
         if (db != null) {
-            score = score + 0.2;
+            score = score + 0.1;
+            if(db.length > 1){
+                score = score + 0.1;
+            }
         }
         var frontend = getElementByKind(babel.elements, "Assets");
-        if (frontend != null) {
+        if (frontend.length > 0) {
             score = score + 0.1;
-            if (frontend.items?.length > 1) {
+            if (frontend[0].items?.length > 1) {
                 score = score + 0.2;
             }
         }
@@ -45,15 +48,15 @@ module.exports = (output, { vars }) => {
 function getManifest(input) {
     input = getDelimited(input);
     input = input.replace(/^---\n/, '');
-    var yamlStart = input.indexOf("```yaml");
+    var yamlStart = input.indexOf("dependencies:");
     if (yamlStart === -1) {
         return input;
     }
-    var yamlEnd = input.indexOf("```", yamlStart + 7);
+    var yamlEnd = input.indexOf("```", yamlStart + 13);
     if (yamlEnd === -1) {
         yamlEnd = input.length;
     }
-    return input.substring(yamlStart + 7, yamlEnd).trim();
+    return input.substring(yamlStart, yamlEnd).trim();
 }
 
 function getDelimited(input) {
@@ -70,10 +73,13 @@ function getDelimited(input) {
 }
 
 function getElementByKind(elements, kind) {
+    var selectedElements = [];
+    var i = 0;
     for (let element of elements) {
         if (element.kind === kind) {
-            return element;
+            selectedElements[i] = element;
+            i++;
         }
     }
-    return null;
+    return selectedElements;
 }

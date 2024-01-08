@@ -1,6 +1,6 @@
 prompts: prompt.txt
 providers: 
-  - openai:gpt-3.5-turbo-16k:
+  - openai:gpt-3.5-turbo-1106::
       id: gpt-3.5
       config:
         apiKey: 
@@ -21,19 +21,25 @@ providers:
         apiKey: 
         temperature: 0.01
         max_new_tokens: 4096
+  - replicate:01-ai/yi-34b-chat:914692bbe8a8e2b91a4e44203e70d170c9c5ccc1359b283c84b0ec8d47819a46:
+      id: Yi-34b-chat
+      config:
+        apiKey: 
+        temperature: 0.01
+        max_new_tokens: 4096
+  - replicate:mistralai/mixtral-8x7b-instruct-v0.1:7b3212fbaf88310cfef07a061ce94224e82efc8403c26fc67e8f6c065de51f21:
+      id: mixtral-8x7b
+      config:
+        apiKey: 
+        temperature: 0.01
+        max_new_tokens: 4096
   - anthropic:completion:claude-2:
       id: claude2
       config:
         apiKey:
         temperature: 0
-#  Google Palm is not stable, it returns empty reponses in some cases. Use google vertex intead.
-  - palm:chat-bison-001:
-      id: palm2-chat-bison
-      config:
-        apiKey: 
-        temperature: 0
-  - vertex:codechat-bison:
-      id: palm2-code-bison
+  - vertex:gemini-pro:
+      id: gemini-pro
       config:
         apiKey:
         projectId: 
@@ -47,7 +53,7 @@ providers:
       id: moonshot
       config:
         apiKey: 
-  - webhook:https://llm-proxy.babel.run/baidu-erniebot:
+  - webhook:https://llm-proxy.babel.run/baidu-erniebot4:
       id: baidu
       config:
         apiKey: 
