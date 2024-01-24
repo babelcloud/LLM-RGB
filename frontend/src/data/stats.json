@@ -1,16 +1,16 @@
 {
     "llms": [
-        "gpt-4",
+        "gpt-4-turbo",
         "gpt-3.5",
-        "claude2",
         "minimax",
-        "cohere",
-        "palm2",
         "chatglm",
-        "baidu",
+        "moonshot",
+        "baichuan2",
+        "gemini-pro",
         "aliqwen",
-        "llama2",
-        "baichuan2"
+        "baidu",
+        "Yi-34b-chat",
+        "llama2"
     ],
     "max_total_score": 100,
     "max_context_length": 27,
@@ -72,7 +72,7 @@
             }
         },
         {
-            "name": "007_birthday_paradox",
+            "name": "007_find_ball",
             "max_score": 4,
             "difficulties": {
                 "context-length": 1,
@@ -153,6 +153,6 @@
             }
         }
     ],
-    "startTime": 1697963681552,
-    "endTime": 1697978781531
+    "startTime": 1705997373357,
+    "endTime": 1705997375232
 }

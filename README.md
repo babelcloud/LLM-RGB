@@ -24,26 +24,26 @@ The difficulty of each test case (Dn) is the sum of the three difficulties. Each
 The following tables show the evaluation results, executed on Oct. 22nd, 2023. We ran the evaluation 10 times and take the average scores. The full score of all 15 testcases is 100.
 
 ### Score by Abilities
-![image](https://github.com/babelcloud/LLM-RGB/assets/1726527/4c0263b8-9143-4e99-b0cc-63dc9f2cf769)
+![image](https://github.com/babelcloud/LLM-RGB/assets/1726527/61074f11-9ed9-4af1-bfc0-652ac1fc5f1d)
 
 ### Score by Testcases
-![image](https://github.com/babelcloud/LLM-RGB/assets/1726527/e0aa573a-cd17-4ee9-931e-3b888eb0a5ed)
+![image](https://github.com/babelcloud/LLM-RGB/assets/1726527/5d0bed9f-18a2-4b16-b27f-4ef0d93787cd)
 
 ### Evaluation Details
 Please check the following link for evaluation details of above table.
-[Result-1](https://llm-rgb.babel.run/view/testId/0fe24287-b3a2-4133-977b-a6cf4e7bd75c) [Result-2](https://llm-rgb.babel.run/view/testId/4da29438-86a4-44f1-9951-1c1a579a7c42) [Result-3](https://llm-rgb.babel.run/view/testId/7abb8037-58ea-40c1-94eb-fed6fbd8a341) [Result-4](https://llm-rgb.babel.run/view/testId/65acfaa7-73ab-4975-ba5b-31c461853bce) [Result-5](https://llm-rgb.babel.run/view/testId/473b72af-d994-438e-9c34-78f1ab7f9048) [Result-6](https://llm-rgb.babel.run/view/testId/895f2850-fdb0-4036-992d-0088be35aa33) [Result-7](https://llm-rgb.babel.run/view/testId/5574566c-1444-4018-8d8b-68c13c32abaf) [Result-8](https://llm-rgb.babel.run/view/testId/a9b0d5c3-d3dc-4b2c-b90c-0f4670ea0af7) [Result-9](https://llm-rgb.babel.run/view/testId/a707dc23-0ae8-4dfd-8051-90963f75b1e7) [Result-10](https://llm-rgb.babel.run/view/testId/e8544d3b-dea6-4de8-a9e9-d69142df90be)
+[Result-1](https://llm-rgb.babel.run/view/testId/30c42a05-f325-447d-b829-1401344184b0) [Result-2](https://llm-rgb.babel.run/view/testId/3ea4c092-7f16-400a-9376-f963211a0d60) [Result-3](https://llm-rgb.babel.run/view/testId/2a46c7f1-7c5b-4876-85b3-0f60203a22b1) [Result-4](https://llm-rgb.babel.run/view/testId/6cbe7812-d987-4f8d-8d5f-4ecb92036bc0) [Result-5](https://llm-rgb.babel.run/view/testId/57d33aa7-13e1-4dec-afea-5cb0fdc82323) [Result-6](https://llm-rgb.babel.run/view/testId/8ad41299-2b5d-40cb-913b-7178cb87cb97) [Result-7](https://llm-rgb.babel.run/view/testId/07267d5f-9e4d-4e03-9300-3c1372556900) [Result-8](https://llm-rgb.babel.run/view/testId/d4386ad0-c3a3-4f6c-a9d1-b1509a657476) [Result-9](https://llm-rgb.babel.run/view/testId/f6f0511b-7f1f-4ab0-abfc-4f79bc0bdcae) [Result-10](https://llm-rgb.babel.run/view/testId/ded4d6ee-20a0-46cf-a06c-ceedb7ca8a55)
 
-1. GPT-4: openai:gpt-4-0613
-2. GPT-3.5: openai:gpt-3.5-turbo-16k-0613
-3. Claude2: anthropic:claude-2
-4. Minimax: minimax:abab5.5-chat
-5. Cohere: cohere:command
-6. Palm2: google:code-bison
-7. Baidu: baidu:ERNIE-Bot
-8. ChatGLM: zhipu:chatglm_pro
-9. Aliqwen: alibaba:qwen-plus-v1
-10. Llama2: meta:llama2-70b-v2-chat
-11. Baichuan2: baichuan:Baichuan2-53B
+1. gpt-4-turbo: openai:gpt-4-1106-preview
+2. gpt-3.5: openai:gpt-3.5-turbo-1106
+3. minimax: minimax:abab6-chat
+4. chatglm: zhipu:glm-4
+5. moonshot: moonshot:moonshot-v1-8k
+6. baichuan2: baichuan:Baichuan2-Turbo
+7. gemini-pro: google:gemini-pro
+8. aliqwen: alibaba:qwen-max
+9. baidu: baidu:ernie_bot_8k
+10. Yi-34b-chat: 01-ai:yi-34b-chat
+11. llama2: meta:llama-2-70b-chat
 
 ## Quick Start
 The testing tools used in this project are provided by [promptfoo](https://github.com/promptfoo/promptfoo). To run evaluations, you need to fill in the LLM configurations in `promptfooconfig.yaml`. You should comment out any providers and test cases that you don't want to use.

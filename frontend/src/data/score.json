@@ -1,6 +1,6 @@
 [
     {
-        "llm_id": "gpt-4",
+        "llm_id": "gpt-4-turbo",
         "scores": [
             {
                 "test_name": "001_requirement_check",
@@ -9,8 +9,8 @@
             },
             {
                 "test_name": "002_code_completion",
-                "assertion_score": 1,
-                "test_score": 7
+                "assertion_score": 0.2,
+                "test_score": 3.6
             },
             {
                 "test_name": "003_context_code_fix",
@@ -20,21 +20,21 @@
             {
                 "test_name": "004_sed_command",
                 "assertion_score": 1,
-                "test_score": 5
+                "test_score": 4.7
             },
             {
                 "test_name": "005_babel_elements",
-                "assertion_score": 1,
-                "test_score": 10
+                "assertion_score": 0.6,
+                "test_score": 5.3
             },
             {
                 "test_name": "006_reading_comprehension",
-                "assertion_score": 1,
-                "test_score": 8
+                "assertion_score": 0.4,
+                "test_score": 3.2
             },
             {
-                "test_name": "007_birthday_paradox",
-                "assertion_score": 0.8,
+                "test_name": "007_find_ball",
+                "assertion_score": 1,
                 "test_score": 3.2
             },
             {
@@ -50,7 +50,7 @@
             {
                 "test_name": "010_trip_plan",
                 "assertion_score": 1,
-                "test_score": 7.5
+                "test_score": 8
             },
             {
                 "test_name": "011_tool_using",
@@ -60,7 +60,7 @@
             {
                 "test_name": "012_linux_terminal",
                 "assertion_score": 0,
-                "test_score": 3.6
+                "test_score": 1.2
             },
             {
                 "test_name": "013_conversation_sanitizer",
@@ -74,16 +74,16 @@
             },
             {
                 "test_name": "015_simple_mahjong",
-                "assertion_score": 0.6,
-                "test_score": 4.8
+                "assertion_score": 0,
+                "test_score": 0.8
             }
         ],
         "aggregated_scores": {
-            "context_length": 24.7,
-            "reasoning_depth": 40.9,
-            "instruction_compliance": 26.9
+            "context_length": 19.2,
+            "reasoning_depth": 33.2,
+            "instruction_compliance": 21.0
         },
-        "total_score": 92.5
+        "total_score": 73.4
     },
     {
         "llm_id": "gpt-3.5",
@@ -95,149 +95,63 @@
             },
             {
                 "test_name": "002_code_completion",
-                "assertion_score": 0.7,
-                "test_score": 4.9
+                "assertion_score": 0.2,
+                "test_score": 1.4
             },
             {
                 "test_name": "003_context_code_fix",
-                "assertion_score": 0.5,
-                "test_score": 3
-            },
-            {
-                "test_name": "004_sed_command",
-                "assertion_score": 1,
-                "test_score": 5
-            },
-            {
-                "test_name": "005_babel_elements",
-                "assertion_score": 0.9,
-                "test_score": 9
-            },
-            {
-                "test_name": "006_reading_comprehension",
-                "assertion_score": 1,
-                "test_score": 8
-            },
-            {
-                "test_name": "007_birthday_paradox",
-                "assertion_score": 0.8,
-                "test_score": 3.2
-            },
-            {
-                "test_name": "008_email_assistant",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "009_customer_service",
-                "assertion_score": 0.9,
-                "test_score": 6.3
-            },
-            {
-                "test_name": "010_trip_plan",
-                "assertion_score": 1,
-                "test_score": 8
-            },
-            {
-                "test_name": "011_tool_using",
-                "assertion_score": 1,
-                "test_score": 9
-            },
-            {
-                "test_name": "012_linux_terminal",
                 "assertion_score": 1,
                 "test_score": 6
             },
             {
-                "test_name": "013_conversation_sanitizer",
-                "assertion_score": 0.7,
-                "test_score": 4.2
-            },
-            {
-                "test_name": "014_jailbreak",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "015_simple_mahjong",
-                "assertion_score": 0,
-                "test_score": 0
-            }
-        ],
-        "aggregated_scores": {
-            "context_length": 18.7,
-            "reasoning_depth": 29.4,
-            "instruction_compliance": 23.5
-        },
-        "total_score": 71.6
-    },
-    {
-        "llm_id": "claude2",
-        "scores": [
-            {
-                "test_name": "001_requirement_check",
-                "assertion_score": 0.2,
-                "test_score": 1
-            },
-            {
-                "test_name": "002_code_completion",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "003_context_code_fix",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
                 "test_name": "004_sed_command",
-                "assertion_score": 1,
-                "test_score": 5
-            },
-            {
-                "test_name": "005_babel_elements",
-                "assertion_score": 0,
-                "test_score": 5.6
-            },
-            {
-                "test_name": "006_reading_comprehension",
-                "assertion_score": 0.2,
-                "test_score": 1.6
-            },
-            {
-                "test_name": "007_birthday_paradox",
-                "assertion_score": 0.8,
-                "test_score": 3.2
-            },
-            {
-                "test_name": "008_email_assistant",
                 "assertion_score": 1,
                 "test_score": 4
             },
             {
-                "test_name": "009_customer_service",
-                "assertion_score": 0.8,
-                "test_score": 5.6
+                "test_name": "005_babel_elements",
+                "assertion_score": 0.6,
+                "test_score": 6.2
             },
             {
-                "test_name": "010_trip_plan",
+                "test_name": "006_reading_comprehension",
                 "assertion_score": 1,
                 "test_score": 8
             },
             {
-                "test_name": "011_tool_using",
+                "test_name": "007_find_ball",
+                "assertion_score": 0,
+                "test_score": 1.6
+            },
+            {
+                "test_name": "008_email_assistant",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "009_customer_service",
                 "assertion_score": 0.8,
-                "test_score": 7.2
+                "test_score": 6.2
+            },
+            {
+                "test_name": "010_trip_plan",
+                "assertion_score": 0.7,
+                "test_score": 7.5
+            },
+            {
+                "test_name": "011_tool_using",
+                "assertion_score": 0.3,
+                "test_score": 4
             },
             {
                 "test_name": "012_linux_terminal",
                 "assertion_score": 1,
-                "test_score": 6
+                "test_score": 4.8
             },
             {
                 "test_name": "013_conversation_sanitizer",
-                "assertion_score": 0.8,
-                "test_score": 4.8
+                "assertion_score": 0.7,
+                "test_score": 2.9
             },
             {
                 "test_name": "014_jailbreak",
@@ -246,16 +160,16 @@
             },
             {
                 "test_name": "015_simple_mahjong",
-                "assertion_score": 0.2,
-                "test_score": 1.6
+                "assertion_score": 0,
+                "test_score": 0
             }
         ],
         "aggregated_scores": {
-            "context_length": 16.7,
-            "reasoning_depth": 25.8,
-            "instruction_compliance": 18.1
+            "context_length": 17.1,
+            "reasoning_depth": 27.9,
+            "instruction_compliance": 19.5
         },
-        "total_score": 60.6
+        "total_score": 64.5
     },
     {
         "llm_id": "minimax",
@@ -267,8 +181,8 @@
             },
             {
                 "test_name": "002_code_completion",
-                "assertion_score": 0.7,
-                "test_score": 4.9
+                "assertion_score": 0.2,
+                "test_score": 1.4
             },
             {
                 "test_name": "003_context_code_fix",
@@ -282,18 +196,104 @@
             },
             {
                 "test_name": "005_babel_elements",
-                "assertion_score": 0.5,
-                "test_score": 4.4
+                "assertion_score": 0,
+                "test_score": 9
             },
             {
                 "test_name": "006_reading_comprehension",
-                "assertion_score": 0.6,
-                "test_score": 4.8
+                "assertion_score": 1,
+                "test_score": 8
             },
             {
-                "test_name": "007_birthday_paradox",
+                "test_name": "007_find_ball",
                 "assertion_score": 0,
-                "test_score": 1.6
+                "test_score": 0
+            },
+            {
+                "test_name": "008_email_assistant",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "009_customer_service",
+                "assertion_score": 0,
+                "test_score": 7
+            },
+            {
+                "test_name": "010_trip_plan",
+                "assertion_score": 1,
+                "test_score": 8
+            },
+            {
+                "test_name": "011_tool_using",
+                "assertion_score": 1,
+                "test_score": 9
+            },
+            {
+                "test_name": "012_linux_terminal",
+                "assertion_score": 1,
+                "test_score": 6
+            },
+            {
+                "test_name": "013_conversation_sanitizer",
+                "assertion_score": 0.5,
+                "test_score": 3.2
+            },
+            {
+                "test_name": "014_jailbreak",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "015_simple_mahjong",
+                "assertion_score": 0,
+                "test_score": 0
+            }
+        ],
+        "aggregated_scores": {
+            "context_length": 16.8,
+            "reasoning_depth": 26.5,
+            "instruction_compliance": 20.8
+        },
+        "total_score": 64.1
+    },
+        {
+        "llm_id": "chatglm",
+        "scores": [
+            {
+                "test_name": "001_requirement_check",
+                "assertion_score": 0.6,
+                "test_score": 3
+            },
+            {
+                "test_name": "002_code_completion",
+                "assertion_score": 0.5,
+                "test_score": 3.5
+            },
+            {
+                "test_name": "003_context_code_fix",
+                "assertion_score": 1,
+                "test_score": 6
+            },
+            {
+                "test_name": "004_sed_command",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "005_babel_elements",
+                "assertion_score": 0,
+                "test_score": 6
+            },
+            {
+                "test_name": "006_reading_comprehension",
+                "assertion_score": 1,
+                "test_score": 8
+            },
+            {
+                "test_name": "007_find_ball",
+                "assertion_score": 0,
+                "test_score": 0
             },
             {
                 "test_name": "008_email_assistant",
@@ -307,13 +307,13 @@
             },
             {
                 "test_name": "010_trip_plan",
-                "assertion_score": 0.1,
-                "test_score": 1.1
+                "assertion_score": 0.7,
+                "test_score": 6.6
             },
             {
                 "test_name": "011_tool_using",
-                "assertion_score": 0.8,
-                "test_score": 7.2
+                "assertion_score": 0.3,
+                "test_score": 2.4
             },
             {
                 "test_name": "012_linux_terminal",
@@ -322,241 +322,69 @@
             },
             {
                 "test_name": "013_conversation_sanitizer",
-                "assertion_score": 0.4,
-                "test_score": 2.4
-            },
-            {
-                "test_name": "014_jailbreak",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "015_simple_mahjong",
-                "assertion_score": 0.2,
-                "test_score": 1.6
-            }
-        ],
-        "aggregated_scores": {
-            "context_length": 13.1,
-            "reasoning_depth": 24.5,
-            "instruction_compliance": 18.5
-        },
-        "total_score": 56.1
-    },
-    {
-        "llm_id": "cohere",
-        "scores": [
-            {
-                "test_name": "001_requirement_check",
-                "assertion_score": 1,
-                "test_score": 5
-            },
-            {
-                "test_name": "002_code_completion",
-                "assertion_score": 0.2,
-                "test_score": 1.4
-            },
-            {
-                "test_name": "003_context_code_fix",
-                "assertion_score": 1,
-                "test_score": 6
-            },
-            {
-                "test_name": "004_sed_command",
-                "assertion_score": 0.3,
-                "test_score": 1.5
-            },
-            {
-                "test_name": "005_babel_elements",
                 "assertion_score": 0.6,
-                "test_score": 5
-            },
-            {
-                "test_name": "006_reading_comprehension",
-                "assertion_score": 1,
-                "test_score": 8
-            },
-            {
-                "test_name": "007_birthday_paradox",
-                "assertion_score": 0.8,
-                "test_score": 3.2
-            },
-            {
-                "test_name": "008_email_assistant",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "009_customer_service",
-                "assertion_score": 0.9,
-                "test_score": 6.5
-            },
-            {
-                "test_name": "010_trip_plan",
-                "assertion_score": 0.3,
-                "test_score": 3.8
-            },
-            {
-                "test_name": "011_tool_using",
-                "assertion_score": 0.8,
-                "test_score": 7.2
-            },
-            {
-                "test_name": "012_linux_terminal",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "013_conversation_sanitizer",
-                "assertion_score": 0.5,
-                "test_score": 3
-            },
-            {
-                "test_name": "014_jailbreak",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "015_simple_mahjong",
-                "assertion_score": 0.2,
-                "test_score": 1.6
-            }
-        ],
-        "aggregated_scores": {
-            "context_length": 13.9,
-            "reasoning_depth": 22.2,
-            "instruction_compliance": 16.2
-        },
-        "total_score": 52.3
-    },
-    {
-        "llm_id": "palm2",
-        "scores": [
-            {
-                "test_name": "001_requirement_check",
-                "assertion_score": 0.2,
-                "test_score": 1
-            },
-            {
-                "test_name": "002_code_completion",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "003_context_code_fix",
-                "assertion_score": 1,
-                "test_score": 6
-            },
-            {
-                "test_name": "004_sed_command",
-                "assertion_score": 1,
-                "test_score": 5
-            },
-            {
-                "test_name": "005_babel_elements",
-                "assertion_score": 0.8,
-                "test_score": 8
-            },
-            {
-                "test_name": "006_reading_comprehension",
-                "assertion_score": 1,
-                "test_score": 8
-            },
-            {
-                "test_name": "007_birthday_paradox",
-                "assertion_score": 0.8,
-                "test_score": 3.2
-            },
-            {
-                "test_name": "008_email_assistant",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "009_customer_service",
-                "assertion_score": 1,
-                "test_score": 7
-            },
-            {
-                "test_name": "010_trip_plan",
-                "assertion_score": 0.3,
-                "test_score": 2.4
-            },
-            {
-                "test_name": "011_tool_using",
-                "assertion_score": 1,
-                "test_score": 9
-            },
-            {
-                "test_name": "012_linux_terminal",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "013_conversation_sanitizer",
-                "assertion_score": 0.2,
-                "test_score": 1.2
-            },
-            {
-                "test_name": "014_jailbreak",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "015_simple_mahjong",
-                "assertion_score": 0,
-                "test_score": 0
-            }
-        ],
-        "aggregated_scores": {
-            "context_length": 12.9,
-            "reasoning_depth": 21.6,
-            "instruction_compliance": 16.3
-        },
-        "total_score": 50.8
-    },
-    {
-        "llm_id": "chatglm",
-        "scores": [
-            {
-                "test_name": "001_requirement_check",
-                "assertion_score": 0.2,
-                "test_score": 1
-            },
-            {
-                "test_name": "002_code_completion",
-                "assertion_score": 0.5,
-                "test_score": 3.5
-            },
-            {
-                "test_name": "003_context_code_fix",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "004_sed_command",
-                "assertion_score": 0.3,
-                "test_score": 1.5
-            },
-            {
-                "test_name": "005_babel_elements",
-                "assertion_score": 0.3,
                 "test_score": 3.6
             },
             {
+                "test_name": "014_jailbreak",
+                "assertion_score": 1,
+                "test_score": 7
+            },
+            {
+                "test_name": "015_simple_mahjong",
+                "assertion_score": 0.2,
+                "test_score": 1.6
+            }
+        ],
+        "aggregated_scores": {
+            "context_length": 17.1,
+            "reasoning_depth": 27.8,
+            "instruction_compliance": 18.4
+        },
+        "total_score": 63.3
+    },
+    {
+        "llm_id": "moonshot",
+        "scores": [
+            {
+                "test_name": "001_requirement_check",
+                "assertion_score": 1,
+                "test_score": 5
+            },
+            {
+                "test_name": "002_code_completion",
+                "assertion_score": 0.7,
+                "test_score": 4.9
+            },
+            {
+                "test_name": "003_context_code_fix",
+                "assertion_score": 0,
+                "test_score": 4.2
+            },
+            {
+                "test_name": "004_sed_command",
+                "assertion_score": 1,
+                "test_score": 4.3
+            },
+            {
+                "test_name": "005_babel_elements",
+                "assertion_score": 3.5,
+                "test_score": 3.5
+            },
+            {
                 "test_name": "006_reading_comprehension",
                 "assertion_score": 1,
                 "test_score": 8
             },
             {
-                "test_name": "007_birthday_paradox",
-                "assertion_score": 0.8,
-                "test_score": 3.2
+                "test_name": "007_find_ball",
+                "assertion_score": 1,
+                "test_score": 2.4
             },
             {
                 "test_name": "008_email_assistant",
-                "assertion_score": 0,
-                "test_score": 0
+                "assertion_score": 1,
+                "test_score": 3.2
             },
             {
                 "test_name": "009_customer_service",
@@ -565,200 +393,28 @@
             },
             {
                 "test_name": "010_trip_plan",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "011_tool_using",
-                "assertion_score": 0.3,
-                "test_score": 2.7
-            },
-            {
-                "test_name": "012_linux_terminal",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "013_conversation_sanitizer",
-                "assertion_score": 0.3,
-                "test_score": 1.8
-            },
-            {
-                "test_name": "014_jailbreak",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "015_simple_mahjong",
-                "assertion_score": 0.2,
-                "test_score": 1.4
-            }
-        ],
-        "aggregated_scores": {
-            "context_length": 8.9,
-            "reasoning_depth": 13.3,
-            "instruction_compliance": 11.6
-        },
-        "total_score": 33.7
-    },
-    {
-        "llm_id": "baidu",
-        "scores": [
-            {
-                "test_name": "001_requirement_check",
-                "assertion_score": 0.2,
-                "test_score": 1
-            },
-            {
-                "test_name": "002_code_completion",
                 "assertion_score": 0.7,
-                "test_score": 4.9
-            },
-            {
-                "test_name": "003_context_code_fix",
-                "assertion_score": 0,
-                "test_score": 1.2
-            },
-            {
-                "test_name": "004_sed_command",
-                "assertion_score": 1,
-                "test_score": 4
-            },
-            {
-                "test_name": "005_babel_elements",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "006_reading_comprehension",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "007_birthday_paradox",
-                "assertion_score": 0.8,
-                "test_score": 3.2
-            },
-            {
-                "test_name": "008_email_assistant",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "009_customer_service",
-                "assertion_score": 1,
-                "test_score": 6.9
-            },
-            {
-                "test_name": "010_trip_plan",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "011_tool_using",
-                "assertion_score": 0.5,
                 "test_score": 4.5
             },
             {
+                "test_name": "011_tool_using",
+                "assertion_score": 0,
+                "test_score": 0.5
+            },
+            {
                 "test_name": "012_linux_terminal",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "013_conversation_sanitizer",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "014_jailbreak",
-                "assertion_score": 1,
-                "test_score": 7
-            },
-            {
-                "test_name": "015_simple_mahjong",
-                "assertion_score": 0,
-                "test_score": 0
-            }
-        ],
-        "aggregated_scores": {
-            "context_length": 6.7,
-            "reasoning_depth": 16.1,
-            "instruction_compliance": 9.8
-        },
-        "total_score": 32.6
-    },
-    {
-        "llm_id": "aliqwen",
-        "scores": [
-            {
-                "test_name": "001_requirement_check",
-                "assertion_score": 0.2,
-                "test_score": 1
-            },
-            {
-                "test_name": "002_code_completion",
-                "assertion_score": 0.7,
-                "test_score": 4.9
-            },
-            {
-                "test_name": "003_context_code_fix",
                 "assertion_score": 1,
                 "test_score": 6
             },
             {
-                "test_name": "004_sed_command",
-                "assertion_score": 0.3,
-                "test_score": 1.5
-            },
-            {
-                "test_name": "005_babel_elements",
-                "assertion_score": 0.3,
-                "test_score": 3
-            },
-            {
-                "test_name": "006_reading_comprehension",
-                "assertion_score": 0.4,
-                "test_score": 3.2
-            },
-            {
-                "test_name": "007_birthday_paradox",
-                "assertion_score": 0.8,
-                "test_score": 3.2
-            },
-            {
-                "test_name": "008_email_assistant",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "009_customer_service",
-                "assertion_score": 0.4,
-                "test_score": 2.8
-            },
-            {
-                "test_name": "010_trip_plan",
-                "assertion_score": 0.5,
-                "test_score": 4.2
-            },
-            {
-                "test_name": "011_tool_using",
-                "assertion_score": 0.3,
-                "test_score": 2.7
-            },
-            {
-                "test_name": "012_linux_terminal",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
                 "test_name": "013_conversation_sanitizer",
-                "assertion_score": 0,
-                "test_score": 0
+                "assertion_score": 0.9,
+                "test_score": 4.7
             },
             {
                 "test_name": "014_jailbreak",
                 "assertion_score": 0,
-                "test_score": 0
+                "test_score": 1.4
             },
             {
                 "test_name": "015_simple_mahjong",
@@ -767,97 +423,11 @@
             }
         ],
         "aggregated_scores": {
-            "context_length": 7.7,
-            "reasoning_depth": 15.9,
-            "instruction_compliance": 8.9
+            "context_length": 15.3,
+            "reasoning_depth": 24.6,
+            "instruction_compliance": 19.8
         },
-        "total_score": 32.5
-    },
-    {
-        "llm_id": "llama2",
-        "scores": [
-            {
-                "test_name": "001_requirement_check",
-                "assertion_score": 0.2,
-                "test_score": 2.2
-            },
-            {
-                "test_name": "002_code_completion",
-                "assertion_score": 0.2,
-                "test_score": 0.7
-            },
-            {
-                "test_name": "003_context_code_fix",
-                "assertion_score": 0,
-                "test_score": 0.9
-            },
-            {
-                "test_name": "004_sed_command",
-                "assertion_score": 0.7,
-                "test_score": 3.5
-            },
-            {
-                "test_name": "005_babel_elements",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "006_reading_comprehension",
-                "assertion_score": 0.4,
-                "test_score": 3.2
-            },
-            {
-                "test_name": "007_birthday_paradox",
-                "assertion_score": 0,
-                "test_score": 0.6
-            },
-            {
-                "test_name": "008_email_assistant",
-                "assertion_score": 1,
-                "test_score": 4
-            },
-            {
-                "test_name": "009_customer_service",
-                "assertion_score": 0.4,
-                "test_score": 2.8
-            },
-            {
-                "test_name": "010_trip_plan",
-                "assertion_score": 0.7,
-                "test_score": 5.4
-            },
-            {
-                "test_name": "011_tool_using",
-                "assertion_score": 0.8,
-                "test_score": 7.2
-            },
-            {
-                "test_name": "012_linux_terminal",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "013_conversation_sanitizer",
-                "assertion_score": 0.3,
-                "test_score": 1.8
-            },
-            {
-                "test_name": "014_jailbreak",
-                "assertion_score": 0,
-                "test_score": 0
-            },
-            {
-                "test_name": "015_simple_mahjong",
-                "assertion_score": 0,
-                "test_score": 0
-            }
-        ],
-        "aggregated_scores": {
-            "context_length": 8.7,
-            "reasoning_depth": 13.8,
-            "instruction_compliance": 9.9
-        },
-        "total_score": 32.3
+        "total_score": 59.7
     },
     {
         "llm_id": "baichuan2",
@@ -874,8 +444,180 @@
             },
             {
                 "test_name": "003_context_code_fix",
+                "assertion_score": 1,
+                "test_score": 0
+            },
+            {
+                "test_name": "004_sed_command",
+                "assertion_score": 1,
+                "test_score": 5
+            },
+            {
+                "test_name": "005_babel_elements",
+                "assertion_score": 0.9,
+                "test_score": 6.9
+            },
+            {
+                "test_name": "006_reading_comprehension",
+                "assertion_score": 0.6,
+                "test_score": 4.8
+            },
+            {
+                "test_name": "007_find_ball",
+                "assertion_score": 0,
+                "test_score": 0.4
+            },
+            {
+                "test_name": "008_email_assistant",
                 "assertion_score": 0,
                 "test_score": 0
+            },
+            {
+                "test_name": "009_customer_service",
+                "assertion_score": 1,
+                "test_score": 6.2
+            },
+            {
+                "test_name": "010_trip_plan",
+                "assertion_score": 1,
+                "test_score": 7.7
+            },
+            {
+                "test_name": "011_tool_using",
+                "assertion_score": 0.3,
+                "test_score": 2.7
+            },
+            {
+                "test_name": "012_linux_terminal",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "013_conversation_sanitizer",
+                "assertion_score": 0.8,
+                "test_score": 4.9
+            },
+            {
+                "test_name": "014_jailbreak",
+                "assertion_score": 1,
+                "test_score": 7
+            },
+            {
+                "test_name": "015_simple_mahjong",
+                "assertion_score": 0.2,
+                "test_score": 1.9
+            }
+        ],
+        "aggregated_scores": {
+            "context_length": 16.2,
+            "reasoning_depth": 24.4,
+            "instruction_compliance": 16.7
+        },
+        "total_score": 57.3
+    },
+    {
+        "llm_id": "gemini-pro",
+        "scores": [
+            {
+                "test_name": "001_requirement_check",
+                "assertion_score": 0.2,
+                "test_score": 1
+            },
+            {
+                "test_name": "002_code_completion",
+                "assertion_score": 0.2,
+                "test_score": 1.4
+            },
+            {
+                "test_name": "003_context_code_fix",
+                "assertion_score": 1,
+                "test_score": 6
+            },
+            {
+                "test_name": "004_sed_command",
+                "assertion_score": 0.3,
+                "test_score": 1.5
+            },
+            {
+                "test_name": "005_babel_elements",
+                "assertion_score": 1,
+                "test_score": 10
+            },
+            {
+                "test_name": "006_reading_comprehension",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "007_find_ball",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "008_email_assistant",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "009_customer_service",
+                "assertion_score": 1,
+                "test_score": 7
+            },
+            {
+                "test_name": "010_trip_plan",
+                "assertion_score": 0.3,
+                "test_score": 2.4
+            },
+            {
+                "test_name": "011_tool_using",
+                "assertion_score": 1,
+                "test_score": 9
+            },
+            {
+                "test_name": "012_linux_terminal",
+                "assertion_score": 1,
+                "test_score": 6
+            },
+            {
+                "test_name": "013_conversation_sanitizer",
+                "assertion_score": 0.7,
+                "test_score": 3.8
+            },
+            {
+                "test_name": "014_jailbreak",
+                "assertion_score": 1,
+                "test_score": 6.3
+            },
+            {
+                "test_name": "015_simple_mahjong",
+                "assertion_score": 0,
+                "test_score": 0
+            }
+        ],
+        "aggregated_scores": {
+            "context_length": 13.3,
+            "reasoning_depth": 24.2,
+            "instruction_compliance": 16.9
+        },
+        "total_score": 54.4
+    },
+    {
+        "llm_id": "aliqwen",
+        "scores": [
+            {
+                "test_name": "001_requirement_check",
+                "assertion_score": 1,
+                "test_score": 5
+            },
+            {
+                "test_name": "002_code_completion",
+                "assertion_score": 0.2,
+                "test_score": 1.4
+            },
+            {
+                "test_name": "003_context_code_fix",
+                "assertion_score": 1,
+                "test_score": 6
             },
             {
                 "test_name": "004_sed_command",
@@ -889,13 +631,13 @@
             },
             {
                 "test_name": "006_reading_comprehension",
-                "assertion_score": 0,
-                "test_score": 0
+                "assertion_score": 1,
+                "test_score": 8
             },
             {
-                "test_name": "007_birthday_paradox",
+                "test_name": "007_find_ball",
                 "assertion_score": 0,
-                "test_score": 2.2
+                "test_score": 0
             },
             {
                 "test_name": "008_email_assistant",
@@ -904,8 +646,8 @@
             },
             {
                 "test_name": "009_customer_service",
-                "assertion_score": 0.6,
-                "test_score": 4.6
+                "assertion_score": 1,
+                "test_score": 7
             },
             {
                 "test_name": "010_trip_plan",
@@ -914,23 +656,23 @@
             },
             {
                 "test_name": "011_tool_using",
-                "assertion_score": 0.8,
-                "test_score": 7.2
+                "assertion_score": 0.3,
+                "test_score": 2.7
             },
             {
                 "test_name": "012_linux_terminal",
-                "assertion_score": 0,
-                "test_score": 0
+                "assertion_score": 1,
+                "test_score": 6
             },
             {
                 "test_name": "013_conversation_sanitizer",
-                "assertion_score": 0,
-                "test_score": 0
+                "assertion_score": 0.6,
+                "test_score": 4.2
             },
             {
                 "test_name": "014_jailbreak",
-                "assertion_score": 0,
-                "test_score": 0
+                "assertion_score": 1,
+                "test_score": 7
             },
             {
                 "test_name": "015_simple_mahjong",
@@ -939,10 +681,268 @@
             }
         ],
         "aggregated_scores": {
-            "context_length": 5.4,
-            "reasoning_depth": 12.5,
-            "instruction_compliance": 9.1
+            "context_length": 12.8,
+            "reasoning_depth": 21.1,
+            "instruction_compliance": 16.5
         },
-        "total_score": 27.1
+        "total_score": 50.4
+    },
+    {
+        "llm_id": "baidu",
+        "scores": [
+            {
+                "test_name": "001_requirement_check",
+                "assertion_score": 0.2,
+                "test_score": 1
+            },
+            {
+                "test_name": "002_code_completion",
+                "assertion_score": 0.7,
+                "test_score": 4.9
+            },
+            {
+                "test_name": "003_context_code_fix",
+                "assertion_score": 1,
+                "test_score": 2.4
+            },
+            {
+                "test_name": "004_sed_command",
+                "assertion_score": 0.3,
+                "test_score": 1.5
+            },
+            {
+                "test_name": "005_babel_elements",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "006_reading_comprehension",
+                "assertion_score": 1,
+                "test_score": 8
+            },
+            {
+                "test_name": "007_find_ball",
+                "assertion_score": 0,
+                "test_score": 1.6
+            },
+            {
+                "test_name": "008_email_assistant",
+                "assertion_score": 1,
+                "test_score": 4
+            },
+            {
+                "test_name": "009_customer_service",
+                "assertion_score": 1,
+                "test_score": 7
+            },
+            {
+                "test_name": "010_trip_plan",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "011_tool_using",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "012_linux_terminal",
+                "assertion_score": 1,
+                "test_score": 6
+            },
+            {
+                "test_name": "013_conversation_sanitizer",
+                "assertion_score": 0.7,
+                "test_score": 4
+            },
+            {
+                "test_name": "014_jailbreak",
+                "assertion_score": 1,
+                "test_score": 5.6
+            },
+            {
+                "test_name": "015_simple_mahjong",
+                "assertion_score": 0.6,
+                "test_score": 3.8
+            }
+        ],
+        "aggregated_scores": {
+            "context_length": 13,
+            "reasoning_depth": 21,
+            "instruction_compliance": 15.8
+        },
+        "total_score": 49.8
+    },
+    {
+        "llm_id": "Yi-34b-chat",
+        "scores": [
+            {
+                "test_name": "001_requirement_check",
+                "assertion_score": 0.2,
+                "test_score": 1
+            },
+            {
+                "test_name": "002_code_completion",
+                "assertion_score": 0.7,
+                "test_score": 4.9
+            },
+            {
+                "test_name": "003_context_code_fix",
+                "assertion_score": 1,
+                "test_score": 6
+            },
+            {
+                "test_name": "004_sed_command",
+                "assertion_score": 0.3,
+                "test_score": 1.5
+            },
+            {
+                "test_name": "005_babel_elements",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "006_reading_comprehension",
+                "assertion_score": 0.6,
+                "test_score": 4.8
+            },
+            {
+                "test_name": "007_find_ball",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "008_email_assistant",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "009_customer_service",
+                "assertion_score": 0.5,
+                "test_score": 3.5
+            },
+            {
+                "test_name": "010_trip_plan",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "011_tool_using",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "012_linux_terminal",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "013_conversation_sanitizer",
+                "assertion_score": 0.5,
+                "test_score": 3
+            },
+            {
+                "test_name": "014_jailbreak",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "015_simple_mahjong",
+                "assertion_score": 0,
+                "test_score": 0
+            }
+        ],
+        "aggregated_scores": {
+            "context_length": 6,
+            "reasoning_depth": 11,
+            "instruction_compliance": 7.7
+        },
+        "total_score": 24.7
+    },
+    {
+        "llm_id": "llama2",
+        "scores": [
+            {
+                "test_name": "001_requirement_check",
+                "assertion_score": 0.2,
+                "test_score": 1.4
+            },
+            {
+                "test_name": "002_code_completion",
+                "assertion_score": 0,
+                "test_score": 2.5
+            },
+            {
+                "test_name": "003_context_code_fix",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "004_sed_command",
+                "assertion_score": 0.7,
+                "test_score": 3.5
+            },
+            {
+                "test_name": "005_babel_elements",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "006_reading_comprehension",
+                "assertion_score": 0.4,
+                "test_score": 3.2
+            },
+            {
+                "test_name": "007_find_ball",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "008_email_assistant",
+                "assertion_score": 1,
+                "test_score": 4
+            },
+            {
+                "test_name": "009_customer_service",
+                "assertion_score": 0.4,
+                "test_score": 2.8
+            },
+            {
+                "test_name": "010_trip_plan",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "011_tool_using",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "012_linux_terminal",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "013_conversation_sanitizer",
+                "assertion_score": 0.3,
+                "test_score": 1.8
+            },
+            {
+                "test_name": "014_jailbreak",
+                "assertion_score": 0,
+                "test_score": 0
+            },
+            {
+                "test_name": "015_simple_mahjong",
+                "assertion_score": 0,
+                "test_score": 0
+            }
+        ],
+        "aggregated_scores": {
+            "context_length": 4.8,
+            "reasoning_depth": 7.7,
+            "instruction_compliance": 6.7
+        },
+        "total_score": 19.2
     }
 ]

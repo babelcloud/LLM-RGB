@@ -150,27 +150,27 @@ export function HomePage() {
           <ResultTable data={lastResult} statData={lastResultStats} />
           <Box mt={32} className={style.description}>
             <Text>
-              1. GPT-4: openai:gpt-4-0613
+              1. gpt-4-turbo: openai:gpt-4-1106-preview
               <br />
-              2. GPT-3.5: openai:gpt-3.5-turbo-16k-0613
+              2. gpt-3.5: openai:gpt-3.5-turbo-1106
               <br />
-              3. Claude2: anthropic:claude-2
+              3. minimax: minimax:abab6-chat
               <br />
-              4. Minimax: minimax:abab5.5-chat
+              4. chatglm: zhipu:glm-4
               <br />
-              5. Cohere: cohere:command
+              5. moonshot: moonshot:moonshot-v1-8k
               <br />
-              6. Palm2: google:code-bison
+              6. baichuan2: baichuan:Baichuan2-Turbo
               <br />
-              7. Baidu: baidu:ERNIE-Bot
+              7. gemini-pro: google:gemini-pro
               <br />
-              8. ChatGLM: zhipu:chatglm_pro
+              8. aliqwen: alibaba:qwen-max
               <br />
-              9. Aliqwen: alibaba:qwen-plus-v1
+              9. baidu: baidu:ernie_bot_8k
               <br />
-              10. Llama2: meta:llama2-70b-v2-chat
+              10. Yi-34b-chat: 01-ai:yi-34b-chat
               <br />
-              11. Baichuan2: baichuan:Baichuan2-53B
+              11. llama2: meta:llama-2-70b-chat
             </Text>
           </Box>
         </Box>
