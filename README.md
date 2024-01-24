@@ -24,10 +24,10 @@ The difficulty of each test case (Dn) is the sum of the three difficulties. Each
 The following tables show the evaluation results, executed on Oct. 22nd, 2023. We ran the evaluation 10 times and take the average scores. The full score of all 15 testcases is 100.
 
 ### Score by Abilities
-![image](https://github.com/babelcloud/LLM-RGB/assets/1726527/61074f11-9ed9-4af1-bfc0-652ac1fc5f1d)
+![image](https://github.com/babelcloud/LLM-RGB/assets/1726527/64a37851-3a4b-41df-a4be-7037bae81bcc)
 
 ### Score by Testcases
-![image](https://github.com/babelcloud/LLM-RGB/assets/1726527/5d0bed9f-18a2-4b16-b27f-4ef0d93787cd)
+![image](https://github.com/babelcloud/LLM-RGB/assets/1726527/89d2b93f-5723-4e9a-aaed-73c2a28e0c9d)
 
 ### Evaluation Details
 Please check the following link for evaluation details of above table.
