@@ -21,7 +21,7 @@ The value is 1 if the expected response is in natural language without any speci
 The difficulty of each test case (Dn) is the sum of the three difficulties. Each test case includes a set of assertions to evaluate the LLM's output. The result of the assertion (Rn) is a decimal between [0, 1]. The final score of the test case (Sn) is calculated as Rn x Dn. "n" is the test case number. The total score for each LLM is the sum of all test case scores (S1...Sn).
 
 ## Score Table
-The following tables show the evaluation results, executed on Oct. 22nd, 2023. We ran the evaluation 10 times and take the average scores. The full score of all 15 testcases is 100.
+The following tables show the evaluation results, executed on Jan. 24th, 2024. We ran the evaluation 10 times and take the average scores. The full score of all 15 testcases is 100.
 
 ### Score by Abilities
 ![image](https://github.com/babelcloud/LLM-RGB/assets/1726527/64a37851-3a4b-41df-a4be-7037bae81bcc)
