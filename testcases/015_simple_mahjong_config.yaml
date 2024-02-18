@@ -6,7 +6,7 @@
       context-length: 3
       reasoning-depth: 4
       instruction-compliance: 1
-    prompt: file://testcases/015_simple_mahjong_prompt.txt
+    prompt: file://015_simple_mahjong_prompt.txt
   assert:
     - type: javascript
       value: file://testcases/015_simple_mahjong_assert.js

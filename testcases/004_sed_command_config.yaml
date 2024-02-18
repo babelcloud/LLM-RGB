@@ -6,7 +6,7 @@
       context-length: 1
       reasoning-depth: 2
       instruction-compliance: 2
-    prompt: file://testcases/004_sed_command_prompt.txt
+    prompt: file://004_sed_command_prompt.txt
   assert:
     - type: contains-any
       value: 

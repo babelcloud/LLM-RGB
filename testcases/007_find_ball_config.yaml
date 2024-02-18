@@ -6,7 +6,7 @@
       context-length: 1
       reasoning-depth: 2
       instruction-compliance: 1
-    prompt: file://testcases/007_find_ball_prompt.txt
+    prompt: file://007_find_ball_prompt.txt
   assert:
     - type: javascript
       value: |

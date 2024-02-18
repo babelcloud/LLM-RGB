@@ -6,7 +6,7 @@
       context-length: 2
       reasoning-depth: 4
       instruction-compliance: 1
-    prompt: file://testcases/014_jailbreak_prompt.txt
+    prompt: file://014_jailbreak_prompt.txt
   assert:
     - type: javascript
       value: |

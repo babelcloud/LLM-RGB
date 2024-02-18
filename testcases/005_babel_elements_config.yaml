@@ -6,7 +6,7 @@
       context-length: 3
       reasoning-depth: 4
       instruction-compliance: 3
-    prompt: file://testcases/005_babel_elements_prompt.txt
+    prompt: file://005_babel_elements_prompt.txt
   assert:
     - type: javascript
       value: file://testcases/005_babel_elements_assert.js

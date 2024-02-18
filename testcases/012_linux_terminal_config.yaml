@@ -6,7 +6,7 @@
       context-length: 1
       reasoning-depth: 2
       instruction-compliance: 3
-    prompt: file://testcases/012_linux_terminal_prompt.txt
+    prompt: file://012_linux_terminal_prompt.txt
   assert:
     - type: icontains
       value: "No such file or directory"

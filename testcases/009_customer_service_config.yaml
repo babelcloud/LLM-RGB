@@ -6,7 +6,7 @@
       context-length: 1
       reasoning-depth: 3
       instruction-compliance: 3
-    prompt: file://testcases/009_customer_service_prompt.txt
+    prompt: file://009_customer_service_prompt.txt
   assert:
     - type: javascript
       value: file://testcases/009_customer_service_assert.js

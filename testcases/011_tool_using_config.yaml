@@ -6,7 +6,7 @@
       context-length: 2
       reasoning-depth: 4
       instruction-compliance: 3
-    prompt: file://testcases/011_tool_using_prompt.txt
+    prompt: file://011_tool_using_prompt.txt
   assert:
     - type: javascript
       value: file://testcases/011_tool_using_assert.js

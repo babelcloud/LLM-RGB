@@ -6,7 +6,7 @@
       context-length: 3
       reasoning-depth: 1
       instruction-compliance: 2
-    prompt: file://testcases/013_conversation_sanitizer_prompt.txt
+    prompt: file://013_conversation_sanitizer_prompt.txt
   assert:
     - type: starts-with
       value: "[Agent] 2023-07-15"
