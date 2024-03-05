@@ -1,7 +1,13 @@
 prompts: prompt.txt
 providers: 
-  - openai:gpt-3.5-turbo-1106::
-      id: gpt-3.5
+### OpenAI
+  - openai:gpt-3.5-turbo-0125:
+      id: gpt-3.5-turbo
+      config:
+        apiKey: 
+        temperature: 0
+  - openai:gpt-4-0125-preview:
+      id: gpt-4-turbo
       config:
         apiKey: 
         temperature: 0
@@ -10,86 +16,96 @@ providers:
       config:
         apiKey: 
         temperature: 0
-  - openai:chat:gpt-4-1106-preview:
-      id: gpt-4-turbo
+### Anthropic
+  - webhook:https://llm-proxy.babel.run/claude:
+      id: claude3-Opus
+      config:
+        apiKey: 
+        modelName: claude-3-opus-20240229
+  - webhook:https://llm-proxy.babel.run/claude:
+      id: claude3-Sonnet
+      config:
+        apiKey: 
+        modelName: claude-3-sonnet-20240229
+### Cohere
+  - cohere:command:
+      id: cohere
       config:
         apiKey: 
         temperature: 0
-  - replicate:meta/llama-2-70b-chat:35042c9a33ac8fd5e29e27fb3197f33aa483f72c2ce3b0b9d201155c7fd2a287:
-      id: llama2
+        max_tokens: 3000
+### Mistral
+  - mistral:mistral-large-latest:
+      id: mistral
       config:
         apiKey: 
-        temperature: 0.01
-        max_new_tokens: 4096
-  - replicate:01-ai/yi-34b-chat:914692bbe8a8e2b91a4e44203e70d170c9c5ccc1359b283c84b0ec8d47819a46:
-      id: Yi-34b-chat
-      config:
-        apiKey: 
-        temperature: 0.01
-        max_new_tokens: 4096
-  - replicate:mistralai/mixtral-8x7b-instruct-v0.1:7b3212fbaf88310cfef07a061ce94224e82efc8403c26fc67e8f6c065de51f21:
-      id: mixtral-8x7b
-      config:
-        apiKey: 
-        temperature: 0.01
-        max_new_tokens: 4096
-  - anthropic:completion:claude-2:
-      id: claude2
-      config:
-        apiKey:
         temperature: 0
-  - vertex:gemini-pro:
-      id: gemini-pro
+        max_tokens: 4096
+### Google
+  - google:gemini-pro:
+      id: gemini-pro-1.0
       config:
-        apiKey:
-        projectId: 
+        apiKey: 
         temperature: 0
+        maxOutputTokens: 4096
+### Minimax
   - webhook:https://llm-proxy.babel.run/minimax:
       id: minimax
       config:
         apiKey: 
         groupId: 
+### Moonshot
   - webhook:https://llm-proxy.babel.run/moonshot:
       id: moonshot
       config:
         apiKey: 
-  - webhook:https://llm-proxy.babel.run/baidu-erniebot4:
-      id: baidu
+### ZhiPu
+  - webhook:https://llm-proxy.babel.run/chatglm:
+      id: chatglm
       config:
         apiKey: 
-        secretKey: 
-  - webhook:https://llm-proxy.babel.run/sensenova:
-      id: sensenova
-      config:
-        apiKey: 
-        secretKey: 
-  - webhook:https://llm-proxy.babel.run/aliqwen:
-      id: aliqwen
-      config:
-        apiKey: 
-  - webhook:https://llm-proxy.babel.run/google-palm:
-      id: palm2
-  - webhook:https://llm-proxy.babel.run/claude2:
-      id: claude2
+### Baichuan
   - webhook:https://llm-proxy.babel.run/baichuan:
       id: baichuan2
       config:
         apiKey: 
         secretKey: 
-  - webhook:https://llm-proxy.babel.run/cohere:
-      id: cohere
+### Baidu
+  - webhook:https://llm-proxy.babel.run/baidu-erniebot4:
+      id: baidu
       config:
         apiKey: 
-  - webhook:https://llm-proxy.babel.run/chatglm:
-      id: chatglm
+        secretKey: 
+### Alibaba
+  - webhook:https://llm-proxy.babel.run/aliqwen:
+      id: aliqwen
       config:
         apiKey: 
-  - webhook:https://llm-proxy.babel.run/hunyuan:
-      id: hunyuan
-      config:
-        app_id: 
-        secret_id: 
-        secret_key: 
+### Replicate
+  # - replicate:meta/llama-2-70b-chat:35042c9a33ac8fd5e29e27fb3197f33aa483f72c2ce3b0b9d201155c7fd2a287:
+  #     id: llama2
+  #     config:
+  #       apiKey: 
+  #       temperature: 0.01
+  #       max_new_tokens: 4096
+  # - replicate:01-ai/yi-34b-chat:914692bbe8a8e2b91a4e44203e70d170c9c5ccc1359b283c84b0ec8d47819a46:
+  #     id: Yi-34b-chat
+  #     config:
+  #       apiKey: 
+  #       temperature: 0.01
+  #       max_new_tokens: 4096
+### Others
+  # - webhook:https://llm-proxy.babel.run/sensenova:
+  #     id: sensenova
+  #     config:
+  #       apiKey: 
+  #       secretKey: 
+  # - webhook:https://llm-proxy.babel.run/hunyuan:
+  #     id: hunyuan
+  #     config:
+  #       app_id: 1253923140
+  #       secret_id: 
+  #       secret_key: 
 defaultTest:
   options:
     postprocess: |

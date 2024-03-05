@@ -7,6 +7,7 @@ Sanitize the text provided in >>>CONTENT<<< in multiple steps:
 5. Replace other personally identifiable information with `********`
 6. Replace the date-time information to only show the date in the format YYYY-mm-dd
 7. Replace all swear words with the following emoji: "😤"
+8. Show output directly, no explanations.
 
 #### START EXAMPLES
 

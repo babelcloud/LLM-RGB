@@ -13,6 +13,7 @@
         - "const flights = result.data.data.map(flight => {"
         - "const result = response.data.data.map(flight => {"
         - "const result = flights.data.data.map(flight => {"
+        - "const flightResults = result.data.data.map(flight => {"
       weight: 1
     - type: contains
       value: "const flights = result.data.data.map(flight => {"

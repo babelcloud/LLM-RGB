@@ -19,6 +19,7 @@
         - sed 's/\"hello babel/\"hello babel\"/' filename.ts
         - sed "s/\"hello babel/\"hello babel\"/" filename.ts
         - sed 's/hello babel/hello babel\"/g' filename.ts
+        - sed 's/hello babel/hello babel"/g' filename.ts
         - sed 's/\"hello babel/\"hello babel\"/g' filename.ts
       weight: 2
     - type: javascript

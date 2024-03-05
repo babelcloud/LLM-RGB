@@ -71,10 +71,10 @@ Observe: Drew D4
 Current Tiles: B3B3B3 B9B9B9 C7C7C7 D4D4 D5 D6 D4(just drew)
 
 DECISION:
-Thought: The tiles are close to a Bumps-win pattern. The newly drew D4 can form a bump D4 D4 D4. I need a pair to get a Bump-win. D5 and D6 can be the pair choices. Consider all other three D5 has been discarded already, it is impossible for me to get another D5 to form a pair. Thus I should keep D6 and discard D5.
-Target Winning Pattern: Bumps-win
-Winning Tile(s): D6
-Action: Discard D5
+Thought：The tiles are Mixed-Win pattern.The newly drew D4 can form a Straights D4-D5-D6
+Target Winning Pattern: Mixed-win
+Winning Tile(s): D4(just drew)
+Action：None
 === End Examples ===
 
 GAME INFO:

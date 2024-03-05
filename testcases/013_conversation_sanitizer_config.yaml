@@ -13,7 +13,6 @@
       weight: 2
     - type: contains-all
       value: 
-        - "SAVE20"
         - "[Agent]"
         - "[Client]"
       weight: 2
