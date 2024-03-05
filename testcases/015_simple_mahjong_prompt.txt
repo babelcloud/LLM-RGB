@@ -66,15 +66,15 @@ Winning Tile(s): D1 D4
 Action: Discard D5
 ---
 GAME INFO:
-Tiles Discarded in Previous Rounds: B6 B7 B8 C7 C9 D2 D2 D5 D5 D5 D8
+Tiles Discarded in Previous Rounds: B6 B7 B8 C7 C9 D2 D2 D7 D7 D7 D8
 Observe: Drew D4
-Current Tiles: B3B3B3 B9B9B9 C7C7C7 D4D4 D5 D6 D4(just drew)
+Current Tiles: B3B3B3 B9B9B9 C7C7C7 D4D4 D6 D7 D4(just drew)
 
 DECISION:
 Thought: The tiles are close to a Bumps-win pattern. The newly drew D4 can form a bump D4 D4 D4. I need a pair to get a Bump-win. D5 and D6 can be the pair choices. Consider all other three D5 has been discarded already, it is impossible for me to get another D5 to form a pair. Thus I should keep D6 and discard D5.
 Target Winning Pattern: Bumps-win
 Winning Tile(s): D6
-Action: Discard D5
+Action: Discard D7
 === End Examples ===
 
 GAME INFO:
