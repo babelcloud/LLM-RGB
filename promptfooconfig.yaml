@@ -17,16 +17,18 @@ providers:
         apiKey: 
         temperature: 0
 ### Anthropic
-  - webhook:https://llm-proxy.babel.run/claude:
+  - anthropic:messages:claude-3-opus-20240229:
       id: claude3-Opus
       config:
         apiKey: 
-        modelName: claude-3-opus-20240229
-  - webhook:https://llm-proxy.babel.run/claude:
+        temperature: 0
+        max_tokens: 4000
+  - anthropic:messages:claude-3-sonnet-20240229:
       id: claude3-Sonnet
-      config:
+      config: 
         apiKey: 
-        modelName: claude-3-sonnet-20240229
+        temperature: 0
+        max_tokens: 4000
 ### Cohere
   - cohere:command:
       id: cohere

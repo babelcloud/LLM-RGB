@@ -6,7 +6,7 @@
       context-length: 1
       reasoning-depth: 2
       instruction-compliance: 1
-    prompt: file://008_email_assistant_prompt.txt
+    prompt: file://testcases/008_email_assistant_prompt.txt
   assert:
     - type: icontains	
       value: "Dear ron"

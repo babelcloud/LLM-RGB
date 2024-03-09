@@ -6,7 +6,7 @@
       context-length: 1
       reasoning-depth: 4
       instruction-compliance: 1
-    prompt: file://003_context_code_fix_prompt.txt
+    prompt: file://testcases/003_context_code_fix_prompt.txt
   assert:
     - type: contains-any
       value: 

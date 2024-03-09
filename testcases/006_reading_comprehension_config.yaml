@@ -6,7 +6,7 @@
       context-length: 3
       reasoning-depth: 2
       instruction-compliance: 3
-    prompt: file://006_reading_comprehension_prompt.txt
+    prompt: file://testcases/006_reading_comprehension_prompt.txt
   assert:
     - type: contains
       value: "happy_ending: YES"
