@@ -6,7 +6,7 @@
       context-length: 1
       reasoning-depth: 2
       instruction-compliance: 2
-    prompt: file://001_requirement_check_prompt.txt
+    prompt: file://testcases/001_requirement_check_prompt.txt
   assert:
     - type: equals
       value: "YES"

@@ -6,7 +6,7 @@
       context-length: 3
       reasoning-depth: 4
       instruction-compliance: 1
-    prompt: file://010_trip_plan_prompt.txt
+    prompt: file://testcases/010_trip_plan_prompt.txt
   assert:
     - type: icontains	
       value: "Coral Isle"

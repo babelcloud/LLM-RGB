@@ -6,7 +6,7 @@
       context-length: 1
       reasoning-depth: 4
       instruction-compliance: 2
-    prompt: file://002_code_completion_prompt.txt
+    prompt: file://testcases/002_code_completion_prompt.txt
   assert:
     - type: equals
       value: "Messages(history, instruction);"
