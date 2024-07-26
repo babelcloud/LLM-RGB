@@ -520,7 +520,7 @@ The attachments related to this job:
 ### Attachment 1 - github_repo_monitor_spec.yaml
 # Software Requirement Specification
 title: Github Repo Monitor
-problem: To get the everyday activities of a github repo manually is time consuming. User needs to browse different pages to get the activities happend during the last day of a repo.
+problem: To get the everyday activities of a github repo manually is time consuming. User needs to browse different pages to get the activities happened during the last day of a repo.
 willBeChanged: We hope to write a program that can get the activities of given repos throught github api. Each of the repo's activities should be summarized and send to specified email address.
 successCriteria:
     - Everyday at 6:00AM, an email will be sent to given email addresses.
