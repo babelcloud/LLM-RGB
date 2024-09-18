@@ -3,7 +3,7 @@
 This repository contains a collection of detailed test cases (prompts) designed to evaluate the reasoning and generation capabilities of Language Learning Models (LLMs) in complex scenarios. It's important to note that this benchmark is not intended to be a comprehensive test for LLMs. The project was initially developed as an internal project at babel.cloud, with the aim of assessing the performance of LLMs in understanding context and complying with instructions.
 
 Complex scenarios present three main challenges compared to chat or simple generations:
-1. Context Length: A single prompt may contain more than 8000 tokens (approximately 20K characters).
+1. Context Length: A single prompt may contain more than 10K tokens (approximately 30K characters).
 2. Reasoning Depth: The generation of an answer may require multi-step reasoning.
 3. Instruction Compliance: The LLM may need to generate a response in a specific format, rather than in natural language.
 
@@ -46,7 +46,12 @@ Please check the following link for evaluation details of above table.
 11. llama2: meta:llama-2-70b-chat
 
 ## Quick Start
-The testing tools used in this project are provided by [promptfoo](https://github.com/promptfoo/promptfoo). To run evaluations, you need to fill in the LLM configurations in `promptfooconfig.yaml`. You should comment out any providers and test cases that you don't want to use.
+The testing tools used in this project are provided by [promptfoo](https://github.com/promptfoo/promptfoo). 
+
+```shell
+cp promptfooconfig.yaml.example promptfooconfig.yaml
+```
+To run evaluations, you need to fill in the LLM configurations in `promptfooconfig.yaml`. You should comment out any providers and test cases that you don't want to use. You can also add LLM providers according to promptfoo documents https://www.promptfoo.dev/docs/providers/ .
 
 ```shell
 npm install
@@ -55,16 +60,6 @@ npm install
 ```shell
 npm run start
 ```
-
-By default, the test result will be uploaded so that you can share the test result link. If you don't want to share the test result:
-
-```shell
-npm run start:noshare
-```
-
-If you don't have a suitable environment to run the tests, you can use [LLM-RGB Online](https://llm-rgb.babel.run).
-
-If you want to run these tests against LLMs that are not currently listed, you can add custom webhook providers in the same way as the existing ones.
 
 ## Contribute Test Cases
 We welcome contributions of test cases that can evaluate the reasoning and generation abilities of LLMs. Please refer to the existing test cases for the required files and formats.
