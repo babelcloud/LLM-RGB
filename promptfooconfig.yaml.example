@@ -1,0 +1,101 @@
+prompts: prompt.txt
+providers: 
+### OpenAI
+  - openai:o1-preview:
+      id: openai-o1-preview
+      config:
+        apiKey: # Your Key
+        temperature: 0
+        max_completion_tokens: 4000
+  - openai:o1-mini:
+      id: openai-o1-mini
+      config:
+        apiKey: # Your Key
+        temperature: 0
+        max_completion_tokens: 4000
+  - openai:gpt-4o:
+      id: gpt-4o
+      config:
+        apiKey: # Your Key
+        temperature: 0
+### Anthropic
+  - anthropic:messages:claude-3-opus-20240229:
+      id: claude3-Opus
+      config:
+        apiKey: # Your Key
+        temperature: 0
+        max_tokens: 4000
+  - anthropic:messages:claude-3-5-sonnet-20240620:
+      id: claude35-Sonnet
+      config: 
+        apiKey: # Your Key
+        temperature: 0
+        max_tokens: 4000
+### Cohere
+  # - cohere:command:
+  #     id: cohere
+  #     config:
+  #       apiKey: 
+  #       temperature: 0
+  #       max_tokens: 3000
+### Mistral
+  # - mistral:mistral-large-latest:
+  #     id: mistral
+  #     config:
+  #       apiKey: 
+  #       temperature: 0
+  #       max_tokens: 4096
+### Google
+  # - google:gemini-1.5-pro-latest:
+  #     id: gemini-1.5-pro
+  #     config:
+  #       apiKey: # Your Key
+  #       temperature: 0
+  #       maxOutputTokens: 8192
+### Deepseek
+  # - openai:chat:deepseek-coder:
+  #     id: deepseek-coder
+  #     config:
+  #       apiKey: 
+  #       apiBaseUrl: https://api.deepseek.com
+### Moonshot
+  # - openai:chat:moonshot-v1-128k:
+  #     id: moonshot-v1-128k
+  #     config:
+  #       apiKey: 
+  #       apiBaseUrl: https://api.moonshot.cn/v1
+### Step
+  # - openai:chat:step-2-16k-nightly:
+  #     id: step-2-16k-nightly
+  #     config:
+  #       apiKey: 
+  #       apiBaseUrl: https://api.stepfun.com/v1
+  #       temperature: 0
+### Llama - Replicate
+  # - replicate:meta/meta-llama-3.1-405b-instruct:
+  #     id: llama3.1-405b
+  #     config:
+  #       apiKey: 
+  #       temperature: 0.01
+  #       max_new_tokens: 4096
+defaultTest:
+  options:
+    postprocess: |
+      output = output.replace('---', '').trim();
+      return output;
+tests:
+  - testcases/001_requirement_check_config.yaml
+  - testcases/002_code_completion_config.yaml
+  - testcases/003_context_code_fix_config.yaml
+  - testcases/004_sed_command_config.yaml
+  - testcases/005_babel_elements_config.yaml
+  - testcases/006_reading_comprehension_config.yaml
+  - testcases/007_find_ball_config.yaml
+  - testcases/008_email_assistant_config.yaml
+  - testcases/009_customer_service_config.yaml
+  - testcases/010_trip_plan_config.yaml
+  - testcases/011_tool_using_config.yaml
+  - testcases/012_linux_terminal_config.yaml
+  - testcases/013_conversation_sanitizer_config.yaml
+  - testcases/014_jailbreak_config.yaml
+  - testcases/015_simple_mahjong_config.yaml
