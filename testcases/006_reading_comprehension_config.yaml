@@ -3,7 +3,7 @@
   vars: 
     name: 006_reading_comprehension
     difficulties:
-      context-length: 3
+      context-length: 2
       reasoning-depth: 2
       instruction-compliance: 3
     prompt: file://testcases/006_reading_comprehension_prompt.txt

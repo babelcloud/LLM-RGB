@@ -32,7 +32,7 @@ providers:
         temperature: 0
         max_tokens: 4000
 ### Cohere
-  # - cohere:command:
+  # - cohere:command-r-plus:
   #     id: cohere
   #     config:
   #       apiKey: 
@@ -53,8 +53,8 @@ providers:
   #       temperature: 0
   #       maxOutputTokens: 8192
 ### Deepseek
-  # - openai:chat:deepseek-coder:
-  #     id: deepseek-coder
+  # - openai:chat:deepseek-chat:
+  #     id: deepseek
   #     config:
   #       apiKey: 
   #       apiBaseUrl: https://api.deepseek.com
@@ -65,8 +65,8 @@ providers:
   #       apiKey: 
   #       apiBaseUrl: https://api.moonshot.cn/v1
 ### Step
-  # - openai:chat:step-2-16k-nightly:
-  #     id: step-2-16k-nightly
+  # - openai:chat:step-2-16k:
+  #     id: step-2-16k
   #     config:
   #       apiKey: 
   #       apiBaseUrl: https://api.stepfun.com/v1

@@ -1,3 +1,0 @@
-You are an AI software requirement analyst. Please make a judgement if the following requirements needs persistent storage. YES or NO, no explanations.
-Requirements:
-I want to hold a party tomorrow night. Please send invitation emails to my friends. My friends emails: Ella: ella@gmail.com, jack: jack@gmail.com. In the email, give them a link that shows a web page, ask them what kind of alcohol they prefer, whisky, wine or beer. I also need a web page to see their choices.
