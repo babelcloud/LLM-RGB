@@ -1,0 +1,13 @@
+- description: This test mainly focuses on reasoning-depth. It requires the LLM to understand the input format may not be valid that can not use yaml to parse input directly.
+  threshold: 0.6
+  vars: 
+    name: 001_yaml_format
+    difficulties:
+      context-length: 1
+      reasoning-depth: 4
+      instruction-compliance: 1
+    prompt: file://testcases/001_yaml_format_prompt.txt
+  assert:
+    - type: javascript
+      value: file://testcases/001_yaml_format_assert.js
+      weight: 1
