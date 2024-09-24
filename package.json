@@ -5,14 +5,20 @@
   "main": "index.js",
   "scripts": {
     "eval": "promptfoo eval --no-cache -j 8 -o ~/.promptfoo/output/latest.json",
-    "render": "ts-node generateEvalScore.ts && ts-node render.ts",
+    "render": "ts-node utils/generateEvalScore.ts && ts-node utils/render.ts",
     "start": "npm run eval;npm run render"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/babelcloud/LLM-RGB.git"
   },
-  "keywords": ["LLM", "benchmark", "prompt", "prompt-engineering", "prompt-testing"],
+  "keywords": [
+    "LLM",
+    "benchmark",
+    "prompt",
+    "prompt-engineering",
+    "prompt-testing"
+  ],
   "author": "Hailong Zhang, Ziying Wang",
   "license": "MIT",
   "bugs": {
@@ -24,7 +30,8 @@
     "cli-table3": "^0.6.3",
     "js-yaml": "^4.1.0",
     "promptfoo": "~0.89.2",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "typescript": "^5.6.2"
   },
   "devDependencies": {
     "@types/node": "^20.8.7"
