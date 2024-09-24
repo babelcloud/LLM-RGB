@@ -4,7 +4,7 @@
     name: 008_email_assistant
     difficulties:
       context-length: 1
-      reasoning-depth: 2
+      reasoning-depth: 1
       instruction-compliance: 1
     prompt: file://testcases/008_email_assistant_prompt.txt
   assert:

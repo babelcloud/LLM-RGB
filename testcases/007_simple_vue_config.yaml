@@ -1,0 +1,13 @@
+- description: This test primarily focuses on reasoning-depth, it's a hard challenge from Type Challenges https://github.com/type-challenges/type-challenges.
+  threshold: 0.6
+  vars: 
+    name: 007_simple_vue
+    difficulties:
+      context-length: 1
+      reasoning-depth: 4
+      instruction-compliance: 1
+    prompt: file://testcases/007_simple_vue_prompt.txt
+  assert:
+    - type: javascript
+      value: file://testcases/007_simple_vue_assert.js
+      weight: 1
