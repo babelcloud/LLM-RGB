@@ -186,19 +186,38 @@ function findDifficulties(name: string, tests) {
  */
 
 function getLLMScores(llm_id: string, results, tests) {
-    var scores: TestScore[] = [];
+    var scoreMap = new Map<string, TestScore[]>();
     for (const result of results) {
         if (result.provider.id == llm_id) {
             const test_difficulties = findDifficulties(result.vars.name, tests);
             const test_score = result.score.toFixed(1) * (test_difficulties["context-length"] + test_difficulties["reasoning-depth"] + test_difficulties["instruction-compliance"]);
             var score: TestScore = {
                 test_name: result.vars.name,
-                assertion_score: parseFloat(result.score.toFixed(1)),
-                test_score: parseFloat(test_score.toFixed(1))
+                assertion_score: result.score,
+                test_score: test_score,
+                repeat: 1
             }
-            scores.push(score);
+
+            if(!scoreMap.has(score.test_name)){
+                scoreMap.set(score.test_name, []);
+            }
+            scoreMap.get(score.test_name).push(score);
         }
     }
+    
+    // calculate the average score
+    const scores: TestScore[] = Array.from(scoreMap.values()).map(scoreList => {
+        let assertion_score_sum = scoreList.map(s => s.assertion_score).reduce((pre, cur) => pre + cur);
+        let test_score_sum = scoreList.map(s => s.test_score).reduce((pre, cur) => pre + cur);
+        
+        return {
+            test_name: scoreList[0].test_name,
+            assertion_score: parseFloat((assertion_score_sum/scoreList.length).toFixed(1)),
+            test_score: parseFloat((test_score_sum/scoreList.length).toFixed(1)),
+            repeat: scoreList.length
+        };
+    });
+
     return scores.sort((a, b) => a.test_name.localeCompare(b.test_name));
 }
 
@@ -217,4 +236,5 @@ type TestScore = {
     test_name: string
     assertion_score: number
     test_score: number
+    repeat: number
 }

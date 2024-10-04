@@ -10,6 +10,7 @@ const structure = fs.readFileSync(path.join(os.homedir(), '.promptfoo/output/lat
 const scoreData = JSON.parse(score);
 const structureData = JSON.parse(structure)
 const maxColumnWidth = 25;
+const repeat = scoreData[0].scores[0].repeat || 1;
 
 let maxScores = {
     total_score: structureData.max_total_score,
@@ -34,7 +35,7 @@ let verticalTestCasesTable = new Table({
     head: ['Test Case / LLM ID'].concat(structureData.llms).map(header => chalk.blue(header))
 });
 
-let verticalRows: any[] = [['Total Score']];
+let verticalRows: any[] = [[`Total Score (repeat: ${repeat})`]];
 
 structureData.testcases.forEach((testcase: any) => {
     verticalRows.push([testcase.name]);
