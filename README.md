@@ -58,8 +58,9 @@ npm install
 ```
 
 ```shell
-npm run start
+npm run start --repeat=10 --concurrency=8
 ```
+You should change the repeat and concurrency settings as needed.
 
 ## Contribute Test Cases
 We welcome contributions of test cases that can evaluate the reasoning and generation abilities of LLMs. Please refer to the existing test cases for the required files and formats.
