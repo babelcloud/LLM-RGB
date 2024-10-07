@@ -1,0 +1,13 @@
+- description: This test mainly focuses on reasoning-depth. It requires the LLM to understand the logic of summing digits.
+  threshold: 1
+  vars: 
+    name: 008_order_by_points
+    difficulties:
+      context-length: 1
+      reasoning-depth: 3
+      instruction-compliance: 1
+    prompt: file://testcases/008_order_by_points.txt
+  assert:
+    - type: python
+      value: file://testcases/008_order_by_points.py
+      weight: 1
