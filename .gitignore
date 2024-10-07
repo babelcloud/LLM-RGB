@@ -5,3 +5,4 @@ providers
 test_results
 draft_prompts
 promptfooconfig.yaml
+testcases/__pycache__

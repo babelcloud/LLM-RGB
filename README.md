@@ -62,5 +62,10 @@ npm run start --repeat=10 --concurrency=8
 ```
 You should change the repeat and concurrency settings as needed.
 
+Some of the test cases requires python to execute. Make sure you have python installed. If you have python3 installed, you can run the following command to create a symlink.
+```shell
+sudo ln -s $(which python3) /usr/local/bin/python
+```
+
 ## Contribute Test Cases
 We welcome contributions of test cases that can evaluate the reasoning and generation abilities of LLMs. Please refer to the existing test cases for the required files and formats.
