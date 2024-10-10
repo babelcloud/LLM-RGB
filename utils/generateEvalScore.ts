@@ -51,6 +51,8 @@ fs.readFile(resultFileName, 'utf8', (err, jsonString) => {
             }
         });
 
+        // Generate response logs
+        generateResponseLogs(raw, scores, testStats, extractedTestcases);
     } catch(err) {
         console.log('Error parsing JSON string:', err);
     }
@@ -77,7 +79,8 @@ function extractLLMs(result) {
 }
 interface TestCase {
     name: string;
-    difficulties: object;
+    difficulties: DifficultyType;
+    max_score?: number;
 }
 
 function extractTestcases(result: any): TestCase[] {
@@ -221,6 +224,97 @@ function getLLMScores(llm_id: string, results, tests) {
     return scores.sort((a, b) => a.test_name.localeCompare(b.test_name));
 }
 
+function generateResponseLogs(rawResp: resultsType, scores: LLMEval[], testStats: TestStats, extractedTestcases: TestCase[]) {
+    const resultsObj = rawResp.results;
+    const timestamp = resultsObj.timestamp.replace(/[:.]/g, "-");
+    const rootFolder = path.join(path.dirname(__dirname), "experiments");
+
+    // Initialize a dictionary to store the current index for each file
+    const fileIndices: { [key: string]: number } = {};
+    const llmTestCaseReports: { [key: string]: {[key: string]: TestCaseReport} } = {};
+
+    resultsObj.results.forEach((result) => {
+        const providerId = result.provider.id;
+        const testId = result.vars.name;
+
+        // Uppdate llmTestCaseReports
+        if (!llmTestCaseReports[providerId]) {
+            llmTestCaseReports[providerId] = {};
+        }
+        if (!llmTestCaseReports[providerId][testId]) {
+            const testCaseScore = scores.find(score => score.llm_id === providerId).scores.find(score => score.test_name === testId);
+            llmTestCaseReports[providerId][testId] = {
+                test_name: testId,
+                repeat: testCaseScore.repeat,
+                difficulty: extractedTestcases.find(test => test.name === testId).difficulties,
+                assertion_score: testCaseScore.assertion_score,
+                test_score: testCaseScore.test_score,
+                details: {}
+            };
+        }
+
+        // Set log file path
+        const key = `${providerId}-${testId}`;
+        if (fileIndices[key] === undefined) {
+            fileIndices[key] = 1;
+        } else {
+            fileIndices[key]++;
+        }
+
+        const fileName = `${testId}-${fileIndices[key]}.md`;
+
+        const logPath = path.join(rootFolder, timestamp, providerId, fileName);
+        fs.mkdirSync(path.dirname(logPath), { recursive: true }); // Create the directory if it doesn't exist
+
+        // Write the log file
+        const prompt = result.prompt.raw;
+        const response = result.response.output;
+
+        const logContent = `# ${testId}\n\n## Prompt\n\n${prompt}\n\n## Response\n\n${response}\n\n`;
+
+        fs.writeFile(logPath, logContent, (err) => {
+            if (err) {
+                console.log(
+                    `✗ log ${providerId}  ${fileName} failed!`,
+                    err
+                );
+            } else {
+                console.log(`● log ${providerId}  ${fileName} created!`);
+            }
+        });
+
+        // Update llmTestCaseReports
+        const testCaseDifficulties = llmTestCaseReports[providerId][testId].difficulty;
+        llmTestCaseReports[providerId][testId].details[fileName.replace(".md", "")] = {
+            assertion_score: result.score,
+            test_score: result.score.toFixed(1) * (testCaseDifficulties["context-length"] + testCaseDifficulties["reasoning-depth"] + testCaseDifficulties["instruction-compliance"])
+        }
+    });
+
+    // Write llmTestCaseReports to file
+    Object.entries(llmTestCaseReports).forEach(([llmId, llm]) => {
+        const llmPath = path.join(rootFolder, timestamp, llmId, "report.json");
+        fs.mkdirSync(path.dirname(llmPath), { recursive: true }); // Create the directory if it doesn't exist
+
+        fs.writeFile(llmPath, JSON.stringify({
+            llm_id: llmId,
+            timestamp: timestamp,
+            aggregated_scores: scores.find(score => score.llm_id === llmId).aggregated_scores,
+            total_score: scores.find(score => score.llm_id === llmId).total_score,
+            testcases: Object.values(llm).sort((a, b) => a.test_name.localeCompare(b.test_name))
+        }), (err) => {
+            if (err) {
+                console.log(
+                    `✗ report ${llmId} failed!`,
+                    err
+                );
+            } else {
+                console.log(`● report ${llmId} created!`);
+            }
+        });
+    });
+};
+
 type LLMEval = {
     llm_id: string,
     scores: TestScore[],
@@ -237,4 +331,64 @@ type TestScore = {
     assertion_score: number
     test_score: number
     repeat: number
+}
+
+type DifficultyType = {
+    "context-length": number;
+    "reasoning-depth": number;
+    "instruction-compliance": number;
+};
+
+type TestStats = {
+    llms: any[];
+    max_total_score: number;
+    max_context_length: number;
+    max_reasoning_depth: number;
+    max_instruction_compliance: number;
+    testcases: TestCase[];
+    startTime: any;
+    endTime: any;
+}
+
+type resultType = {
+    provider: {
+        id: string;
+        label: string;
+        [key: string]: any; // Index signature to allow additional properties
+    };
+    prompt: {
+        raw: string;
+        label: string;
+        [key: string]: any;
+    };
+    vars: {
+        name: string;
+        prompt: string;
+        difficulties: DifficultyType,
+        [key: string]: any;
+    };
+    response: {
+        output: string;
+        [key: string]: any;
+    };
+    [key: string]: any;
+};
+
+type resultsType = {
+    evalId: string;
+    results: {
+        timestamp: string;
+        results: resultType[];
+        [key: string]: any;
+    };
+};
+
+
+type TestCaseReport = {
+    test_name: string;
+    repeat: number;
+    difficulty: DifficultyType;
+    assertion_score: number;
+    test_score: number;
+    details?: object
 }
