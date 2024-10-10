@@ -268,7 +268,7 @@ function generateResponseLogs(rawResp: resultsType, scores: LLMEval[], testStats
 
         // Write the log file
         const prompt = result.prompt.raw;
-        const response = result.response.output;
+        const response = result.response?.output ?? "[no response]";
 
         const logContent = `# ${testId}\n\n## Prompt\n\n${prompt}\n\n## Response\n\n${response}\n\n`;
 
@@ -367,7 +367,7 @@ type resultType = {
         difficulties: DifficultyType,
         [key: string]: any;
     };
-    response: {
+    response?: {
         output: string;
         [key: string]: any;
     };
