@@ -1,13 +1,25 @@
-- description: This test mainly focuses on reasoning-depth and instruction-compliance. It requires the LLM to understand the scenario is to mimic Linux terminal and output response as shell format accroding to user's command.
+- description: This test mainly focuses on reasoning-depth and reasoning-depth. It requires the LLM to analyze the pattern of the log and learn the commands to update the setup.
   threshold: 1
   vars: 
     name: 012_linux_terminal
     difficulties:
-      context-length: 1
-      reasoning-depth: 2
-      instruction-compliance: 3
+      context-length: 3
+      reasoning-depth: 3
+      instruction-compliance: 1
     prompt: file://testcases/012_linux_terminal_prompt.txt
   assert:
-    - type: icontains
-      value: "No such file or directory"
+    - type: contains-all
+      value:
+        - 'git pull'
+        - 'git submodule update'
+        - 'make install-app'
+      weight: 7
+    - type: contains-all
+      value:
+        - 'git pull'
+        - 'git submodule update'
+      weight: 2
+    - type: contains-all
+      value:
+        - 'git pull'
       weight: 1

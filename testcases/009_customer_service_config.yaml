@@ -4,7 +4,7 @@
     name: 009_customer_service
     difficulties:
       context-length: 1
-      reasoning-depth: 2
+      reasoning-depth: 1
       instruction-compliance: 2
     prompt: file://testcases/009_customer_service_prompt.txt
   assert:
