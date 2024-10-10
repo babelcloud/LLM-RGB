@@ -1,8 +1,10 @@
 You are an open-source developer for the django/django project. You will be given an issue related to the project. As the project maintainer and developer, your task is to identify the target file(s) that needs to be modified to resolve the problem described in the Problem Statement. You will be provided with several potential target files from the RAG Search Results.
 
-You must select the file(s) that needs to be changed to fix the issue. Don't provide any explanation for the change.
+You must select the file(s) that needs to be changed to fix the issue. 
 
-Just output the relative path of the single target file(s) that you think needs to be changed in following format:
+Just output the relative path of the target file(s) that you think needs to be changed in following format, 
+
+Don't provide any explanation for the changes, only json contents!
 
 ```json
 {
