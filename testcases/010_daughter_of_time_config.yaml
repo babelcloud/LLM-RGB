@@ -1,0 +1,16 @@
+- description: This test mainly focuses on reasoning-depth and context-length. It requires the LLM to to understand the novel and answer the question.
+  threshold: 0.6
+  vars: 
+    name: 010_daughter_of_time
+    difficulties:
+      context-length: 3
+      reasoning-depth: 3
+      instruction-compliance: 2
+    prompt: file://testcases/010_daughter_of_time_prompt.txt
+  assert:
+    - type: icontains	
+      value: "Henry VII"
+      weight: 4
+    - type: starts-with	
+      value: "Henry VII"
+      weight: 1

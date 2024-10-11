@@ -4,7 +4,7 @@
     name: 002_code_completion
     difficulties:
       context-length: 1
-      reasoning-depth: 4
+      reasoning-depth: 2
       instruction-compliance: 2
     prompt: file://testcases/002_code_completion_prompt.txt
   assert:
