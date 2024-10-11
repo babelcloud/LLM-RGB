@@ -6,13 +6,11 @@ providers:
       config:
         apiKey: # Your Key
         temperature: 0
-        max_completion_tokens: 4000
   - openai:o1-mini:
       id: openai-o1-mini
       config:
         apiKey: # Your Key
         temperature: 0
-        max_completion_tokens: 4000
   - openai:gpt-4o:
       id: gpt-4o
       config:
