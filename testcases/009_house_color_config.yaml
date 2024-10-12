@@ -1,0 +1,13 @@
+- description: This test mainly focuses on reasoning-depth and instruction-compliance. It requires the LLM to reason and deduce based on the clues to find the color of the house where the cat lives.
+  threshold: 0.6
+  vars:
+    name: 009_house_color
+    difficulties:
+      context-length: 1
+      reasoning-depth: 4
+      instruction-compliance: 2
+    prompt: file://testcases/009_house_color_prompt.txt
+  assert:
+    - type: javascript
+      value: file://testcases/009_house_color_assert.js
+      weight: 1

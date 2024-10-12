@@ -21,29 +21,14 @@ The value is 1 if the expected response is in natural language without any speci
 The difficulty of each test case (Dn) is the sum of the three difficulties. Each test case includes a set of assertions to evaluate the LLM's output. The result of the assertion (Rn) is a decimal between [0, 1]. The final score of the test case (Sn) is calculated as Rn x Dn. "n" is the test case number. The total score for each LLM is the sum of all test case scores (S1...Sn).
 
 ## Score Table
-The following tables show the evaluation results, executed on Jan. 24th, 2024. We ran the evaluation 10 times and take the average scores. The full score of all 15 testcases is 100.
+The following tables show the evaluation results, executed on Oct. 11th, 2024. We ran the evaluation 10 times and take the average scores. The full score of all 15 testcases is 100. You can check experiments/2024-10-11T22-43-25-810Z for the detailed results.
 
 ### Score by Abilities
-![image](https://github.com/babelcloud/LLM-RGB/assets/1726527/64a37851-3a4b-41df-a4be-7037bae81bcc)
+![image](https://github.com/user-attachments/assets/cac07fb8-c475-4f62-9422-67d2a877418e)
 
 ### Score by Testcases
-![image](https://github.com/babelcloud/LLM-RGB/assets/1726527/89d2b93f-5723-4e9a-aaed-73c2a28e0c9d)
+![image](https://github.com/user-attachments/assets/79123df5-1244-4ff3-8ff8-53c8532bb2b7)
 
-### Evaluation Details
-Please check the following link for evaluation details of above table.
-[Result-1](https://llm-rgb.babel.run/view/testId/30c42a05-f325-447d-b829-1401344184b0) [Result-2](https://llm-rgb.babel.run/view/testId/3ea4c092-7f16-400a-9376-f963211a0d60) [Result-3](https://llm-rgb.babel.run/view/testId/2a46c7f1-7c5b-4876-85b3-0f60203a22b1) [Result-4](https://llm-rgb.babel.run/view/testId/6cbe7812-d987-4f8d-8d5f-4ecb92036bc0) [Result-5](https://llm-rgb.babel.run/view/testId/57d33aa7-13e1-4dec-afea-5cb0fdc82323) [Result-6](https://llm-rgb.babel.run/view/testId/8ad41299-2b5d-40cb-913b-7178cb87cb97) [Result-7](https://llm-rgb.babel.run/view/testId/07267d5f-9e4d-4e03-9300-3c1372556900) [Result-8](https://llm-rgb.babel.run/view/testId/d4386ad0-c3a3-4f6c-a9d1-b1509a657476) [Result-9](https://llm-rgb.babel.run/view/testId/f6f0511b-7f1f-4ab0-abfc-4f79bc0bdcae) [Result-10](https://llm-rgb.babel.run/view/testId/ded4d6ee-20a0-46cf-a06c-ceedb7ca8a55)
-
-1. gpt-4-turbo: openai:gpt-4-1106-preview
-2. gpt-3.5: openai:gpt-3.5-turbo-1106
-3. minimax: minimax:abab6-chat
-4. chatglm: zhipu:glm-4
-5. moonshot: moonshot:moonshot-v1-8k
-6. baichuan2: baichuan:Baichuan2-Turbo
-7. gemini-pro: google:gemini-pro
-8. aliqwen: alibaba:qwen-max
-9. baidu: baidu:ernie_bot_8k
-10. Yi-34b-chat: 01-ai:yi-34b-chat
-11. llama2: meta:llama-2-70b-chat
 
 ## Quick Start
 The testing tools used in this project are provided by [promptfoo](https://github.com/promptfoo/promptfoo). 
@@ -60,7 +45,7 @@ npm install
 ```shell
 npm run start --repeat=10 --concurrency=8
 ```
-You should change the repeat and concurrency settings as needed.
+You should change the repeat and concurrency settings as needed. If these values are not specified, the default value of repeat is 1 and concurrency is 8.
 
 Some of the test cases requires python to execute. Make sure you have python installed. If you have python3 installed, you can run the following command to create a symlink.
 ```shell

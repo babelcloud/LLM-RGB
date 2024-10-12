@@ -4,7 +4,7 @@
     name: 011_tool_using
     difficulties:
       context-length: 2
-      reasoning-depth: 4
+      reasoning-depth: 3
       instruction-compliance: 3
     prompt: file://testcases/011_tool_using_prompt.txt
   assert:

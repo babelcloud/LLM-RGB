@@ -6,13 +6,11 @@ providers:
       config:
         apiKey: # Your Key
         temperature: 0
-        max_completion_tokens: 4000
   - openai:o1-mini:
       id: openai-o1-mini
       config:
         apiKey: # Your Key
         temperature: 0
-        max_completion_tokens: 4000
   - openai:gpt-4o:
       id: gpt-4o
       config:
@@ -97,5 +95,5 @@ tests:
   - testcases/011_tool_using_config.yaml
   - testcases/012_linux_terminal_config.yaml
   - testcases/013_conversation_sanitizer_config.yaml
-  - testcases/014_jailbreak_config.yaml
+  - testcases/014_find_target_files_config.yaml
   - testcases/015_simple_mahjong_config.yaml

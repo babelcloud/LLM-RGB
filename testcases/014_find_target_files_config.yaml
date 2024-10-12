@@ -1,0 +1,13 @@
+- description: This test mainly focuses on context-length and reasoning-depth. It requires the LLM to understand the scenario is to find the target files to be changed.
+  threshold: 1
+  vars: 
+    name: 014_find_target_files
+    difficulties:
+      context-length: 3
+      reasoning-depth: 4
+      instruction-compliance: 2
+    prompt: file://testcases/014_find_target_files_prompt.txt
+  assert:
+    - type: javascript
+      value: file://testcases/014_find_target_files_assert.js
+      weight: 1  

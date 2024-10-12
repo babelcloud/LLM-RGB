@@ -228,6 +228,7 @@ function generateResponseLogs(rawResp: resultsType, scores: LLMEval[], testStats
     const resultsObj = rawResp.results;
     const timestamp = resultsObj.timestamp.replace(/[:.]/g, "-");
     const rootFolder = path.join(path.dirname(__dirname), "experiments");
+    const enableLog = false;
 
     // Initialize a dictionary to store the current index for each file
     const fileIndices: { [key: string]: number } = {};
@@ -268,18 +269,20 @@ function generateResponseLogs(rawResp: resultsType, scores: LLMEval[], testStats
 
         // Write the log file
         const prompt = result.prompt.raw;
-        const response = result.response.output;
+        const response = result.response?.output ?? "[no response]";
 
         const logContent = `# ${testId}\n\n## Prompt\n\n${prompt}\n\n## Response\n\n${response}\n\n`;
 
         fs.writeFile(logPath, logContent, (err) => {
-            if (err) {
-                console.log(
-                    `✗ log ${providerId}  ${fileName} failed!`,
-                    err
-                );
-            } else {
-                console.log(`● log ${providerId}  ${fileName} created!`);
+            if (enableLog) {
+                if (err) {
+                    console.log(
+                        `✗ log ${providerId}  ${fileName} failed!`,
+                        err
+                    );
+                } else {
+                    console.log(`● log ${providerId}  ${fileName} created!`);
+                }
             }
         });
 
@@ -303,13 +306,15 @@ function generateResponseLogs(rawResp: resultsType, scores: LLMEval[], testStats
             total_score: scores.find(score => score.llm_id === llmId).total_score,
             testcases: Object.values(llm).sort((a, b) => a.test_name.localeCompare(b.test_name))
         }), (err) => {
-            if (err) {
-                console.log(
-                    `✗ report ${llmId} failed!`,
-                    err
-                );
-            } else {
-                console.log(`● report ${llmId} created!`);
+            if (enableLog) {
+                if (err) {
+                    console.log(
+                        `✗ report ${llmId} failed!`,
+                        err
+                    );
+                } else {
+                    console.log(`● report ${llmId} created!`);
+                }
             }
         });
     });
@@ -367,7 +372,7 @@ type resultType = {
         difficulties: DifficultyType,
         [key: string]: any;
     };
-    response: {
+    response?: {
         output: string;
         [key: string]: any;
     };
