@@ -3,12 +3,89 @@ import * as chalk from 'chalk';
 import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
+import {
+    LLMEval,
+    TestStats,
+    resultsType,
+    TestCase,
+    TestCaseReport,
+    TestScore,
+    getTestStats,
+} from "./generateEvalScore";
 
-const score = fs.readFileSync(path.join(os.homedir(), '.promptfoo/output/latest-score.json')).toString();
-const structure = fs.readFileSync(path.join(os.homedir(), '.promptfoo/output/latest-stats.json')).toString();
+const args = process.argv.slice(2);
+const folderPath = args[0] || undefined;
 
-const scoreData = JSON.parse(score);
-const structureData = JSON.parse(structure)
+const getScoreAndStructureData = (folderPath: string | undefined) => {
+    let scoreData: LLMEval[] = [];
+    let structureData: TestStats;
+    if (folderPath) {
+        // check if the folder exists
+        if (!fs.existsSync(folderPath)) {
+            console.error("Folder does not exist", folderPath);
+            process.exit(1);
+        }
+
+        // find all the files in the folder
+        const llmIds = fs.readdirSync(folderPath);
+
+        const testcases: { [key: string]: TestCase } = {};
+
+        llmIds.forEach((llmId) => {
+            const reportPath = path.join(folderPath, llmId, "report.json");
+            if (fs.existsSync(reportPath)) {
+                const report = JSON.parse(
+                    fs.readFileSync(reportPath).toString()
+                ) as resultsType;
+
+                scoreData.push({
+                    llm_id: llmId,
+                    scores: report["testcases"].map(
+                        (testcase: TestCaseReport) => {
+                            const testScore = {
+                                test_name: testcase["test_name"],
+                                assertion_score: testcase["assertion_score"],
+                                test_score: testcase["test_score"],
+                                repeat: testcase["repeat"],
+                            } as TestScore;
+
+                            if (!testcases[testcase["test_name"]]) {
+                                testcases[testcase["test_name"]] = {
+                                    name: testcase["test_name"],
+                                    difficulties: testcase["difficulty"],
+                                };
+                            }
+
+                            return testScore;
+                        }
+                    ),
+                    aggregated_scores: report["aggregated_scores"],
+                    total_score: report["total_score"],
+                });
+            }
+        });
+
+        structureData = getTestStats(
+            scoreData,
+            Object.values(testcases),
+            "start_time",
+            "end_time"
+        );
+    } else {
+        const score: string = fs.readFileSync(path.join(os.homedir(), '.promptfoo/output/latest-score.json')).toString();
+        scoreData = JSON.parse(score) as LLMEval[];
+        const stats: string = fs.readFileSync(path.join(os.homedir(), '.promptfoo/output/latest-stats.json')).toString();
+        structureData = JSON.parse(stats) as TestStats;
+    }
+
+    return {
+        scoreData,
+        structureData,
+    };
+};
+
+const { scoreData, structureData } = getScoreAndStructureData(folderPath);
+
 const maxColumnWidth = 25;
 const repeat = scoreData[0].scores[0].repeat || 1;
 

@@ -52,5 +52,13 @@ Some of the test cases requires python to execute. Make sure you have python ins
 sudo ln -s $(which python3) /usr/local/bin/python
 ```
 
+## Check History Results
+
+You can check the history results in the `experiments` folder. Each experiment subfolder contains the evaluation results of the LLMs. You can use following command to render the results in a human-readable table.
+
+```shell
+ts-node utils/render.ts "path to the folder, eg. experiments/2024-10-11T22-43-25-810Z"
+```
+
 ## Contribute Test Cases
 We welcome contributions of test cases that can evaluate the reasoning and generation abilities of LLMs. Please refer to the existing test cases for the required files and formats.
