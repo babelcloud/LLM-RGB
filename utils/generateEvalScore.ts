@@ -6,57 +6,60 @@ const resultFileName = path.join(os.homedir(), '.promptfoo/output/latest.json');
 const scoreFileName = path.join(os.homedir(), '.promptfoo/output/latest-score.json');
 const statsFileName = path.join(os.homedir(), '.promptfoo/output/latest-stats.json');
 const rawFileName = path.join(os.homedir(), '.promptfoo/output/latest-raw.json');
-fs.readFile(resultFileName, 'utf8', (err, jsonString) => {
-    if (err) {
-        console.log("Error reading file from disk:", err);
-        return;
-    }
-    try {
-        const raw = JSON.parse(jsonString);
-        const startTime = Date.parse(raw.createdAt);
-        const endTime = Date.now();
-        const result = raw.results;
-        console.log("Data loaded from JSON file:", resultFileName);
-        resultLaundry(result);
-        const extractedProviders = extractLLMs(result);
-        const extractedTestcases = extractTestcases(result);
+
+if (require.main === module) {
+    fs.readFile(resultFileName, 'utf8', (err, jsonString) => {
+        if (err) {
+            console.log("Error reading file from disk:", err);
+            return;
+        }
+        try {
+            const raw = JSON.parse(jsonString);
+            const startTime = Date.parse(raw.createdAt);
+            const endTime = Date.now();
+            const result = raw.results;
+            console.log("Data loaded from JSON file:", resultFileName);
+            resultLaundry(result);
+            const extractedProviders = extractLLMs(result);
+            const extractedTestcases = extractTestcases(result);
 
         const scores = evaluationScore(extractedProviders, extractedTestcases, result);
         const testStats = getTestStats(scores, extractedTestcases, startTime, endTime);
 
-        // Write testStats to testStats.json
-        fs.writeFile(statsFileName, JSON.stringify(testStats), (err) => {
-            if (err) {
-                console.log('Error writing testStats to file:', err);
-            } else {
-                console.log('Successfully wrote testStats to ' + statsFileName);
-            }
-        });
+            // Write testStats to testStats.json
+            fs.writeFile(statsFileName, JSON.stringify(testStats), (err) => {
+                if (err) {
+                    console.log('Error writing testStats to file:', err);
+                } else {
+                    console.log('Successfully wrote testStats to ' + statsFileName);
+                }
+            });
 
-        // Write scores to scores.json
-        fs.writeFile(scoreFileName, JSON.stringify(scores), (err) => {
-            if (err) {
-                console.log('Error writing scores to file:', err);
-            } else {
-                console.log('Successfully wrote scores to ' + scoreFileName);
-            }
-        });
+            // Write scores to scores.json
+            fs.writeFile(scoreFileName, JSON.stringify(scores), (err) => {
+                if (err) {
+                    console.log('Error writing scores to file:', err);
+                } else {
+                    console.log('Successfully wrote scores to ' + scoreFileName);
+                }
+            });
 
-        // Write raw result
-        fs.writeFile(rawFileName, JSON.stringify(result), (err) => {
-            if (err) {
-                console.log('Error writing scores to file:', err);
-            } else {
-                console.log('Successfully wrote scores to ' + rawFileName);
-            }
-        });
+            // Write raw result
+            fs.writeFile(rawFileName, JSON.stringify(result), (err) => {
+                if (err) {
+                    console.log("Error writing scores to file:", err);
+                } else {
+                    console.log("Successfully wrote scores to " + rawFileName);
+                }
+            });
 
-        // Generate response logs
-        generateResponseLogs(raw, scores, testStats, extractedTestcases);
-    } catch(err) {
-        console.log('Error parsing JSON string:', err);
-    }
-});
+            // Generate response logs
+            generateResponseLogs(raw, scores, testStats, extractedTestcases);
+        } catch(err) {
+            console.log('Error parsing JSON string:', err);
+        }
+    });
+}
 
 function resultLaundry(result) {
     delete result.table;
@@ -77,7 +80,7 @@ function extractLLMs(result) {
 
     return Array.from(providers).sort();
 }
-interface TestCase {
+export interface TestCase {
     name: string;
     difficulties: DifficultyType;
     max_score?: number;
@@ -97,7 +100,7 @@ function extractTestcases(result: any): TestCase[] {
     return Object.values(testcases).sort((a, b) => a.name.localeCompare(b.name));
 }
 
-function getTestStats(scores, tests, startTime, endTime) {
+export function getTestStats(scores, tests, startTime, endTime) {
     var llms: any[] = [];
     var max_total_score = 0;
     var max_context_length = 0;
@@ -320,7 +323,7 @@ function generateResponseLogs(rawResp: resultsType, scores: LLMEval[], testStats
     });
 };
 
-type LLMEval = {
+export type LLMEval = {
     llm_id: string,
     scores: TestScore[],
     aggregated_scores: {
@@ -331,7 +334,7 @@ type LLMEval = {
     total_score: number
 }
 
-type TestScore = {
+export type TestScore = {
     test_name: string
     assertion_score: number
     test_score: number
@@ -344,8 +347,8 @@ type DifficultyType = {
     "instruction-compliance": number;
 };
 
-type TestStats = {
-    llms: any[];
+export type TestStats = {
+    llms: string[];
     max_total_score: number;
     max_context_length: number;
     max_reasoning_depth: number;
@@ -379,7 +382,7 @@ type resultType = {
     [key: string]: any;
 };
 
-type resultsType = {
+export type resultsType = {
     evalId: string;
     results: {
         timestamp: string;
@@ -388,8 +391,7 @@ type resultsType = {
     };
 };
 
-
-type TestCaseReport = {
+export type TestCaseReport = {
     test_name: string;
     repeat: number;
     difficulty: DifficultyType;
