@@ -21,13 +21,13 @@ The value is 1 if the expected response is in natural language without any speci
 The difficulty of each test case (Dn) is the sum of the three difficulties. Each test case includes a set of assertions to evaluate the LLM's output. The result of the assertion (Rn) is a decimal between [0, 1]. The final score of the test case (Sn) is calculated as Rn x Dn. "n" is the test case number. The total score for each LLM is the sum of all test case scores (S1...Sn).
 
 ## Score Table
-The following tables show the evaluation results, executed on Jan. 24th, 2024. We ran the evaluation 10 times and take the average scores. The full score of all 15 testcases is 100. You can check experiments/xxxxx for the detailed results.
+The following tables show the evaluation results, executed on Oct. 11th, 2024. We ran the evaluation 10 times and take the average scores. The full score of all 15 testcases is 100. You can check experiments/2024-10-11T22-43-25-810Z for the detailed results.
 
 ### Score by Abilities
-![image](https://github.com/babelcloud/LLM-RGB/assets/1726527/64a37851-3a4b-41df-a4be-7037bae81bcc)
+![image](https://github.com/user-attachments/assets/cac07fb8-c475-4f62-9422-67d2a877418e)
 
 ### Score by Testcases
-![image](https://github.com/babelcloud/LLM-RGB/assets/1726527/89d2b93f-5723-4e9a-aaed-73c2a28e0c9d)
+![image](https://github.com/user-attachments/assets/79123df5-1244-4ff3-8ff8-53c8532bb2b7)
 
 
 ## Quick Start
@@ -45,7 +45,7 @@ npm install
 ```shell
 npm run start --repeat=10 --concurrency=8
 ```
-You should change the repeat and concurrency settings as needed.
+You should change the repeat and concurrency settings as needed. If these values are not specified, the default value of repeat is 1 and concurrency is 8.
 
 Some of the test cases requires python to execute. Make sure you have python installed. If you have python3 installed, you can run the following command to create a symlink.
 ```shell
