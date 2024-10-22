@@ -82,16 +82,16 @@ defaultTest:
       output = output.replace('---', '').trim();
       return output;
 tests:
-  - testcases/001_requirement_check_config.yaml
+  - testcases/001_yaml_format_config.yaml
   - testcases/002_code_completion_config.yaml
   - testcases/003_context_code_fix_config.yaml
   - testcases/004_sed_command_config.yaml
   - testcases/005_babel_elements_config.yaml
-  - testcases/006_reading_comprehension_config.yaml
-  - testcases/007_find_ball_config.yaml
-  - testcases/008_email_assistant_config.yaml
-  - testcases/009_customer_service_config.yaml
-  - testcases/010_trip_plan_config.yaml
+  - testcases/006_is_neg_number_config.yaml
+  - testcases/007_simple_vue_config.yaml
+  - testcases/008_order_by_points.yaml
+  - testcases/009_house_color_config.yaml
+  - testcases/010_daughter_of_time_config.yaml
   - testcases/011_tool_using_config.yaml
   - testcases/012_linux_terminal_config.yaml
   - testcases/013_conversation_sanitizer_config.yaml
