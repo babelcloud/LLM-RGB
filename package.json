@@ -7,7 +7,7 @@
     "eval": "promptfoo eval --no-cache --repeat ${npm_config_repeat:-1} --max-concurrency ${npm_config_concurrency:-8} -o ~/.promptfoo/output/latest.json",
     "render": "ts-node utils/generateEvalScore.ts && ts-node utils/render.ts",
     "start": "npm run eval;npm run render",
-    "test": "vitest"
+    "test": "vitest run"
   },
   "repository": {
     "type": "git",
