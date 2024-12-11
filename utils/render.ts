@@ -68,8 +68,8 @@ const getScoreAndStructureData = (folderPath: string | undefined) => {
         structureData = getTestStats(
             scoreData,
             Object.values(testcases),
-            "start_time",
-            "end_time"
+            undefined,  // Optional timestamp parameters
+            undefined
         );
     } else {
         const score: string = fs.readFileSync(path.join(os.homedir(), '.promptfoo/output/latest-score.json')).toString();
