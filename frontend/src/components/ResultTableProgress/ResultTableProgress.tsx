@@ -1,6 +1,6 @@
-import { Text, Progress } from '@mantine/core';
-import { useLayoutEffect, useRef, useState } from 'react';
-import style from './ResultTableProgress.module.css';
+import { Text, Progress } from "@mantine/core";
+import { useLayoutEffect, useRef, useState } from "react";
+import style from "./ResultTableProgress.module.css";
 
 class ResultTableProgressProps {
   value?: number = 0;
@@ -21,7 +21,7 @@ export function ResultTableProgress(props: ResultTableProgressProps) {
   const [width, setWidth] = useState(0);
   useLayoutEffect(() => {
     // eslint-disable-next-line @typescript-eslint/dot-notation
-    ref && ref.current && setWidth(ref.current['offsetWidth']);
+    ref && ref.current && setWidth(ref.current["offsetWidth"]);
   }, []);
 
   const value = props.value ?? 0;
@@ -29,11 +29,11 @@ export function ResultTableProgress(props: ResultTableProgressProps) {
 
   // 颜色配置
   const percentage = Math.round((value / maxValue) * 100);
-  let colorValue = '#1F5F4B';
+  let colorValue = "#1F5F4B";
   if (percentage < 30) {
-    colorValue = '#991B1B';
+    colorValue = "#991B1B";
   } else if (percentage < 60) {
-    colorValue = '#8a7c37';
+    colorValue = "#8a7c37";
   }
 
   return (
@@ -45,10 +45,12 @@ export function ResultTableProgress(props: ResultTableProgressProps) {
           color={colorValue}
           value={percentage}
           style={{
-            justifyContent: width < 55 ? 'initial' : 'end',
+            justifyContent: width < 55 ? "initial" : "end",
           }}
         >
-          <Progress.Label className={style.resultTableProgressLabel}>{value}</Progress.Label>
+          <Progress.Label className={style.resultTableProgressLabel}>
+            {value}
+          </Progress.Label>
         </Progress.Section>
       </Progress.Root>
       <Text className={style.resultTableValue}>{value}</Text>

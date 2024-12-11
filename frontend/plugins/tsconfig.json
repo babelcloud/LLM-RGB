@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "outDir": ".",
+    "types": ["node"]
+  },
+  "include": ["./vite-plugin-testcase.cts"]
+}

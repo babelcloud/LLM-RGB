@@ -1,4 +1,4 @@
-import TestCaseDifficulties from './TestCaseDifficulties';
+import TestCaseDifficulties from "./TestCaseDifficulties";
 
 export default class TestResultStats {
   llms: string[] | undefined;

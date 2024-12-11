@@ -1,7 +1,7 @@
-import { Box, Text, Image } from '@mantine/core';
-import LLM from '@models/LLM';
-import { maskKey } from '@services/LLMConfigService';
-import style from './LLMItemConfig.module.css';
+import { Box, Text, Image } from "@mantine/core";
+import LLM from "@models/LLM";
+import { maskKey } from "@services/LLMConfigService";
+import style from "./LLMItemConfig.module.css";
 
 class LLMItemConfigProps {
   data: LLM;
@@ -16,12 +16,15 @@ export function LLMItemConfig(props: LLMItemConfigProps) {
 
   return (
     <>
-      <Box key={data.key} className={data.config?.remark ? style.item2 : style.item}>
+      <Box
+        key={data.key}
+        className={data.config?.remark ? style.item2 : style.item}
+      >
         <Image
           w={40}
           h={40}
           src={data.icon}
-          className={`${style.displayInline} ${data.config?.remark ? '' : style.textMiddle}`}
+          className={`${style.displayInline} ${data.config?.remark ? "" : style.textMiddle}`}
         />
         {data.config?.remark ? (
           <Box ml={16} className={style.itemBoxText}>
@@ -36,11 +39,15 @@ export function LLMItemConfig(props: LLMItemConfigProps) {
           </Text>
         )}
         <Box className={style.infoBox}>
-          {typeof data.config.apiKey === 'string' ? <Text>{maskKey(data.config.apiKey)}</Text> : ''}
+          {typeof data.config.apiKey === "string" ? (
+            <Text>{maskKey(data.config.apiKey)}</Text>
+          ) : (
+            ""
+          )}
           {data.config.temperature !== undefined ? (
             <Text>Temperature: {data.config.temperature}</Text>
           ) : (
-            ''
+            ""
           )}
         </Box>
       </Box>

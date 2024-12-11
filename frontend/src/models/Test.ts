@@ -1,5 +1,5 @@
-import TestCase from './TestCase';
-import LLM from './LLM';
+import TestCase from "./TestCase";
+import LLM from "./LLM";
 
 export default class Test {
   name: string;

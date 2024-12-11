@@ -1,4 +1,4 @@
-import TestCase from '@models/TestCase';
+import TestCase from "@models/TestCase";
 import {
   Box,
   Button,
@@ -10,12 +10,12 @@ import {
   Textarea,
   TextInput,
   Tooltip,
-} from '@mantine/core';
-import { useForm } from '@mantine/form';
-import React, { useEffect, useState } from 'react';
-import { TestCaseFormAssert } from '@components/TestCaseFormAssert/TestCaseFormAssert';
-import { TestCaseAssert } from '@models/TestCaseAssert';
-import style from '@pages/Test.page.module.css';
+} from "@mantine/core";
+import { useForm } from "@mantine/form";
+import React, { useEffect, useState } from "react";
+import { TestCaseFormAssert } from "@components/TestCaseFormAssert/TestCaseFormAssert";
+import { TestCaseAssert } from "@models/TestCaseAssert";
+import style from "@pages/Test.page.module.css";
 
 interface OnTestCaseSave {
   (testCase: TestCase): void;
@@ -47,23 +47,29 @@ export function TestCaseForm({
     validateInputOnChange: true,
     validate: {
       name: (value, values) => {
-        if (testCaseList.filter(t => t.name === value && t.created !== values.created).length > 0) {
-          return 'Duplicate names are not allowed';
+        if (
+          testCaseList.filter(
+            (t) => t.name === value && t.created !== values.created,
+          ).length > 0
+        ) {
+          return "Duplicate names are not allowed";
         }
         if (!/^[0-9]{3,}_/.test(value)) {
-          return 'Must contain at least 3 digits with leading zeros and an underscore';
+          return "Must contain at least 3 digits with leading zeros and an underscore";
         }
         return null;
       },
       asserts: {
         type: (value, values) => {
-          if (value !== 'javascript') {
+          if (value !== "javascript") {
             return null;
           }
-          if (values.asserts.filter(a => a.type === 'javascript').length < 2) {
+          if (
+            values.asserts.filter((a) => a.type === "javascript").length < 2
+          ) {
             return null;
           }
-          return 'Not allow to add one more javascript asset';
+          return "Not allow to add one more javascript asset";
         },
       },
     },
@@ -98,11 +104,11 @@ export function TestCaseForm({
   }
 
   function addAssert() {
-    form.insertListItem('asserts', new TestCaseAssert('equals', '', 1));
+    form.insertListItem("asserts", new TestCaseAssert("equals", "", 1));
   }
 
   function deleteAssert(index: number) {
-    form.removeListItem('asserts', index);
+    form.removeListItem("asserts", index);
   }
 
   return (
@@ -110,7 +116,11 @@ export function TestCaseForm({
       <form>
         <Box>
           <SimpleGrid cols={2}>
-            <TextInput label="Name" disabled={disabled} {...form.getInputProps('name')} />
+            <TextInput
+              label="Name"
+              disabled={disabled}
+              {...form.getInputProps("name")}
+            />
             <NumberInput
               label="Threshold"
               decimalScale={1}
@@ -119,7 +129,7 @@ export function TestCaseForm({
               min={0.1}
               max={1}
               disabled={disabled}
-              {...form.getInputProps('threshold')}
+              {...form.getInputProps("threshold")}
             />
           </SimpleGrid>
           <Textarea
@@ -128,7 +138,7 @@ export function TestCaseForm({
             maxRows={10}
             autosize
             disabled={disabled}
-            {...form.getInputProps('description')}
+            {...form.getInputProps("description")}
           />
         </Box>
         <Box mt={32}>
@@ -139,21 +149,21 @@ export function TestCaseForm({
               min={1}
               max={5}
               disabled={disabled}
-              {...form.getInputProps('contextLength')}
+              {...form.getInputProps("contextLength")}
             />
             <NumberInput
               label="Reasoning Depth"
               min={1}
               max={5}
               disabled={disabled}
-              {...form.getInputProps('reasoningDepth')}
+              {...form.getInputProps("reasoningDepth")}
             />
             <NumberInput
               label="Instruction Compliance"
               min={1}
               max={5}
               disabled={disabled}
-              {...form.getInputProps('instructionCompliance')}
+              {...form.getInputProps("instructionCompliance")}
             />
           </SimpleGrid>
           <Textarea
@@ -163,43 +173,52 @@ export function TestCaseForm({
             maxRows={10}
             autosize
             disabled={disabled}
-            {...form.getInputProps('prompt')}
+            {...form.getInputProps("prompt")}
           />
         </Box>
         <Box mt={32}>
           {disabled ? (
-            ''
+            ""
           ) : (
             <Button
               size="xs"
               color="#795FF3"
-              style={{ float: 'right' }}
+              style={{ float: "right" }}
               onClick={() => addAssert()}
             >
               Add
             </Button>
           )}
-          <Text style={{ lineHeight: '30px' }}>Asserts</Text>
-          <div style={{ clear: 'both' }} />
+          <Text style={{ lineHeight: "30px" }}>Asserts</Text>
+          <div style={{ clear: "both" }} />
           {form.values.asserts.map((assert, index) => (
             <div key={assert.id}>
               <Divider mt={16} mb={8} />
-              <div style={{ float: 'right' }}>
+              <div style={{ float: "right" }}>
                 <Tooltip label="Delete this assert">
-                  <CloseButton disabled={disabled} size="xs" onClick={() => deleteAssert(index)} />
+                  <CloseButton
+                    disabled={disabled}
+                    size="xs"
+                    onClick={() => deleteAssert(index)}
+                  />
                 </Tooltip>
               </div>
-              <TestCaseFormAssert form={form} assert={assert} index={index} disabled={disabled} />
+              <TestCaseFormAssert
+                form={form}
+                assert={assert}
+                index={index}
+                disabled={disabled}
+              />
             </div>
           ))}
         </Box>
       </form>
       {disabled ? (
-        ''
+        ""
       ) : (
         <Box mt={16}>
           <Divider />
-          <Box mt={16} style={{ float: 'right' }}>
+          <Box mt={16} style={{ float: "right" }}>
             <Button
               mr={16}
               className={style.newTest}

@@ -12,31 +12,31 @@ import {
   Modal,
   Progress,
   ActionIcon,
-} from '@mantine/core';
-import '@mantine/carousel/styles.css';
-import { Carousel } from '@mantine/carousel';
-import React, { useState } from 'react';
-import { randomId, useDisclosure, useListState } from '@mantine/hooks';
-import { useNavigate } from 'react-router-dom';
-import { TestRun } from '@models/TestRun';
-import { getLLMs } from '@services/LLM';
-import TestCase from '@models/TestCase';
-import LLM from '@models/LLM';
-import { LLMIcon } from '@components/LLMIcon/LLMIcon';
-import { LLMItem } from '@components/LLMItem/LLMItem';
-import { runTest } from '@services/RunTest';
-import { TestRunService } from '@services/TestRunService';
-import LLMConfig from '@models/LLMConfig';
-import { GetTestResultStats } from '@services/TestResultStats';
-import { IconPencil } from '@tabler/icons-react';
-import { testCaseService } from '@services/TestCaseService';
-import { TestCaseManage } from '@components/TestCaseManage/TestCaseManage';
-import GithubLogo from './assets/GithubLogo.png';
-import Vector from './assets/Vector.png';
-import style from './Test.page.module.css';
+} from "@mantine/core";
+import "@mantine/carousel/styles.css";
+import { Carousel } from "@mantine/carousel";
+import React, { useState } from "react";
+import { randomId, useDisclosure, useListState } from "@mantine/hooks";
+import { useNavigate } from "react-router-dom";
+import { TestRun } from "@models/TestRun";
+import { getLLMs } from "@services/LLM";
+import TestCase from "@models/TestCase";
+import LLM from "@models/LLM";
+import { LLMIcon } from "@components/LLMIcon/LLMIcon";
+import { LLMItem } from "@components/LLMItem/LLMItem";
+import { runTest } from "@services/RunTest";
+import { TestRunService } from "@services/TestRunService";
+import LLMConfig from "@models/LLMConfig";
+import { GetTestResultStats } from "@services/TestResultStats";
+import { IconPencil } from "@tabler/icons-react";
+import { testCaseService } from "@services/TestCaseService";
+import { TestCaseManage } from "@components/TestCaseManage/TestCaseManage";
+import GithubLogo from "./assets/GithubLogo.png";
+import Vector from "./assets/Vector.png";
+import style from "./Test.page.module.css";
 
 export function TestPage() {
-  document.title = 'Test Console - LLM-RGB';
+  document.title = "Test Console - LLM-RGB";
 
   // // 测试计划部分开始
 
@@ -45,10 +45,12 @@ export function TestPage() {
 
   let initTestRun = testRunService.getByName(testRunNames[0]);
   if (initTestRun === undefined) {
-    initTestRun = new TestRun('Default Test'); // 正常不会执行到这里
+    initTestRun = new TestRun("Default Test"); // 正常不会执行到这里
   }
   const [currentTestRun, setCurrentTestRun] = useState(initTestRun);
-  const [currentTestCases, setCurrentTestCases] = useListState(currentTestRun.testCaseList);
+  const [currentTestCases, setCurrentTestCases] = useListState(
+    currentTestRun.testCaseList,
+  );
   const [currentLLMs, setCurrentLLMs] = useListState(currentTestRun.llmList);
 
   function setCurrent(testRun: TestRun) {
@@ -99,14 +101,17 @@ export function TestPage() {
   const testCases: TestCase[] = testCaseService.list();
   const [testCaseList, setTestCaseList] = useListState(testCases);
 
-  function toggleTestCase(event: React.ChangeEvent<HTMLInputElement>, testCase: TestCase) {
+  function toggleTestCase(
+    event: React.ChangeEvent<HTMLInputElement>,
+    testCase: TestCase,
+  ) {
     if (event.currentTarget.checked) {
       setCurrentTestCases.append(testCase);
       currentTestRun.testCaseList.push(testCase);
     } else {
-      setCurrentTestCases.filter(t => t.name !== testCase.name);
+      setCurrentTestCases.filter((t) => t.name !== testCase.name);
       currentTestRun.testCaseList = currentTestRun.testCaseList.filter(
-        t => t.name !== testCase.name,
+        (t) => t.name !== testCase.name,
       );
     }
     testRunService.update(currentTestRun);
@@ -140,7 +145,7 @@ export function TestPage() {
       const exists: string[] = [];
       setCurrentLLMs.append(llm);
       setCurrentLLMs.filter((l: LLM) => {
-        if (exists.some(e => e === l.name)) {
+        if (exists.some((e) => e === l.name)) {
           return false;
         }
         exists.push(l.name);
@@ -148,19 +153,23 @@ export function TestPage() {
       });
       const newLLM = llm;
       if (newLLM.config.apiKey !== undefined) {
-        newLLM.config.apiKey = '';
+        newLLM.config.apiKey = "";
       }
       currentTestRun.llmList.push(newLLM);
     } else {
-      setCurrentLLMs.filter(l => l.name !== llm.name);
-      currentTestRun.llmList = currentTestRun.llmList.filter(t => t.name !== llm.name);
+      setCurrentLLMs.filter((l) => l.name !== llm.name);
+      currentTestRun.llmList = currentTestRun.llmList.filter(
+        (t) => t.name !== llm.name,
+      );
     }
     testRunService.update(currentTestRun);
   }
 
   function updateItem(llm: LLM, index: number, newConfig: LLMConfig) {
-    setCurrentLLMs.setItemProp(index, 'config', newConfig);
-    const llmIndex = currentTestRun.llmList.findIndex(l => l.name === llm.name);
+    setCurrentLLMs.setItemProp(index, "config", newConfig);
+    const llmIndex = currentTestRun.llmList.findIndex(
+      (l) => l.name === llm.name,
+    );
     Object.assign(currentTestRun.llmList[llmIndex].config, newConfig);
     testRunService.update(currentTestRun);
   }
@@ -173,7 +182,8 @@ export function TestPage() {
 
   // 运行测试部分开始
 
-  const [running, { open: openRunning, close: closeRunning }] = useDisclosure(false);
+  const [running, { open: openRunning, close: closeRunning }] =
+    useDisclosure(false);
   const navigate = useNavigate();
   const [progress, setProgress] = useState(0);
   const [viewLoading, setViewLoading] = useState(false);
@@ -188,24 +198,24 @@ export function TestPage() {
   async function run() {
     setShowWarning(false);
     if (currentTestRun.llmList.length < 1) {
-      alert('No LLM selected');
+      alert("No LLM selected");
       return;
     }
     if (currentTestRun.testCaseList.length < 1) {
-      alert('No Test Cases selected');
+      alert("No Test Cases selected");
       return;
     }
 
-    const requestTestCaseList = testCaseList.filter(t =>
-      currentTestRun.testCaseList.some(ct => ct.name === t.name),
+    const requestTestCaseList = testCaseList.filter((t) =>
+      currentTestRun.testCaseList.some((ct) => ct.name === t.name),
     );
 
-    const invalidLLMs = currentTestRun.llmList.filter(l => {
+    const invalidLLMs = currentTestRun.llmList.filter((l) => {
       if (l.config.apiKey !== undefined) {
-        return l.config.apiKey?.trim() === '';
+        return l.config.apiKey?.trim() === "";
       }
       if (l.config.url !== undefined) {
-        return l.config.url?.trim() === '';
+        return l.config.url?.trim() === "";
       }
       return false;
     });
@@ -215,10 +225,14 @@ export function TestPage() {
     }
     openRunning();
     const startTime = new Date().getTime();
-    const testId: string = await runTest(currentTestRun.llmList, requestTestCaseList, r => {
-      console.log(r);
-      setProgress((r.progress / r.total) * 100);
-    });
+    const testId: string = await runTest(
+      currentTestRun.llmList,
+      requestTestCaseList,
+      (r) => {
+        console.log(r);
+        setProgress((r.progress / r.total) * 100);
+      },
+    );
     const endTime = new Date().getTime();
     const duration = endTime - startTime;
     currentTestRun.duration = Math.round(duration / 1000);
@@ -240,7 +254,7 @@ export function TestPage() {
         if (reties < 3) {
           setTimeout(waiter, 1000);
         } else {
-          alert('Internal Error, please try to run again');
+          alert("Internal Error, please try to run again");
         }
       }
     };
@@ -251,7 +265,8 @@ export function TestPage() {
 
   // Test Case 管理开始
 
-  const [showManage, { open: openManage, close: closeManage }] = useDisclosure(false);
+  const [showManage, { open: openManage, close: closeManage }] =
+    useDisclosure(false);
 
   function saveTestCaseList(newTestCaseList: TestCase[]) {
     testCaseService.setList(newTestCaseList);
@@ -263,10 +278,15 @@ export function TestPage() {
   return (
     <div className={style.bodyContainer}>
       <Container size={1200} className={style.mainContainer}>
-        <Title className={style.title} onClick={() => navigate('/')}>
+        <Title className={style.title} onClick={() => navigate("/")}>
           LLM-
           <span className={style.mainColor}>RGB</span>
-          <a className={style.imgBtn} href="https://babel.cloud" target="_blank" rel="noreferrer">
+          <a
+            className={style.imgBtn}
+            href="https://babel.cloud"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img alt="" src={Vector} />
           </a>
           <a
@@ -315,7 +335,7 @@ export function TestPage() {
                 }
                 value={currentTestRun.name}
                 data={testRunNames}
-                onChange={value => changeTestRun(value || '')}
+                onChange={(value) => changeTestRun(value || "")}
               />
               <Button
                 className={style.newTest}
@@ -328,7 +348,7 @@ export function TestPage() {
                 New Test
               </Button>
               <Box className={style.navLinkList}>
-                {testRunNames.map(item => (
+                {testRunNames.map((item) => (
                   <NavLink
                     key={item}
                     mb={8}
@@ -361,7 +381,7 @@ export function TestPage() {
               }}
             >
               <Container className={style.form}>
-                <Box style={{ float: 'right' }}>
+                <Box style={{ float: "right" }}>
                   <ActionIcon
                     variant="filled"
                     aria-label="Manage"
@@ -371,8 +391,8 @@ export function TestPage() {
                   >
                     <IconPencil
                       style={{
-                        width: '70%',
-                        height: '70%',
+                        width: "70%",
+                        height: "70%",
                       }}
                       stroke={1.5}
                     />
@@ -384,7 +404,10 @@ export function TestPage() {
                     size="1200"
                     centered
                   >
-                    <TestCaseManage testCases={testCaseList} onSave={saveTestCaseList} />
+                    <TestCaseManage
+                      testCases={testCaseList}
+                      onSave={saveTestCaseList}
+                    />
                   </Modal>
                 </Box>
                 <Text className={style.header}>Select Test Cases</Text>
@@ -400,15 +423,17 @@ export function TestPage() {
                   />
                 </Box>
                 <Box className={style.testCases}>
-                  {testCaseList.map(testCase => (
+                  {testCaseList.map((testCase) => (
                     <Checkbox
                       disabled={currentTestRun.finished()}
                       key={testCase.name}
                       label={testCase.name}
                       size="1rem"
-                      checked={currentTestCases.some(t => t.name === testCase.name)}
+                      checked={currentTestCases.some(
+                        (t) => t.name === testCase.name,
+                      )}
                       className={style.checkbox}
-                      onChange={e => toggleTestCase(e, testCase)}
+                      onChange={(e) => toggleTestCase(e, testCase)}
                     />
                   ))}
                 </Box>
@@ -433,12 +458,12 @@ export function TestPage() {
                     dragFree
                     loop
                   >
-                    {LLMs.map(item => (
+                    {LLMs.map((item) => (
                       <Carousel.Slide key={item.key}>
                         <LLMIcon
                           key={item.key}
                           data={item}
-                          enable={currentLLMs.some(l => {
+                          enable={currentLLMs.some((l) => {
                             if (l === undefined) {
                               return false;
                             }
@@ -459,11 +484,15 @@ export function TestPage() {
                       key={randomId()}
                       data={item}
                       disable={currentTestRun.finished()}
-                      onUpdate={newConfig => updateItem(item, index, newConfig)}
+                      onUpdate={(newConfig) =>
+                        updateItem(item, index, newConfig)
+                      }
                       onDelete={() => removeItem(item)}
                       warning={
-                        ((typeof item.config.apiKey === 'string' && item.config.apiKey === '') ||
-                          (typeof item.config.url === 'string' && item.config.url === '')) &&
+                        ((typeof item.config.apiKey === "string" &&
+                          item.config.apiKey === "") ||
+                          (typeof item.config.url === "string" &&
+                            item.config.url === "")) &&
                         showWarning
                       }
                     />
@@ -528,7 +557,11 @@ export function TestPage() {
                   View Result
                 </Button>
               ) : (
-                <Button className={style.runBtn} color="rgba(121, 95, 243, 1)" onClick={run}>
+                <Button
+                  className={style.runBtn}
+                  color="rgba(121, 95, 243, 1)"
+                  onClick={run}
+                >
                   Run
                 </Button>
               )}

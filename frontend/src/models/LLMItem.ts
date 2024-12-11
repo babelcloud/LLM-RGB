@@ -1,4 +1,4 @@
-import LLM from './LLM';
+import LLM from "./LLM";
 
 export default class LLMItem {
   type: string;

@@ -1,11 +1,11 @@
-import LLMConfig from './LLMConfig';
+import LLMConfig from "./LLMConfig";
 
 export default class LLM {
   key: string;
   id: string;
   name: string;
   icon: string;
-  note: string = '';
+  note: string = "";
   config: LLMConfig;
 
   constructor(

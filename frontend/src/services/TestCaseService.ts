@@ -1,11 +1,11 @@
-import store from 'store2';
-import YAML from 'yaml';
-import TestCase from '@models/TestCase';
-import { AssertMap, ConfigMap, PromptMap } from '@TestCaseData';
-import { TestCaseAssert } from '@models/TestCaseAssert';
+import store from "store2";
+import YAML from "yaml";
+import TestCase from "@models/TestCase";
+import { AssertMap, ConfigMap, PromptMap } from "@TestCaseData";
+import { TestCaseAssert } from "@models/TestCaseAssert";
 
 class TestCaseService {
-  private readonly NAMESPACE = 'test.case';
+  private readonly NAMESPACE = "test.case";
   private readonly store;
   private readonly defaultList: TestCase[];
 
@@ -36,7 +36,7 @@ class TestCaseService {
 
   public setList(testCases: TestCase[]): void {
     this.store.clearAll();
-    testCases.map(testCase => {
+    testCases.map((testCase) => {
       if (!testCase.readonly) {
         this.set(testCase);
       }
@@ -51,20 +51,26 @@ class TestCaseService {
   public getDefault(): TestCase[] {
     const result: TestCase[] = [];
     ConfigMap.forEach((value, key) => {
-      const prompt = PromptMap.get(key.replace('_config', '_prompt'));
+      const prompt = PromptMap.get(key.replace("_config", "_prompt"));
       const data = YAML.parse(this.decode(value));
       const item = data.pop();
       const asserts: TestCaseAssert[] = [];
       if (Array.isArray(item.assert)) {
         item.assert.map((assert: TestCaseAssert) => {
           let assertValue = assert.value;
-          if (assert.type === 'javascript') {
-            const assertFile = AssertMap.get(key.replace('_config', '_assert'));
+          if (assert.type === "javascript") {
+            const assertFile = AssertMap.get(key.replace("_config", "_assert"));
             if (assertFile !== undefined) {
               assertValue = this.decode(assertFile);
             }
           }
-          asserts.push(new TestCaseAssert(assert.type, assertValue ?? '', assert.weight ?? 1));
+          asserts.push(
+            new TestCaseAssert(
+              assert.type,
+              assertValue ?? "",
+              assert.weight ?? 1,
+            ),
+          );
           return assert;
         });
       }
@@ -72,11 +78,11 @@ class TestCaseService {
       const testCase = new TestCase(
         item.vars.name,
         item.threshold,
-        item.vars.difficulties['context-length'],
-        item.vars.difficulties['reasoning-depth'],
-        item.vars.difficulties['instruction-compliance'],
+        item.vars.difficulties["context-length"],
+        item.vars.difficulties["reasoning-depth"],
+        item.vars.difficulties["instruction-compliance"],
         item.description,
-        this.decode(prompt ?? ''),
+        this.decode(prompt ?? ""),
         asserts,
       );
       testCase.readonly = true;

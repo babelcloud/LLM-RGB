@@ -1,7 +1,7 @@
-import LLM from '@models/LLM';
-import TestCase from '@models/TestCase';
-import YAML from 'yaml';
-import { AssertMap } from '@TestCaseData';
+import LLM from "@models/LLM";
+import TestCase from "@models/TestCase";
+import YAML from "yaml";
+import { AssertMap } from "@TestCaseData";
 
 function encode(data: string): string {
   return btoa(unescape(encodeURIComponent(data)));
@@ -13,7 +13,12 @@ class CustomTestCaseRequest {
   prompt: string;
   assert: string | undefined;
 
-  constructor(test_name: string, config: string, prompt: string, assert?: string) {
+  constructor(
+    test_name: string,
+    config: string,
+    prompt: string,
+    assert?: string,
+  ) {
     this.test_name = test_name;
     this.config = config;
     this.prompt = prompt;
@@ -50,12 +55,12 @@ export async function runTest(
   onProgress?: onProgress,
 ): Promise<string> {
   const llmItems: object[] = [];
-  llms.map(llm => {
+  llms.map((llm) => {
     let targetItem = {};
-    if (llm.key === 'custom') {
+    if (llm.key === "custom") {
       const key = `webhook:${llm.config.url}`;
       let config: { id?: string | null } = {};
-      if (typeof llm.config.config === 'string') {
+      if (typeof llm.config.config === "string") {
         try {
           config = JSON.parse(llm.config.config);
         } catch (e) {
@@ -80,14 +85,14 @@ export async function runTest(
 
   const customTestCases: CustomTestCaseRequest[] = [];
 
-  tests.map(test => {
-    let assertJs = '';
-    const assets = test.asserts.map(a => {
+  tests.map((test) => {
+    let assertJs = "";
+    const assets = test.asserts.map((a) => {
       const { id: _, ...requestAssert } = a;
       // Use external assert js for default test case
-      if (test.readonly && a.type === 'javascript') {
-        assertJs = AssertMap.get(`${test.name}_assert`) ?? '';
-        if (assertJs !== '') {
+      if (test.readonly && a.type === "javascript") {
+        assertJs = AssertMap.get(`${test.name}_assert`) ?? "";
+        if (assertJs !== "") {
           requestAssert.value = `file://testcases/${test.name}_assert.js`;
         }
       }
@@ -101,9 +106,9 @@ export async function runTest(
         vars: {
           name: test.name,
           difficulties: {
-            'context-length': test.contextLength,
-            'reasoning-depth': test.reasoningDepth,
-            'instruction-compliance': test.instructionCompliance,
+            "context-length": test.contextLength,
+            "reasoning-depth": test.reasoningDepth,
+            "instruction-compliance": test.instructionCompliance,
           },
           prompt: `file://testcases/${test.name}_prompt.txt`,
         },
@@ -111,7 +116,12 @@ export async function runTest(
       },
     ]);
     customTestCases.push(
-      new CustomTestCaseRequest(test.name, encode(configYaml), encode(test.prompt), assertJs),
+      new CustomTestCaseRequest(
+        test.name,
+        encode(configYaml),
+        encode(test.prompt),
+        assertJs,
+      ),
     );
     console.log(configYaml);
     return true;
@@ -120,28 +130,28 @@ export async function runTest(
   const request = new RunTestRequest(llmItems, customTestCases);
   console.log(JSON.stringify(request));
 
-  const response = await fetch('/run-test', {
-    method: 'POST',
+  const response = await fetch("/run-test", {
+    method: "POST",
     body: JSON.stringify(request),
     headers: {
-      'Content-type': 'application/json; charset=UTF-8',
+      "Content-type": "application/json; charset=UTF-8",
     },
   });
   const bodyStream = response.body;
   const reader = bodyStream?.getReader();
 
-  let testId = '';
+  let testId = "";
 
   while (reader !== undefined) {
     const { done, value } = await reader.read();
     if (done) {
       break;
     }
-    const text = new TextDecoder('utf-8')
+    const text = new TextDecoder("utf-8")
       .decode(value)
-      .replace(/\s|"/g, '')
+      .replace(/\s|"/g, "")
       .replace(/([\w-]+)/g, '"$1"')
-      .replace(/"(\d+)"/g, '$1');
+      .replace(/"(\d+)"/g, "$1");
     try {
       const progress: RunTestProgress = JSON.parse(text);
       if (onProgress !== undefined) {

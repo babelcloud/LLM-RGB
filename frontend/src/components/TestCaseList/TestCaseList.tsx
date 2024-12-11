@@ -1,7 +1,7 @@
-import style from '@pages/Test.page.module.css';
-import { NavLink } from '@mantine/core';
-import React from 'react';
-import TestCase from '@models/TestCase';
+import style from "@pages/Test.page.module.css";
+import { NavLink } from "@mantine/core";
+import React from "react";
+import TestCase from "@models/TestCase";
 
 class TestCaseListProps {
   testCases: TestCase[];

@@ -1,7 +1,7 @@
-import { Box, Text, Image } from '@mantine/core';
-import { Fragment } from 'react';
-import LLM from '@models/LLM';
-import style from './LLMIcon.module.css';
+import { Box, Text, Image } from "@mantine/core";
+import { Fragment } from "react";
+import LLM from "@models/LLM";
+import style from "./LLMIcon.module.css";
 
 export class LLMIconProps {
   key: string;

@@ -1,8 +1,8 @@
-import store from 'store2';
-import LLMConfig from '@models/LLMConfig';
+import store from "store2";
+import LLMConfig from "@models/LLMConfig";
 
 export class LLMConfigService {
-  private readonly LLM_CONFIG_PREFIX_KEY = 'LLM-CONFIG:';
+  private readonly LLM_CONFIG_PREFIX_KEY = "LLM-CONFIG:";
 
   public get(llm: string): LLMConfig[] {
     const configs: LLMConfig[] = store.get(this.key(llm));
@@ -20,7 +20,9 @@ export class LLMConfigService {
 
   public delete(llm: string, config: LLMConfig): void {
     const configs = this.get(llm);
-    const newConfigs = configs.filter(item => item.created !== config.created);
+    const newConfigs = configs.filter(
+      (item) => item.created !== config.created,
+    );
     this.save(llm, newConfigs);
   }
 

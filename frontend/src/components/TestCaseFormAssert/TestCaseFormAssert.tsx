@@ -1,8 +1,8 @@
-import { Box, NumberInput, Select, SimpleGrid, Textarea } from '@mantine/core';
-import { AssertTypes, TestCaseAssert } from '@models/TestCaseAssert';
-import Editor from '@monaco-editor/react';
-import { UseFormReturnType } from '@mantine/form/lib/types';
-import TestCase from '@models/TestCase';
+import { Box, NumberInput, Select, SimpleGrid, Textarea } from "@mantine/core";
+import { AssertTypes, TestCaseAssert } from "@models/TestCaseAssert";
+import Editor from "@monaco-editor/react";
+import { UseFormReturnType } from "@mantine/form/lib/types";
+import TestCase from "@models/TestCase";
 
 class TestCaseFormAssertProps {
   form: UseFormReturnType<TestCase>;
@@ -55,14 +55,14 @@ export function TestCaseFormAssert(props: TestCaseFormAssertProps) {
           {...form.getInputProps(`asserts.${index}.weight`)}
         />
       </SimpleGrid>
-      {assert.type === 'javascript' ? (
+      {assert.type === "javascript" ? (
         <Box mt={16}>
           <Editor
             height="50vh"
             language="javascript"
             theme="vs-dark"
             options={monacoOptions}
-            onMount={editor => {
+            onMount={(editor) => {
               editor.updateOptions({ readOnly: disabled });
             }}
             {...form.getInputProps(`asserts.${index}.value`)}

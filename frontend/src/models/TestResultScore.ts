@@ -1,5 +1,5 @@
-import TestCaseScore from './TestCaseScore';
-import TestAggregatedScore from './TestAggregatedScore';
+import TestCaseScore from "./TestCaseScore";
+import TestAggregatedScore from "./TestAggregatedScore";
 
 export default class TestResultScore {
   llm_id: string | undefined;

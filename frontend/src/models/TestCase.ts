@@ -1,13 +1,13 @@
-import { TestCaseAssert } from '@models/TestCaseAssert';
+import { TestCaseAssert } from "@models/TestCaseAssert";
 
 export default class TestCase {
   name: string;
-  description: string = '';
+  description: string = "";
   threshold: number;
   contextLength: number;
   reasoningDepth: number;
   instructionCompliance: number;
-  prompt: string = '';
+  prompt: string = "";
   asserts: TestCaseAssert[] = [];
   readonly: boolean = false;
   created: string;
@@ -36,6 +36,7 @@ export default class TestCase {
     if (asserts !== undefined) {
       this.asserts = asserts;
     }
-    this.created = Date.now().toString(10) + Math.random().toString(10).substring(2);
+    this.created =
+      Date.now().toString(10) + Math.random().toString(10).substring(2);
   }
 }

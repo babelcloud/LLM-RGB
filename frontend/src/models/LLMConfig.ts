@@ -27,7 +27,7 @@ export default class LLMConfig {
     id?: string,
     url?: string,
     config?: string,
-    remark: string = '',
+    remark: string = "",
   ) {
     this.remark = remark;
     this.apiKey = apiKey;

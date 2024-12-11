@@ -1,6 +1,6 @@
-import { cloneDeep } from 'lodash';
-import TestCase from './TestCase';
-import LLM from './LLM';
+import { cloneDeep } from "lodash";
+import TestCase from "./TestCase";
+import LLM from "./LLM";
 
 export class TestRun {
   name: string;
@@ -44,12 +44,16 @@ export class TestRun {
   }
 
   public duplicate(name: string): TestRun {
-    return new TestRun(name, cloneDeep(this.testCaseList), cloneDeep(this.llmList));
+    return new TestRun(
+      name,
+      cloneDeep(this.testCaseList),
+      cloneDeep(this.llmList),
+    );
   }
 
   private nextSeriesName(): string {
     let nextNumber = 1;
-    const matches = this.name.match('[0-9]+');
+    const matches = this.name.match("[0-9]+");
     if (matches && matches.length > 0) {
       nextNumber = Number.parseInt(matches[0], 10) + 1;
     }

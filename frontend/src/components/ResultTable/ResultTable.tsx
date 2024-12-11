@@ -1,9 +1,9 @@
-import { Box, Table } from '@mantine/core';
-import { randomId } from '@mantine/hooks';
-import { ResultTableProgress } from '@components/ResultTableProgress/ResultTableProgress';
-import TestResultScore from '@models/TestResultScore';
-import TestResultStats from '@models/TestResultStats';
-import style from './ResultTable.module.css';
+import { Box, Table } from "@mantine/core";
+import { randomId } from "@mantine/hooks";
+import { ResultTableProgress } from "@components/ResultTableProgress/ResultTableProgress";
+import TestResultScore from "@models/TestResultScore";
+import TestResultStats from "@models/TestResultStats";
+import style from "./ResultTable.module.css";
 
 class ResultTableProps {
   data: TestResultScore[];
@@ -22,8 +22,8 @@ export function ResultTable(props: ResultTableProps) {
         <Box
           h={400}
           style={{
-            textAlign: 'center',
-            lineHeight: '400px',
+            textAlign: "center",
+            lineHeight: "400px",
           }}
         >
           No data
@@ -70,9 +70,14 @@ export function ResultTable(props: ResultTableProps) {
           <Table.Tbody>
             {items.map((item: TestResultScore) => (
               <Table.Tr key={randomId()}>
-                <Table.Td className={style.resultTableFistTd}>{item.llm_id}</Table.Td>
+                <Table.Td className={style.resultTableFistTd}>
+                  {item.llm_id}
+                </Table.Td>
                 <Table.Td className={style.resultTableTd}>
-                  <ResultTableProgress value={item.total_score} maxValue={maxTotalScore} />
+                  <ResultTableProgress
+                    value={item.total_score}
+                    maxValue={maxTotalScore}
+                  />
                 </Table.Td>
                 <Table.Td className={style.resultTableTd}>
                   <ResultTableProgress
@@ -106,7 +111,9 @@ export function ResultTable(props: ResultTableProps) {
         <Table.Tbody>
           {items.map((item: TestResultScore) => (
             <Table.Tr key={randomId()}>
-              <Table.Td className={style.resultTableFistTd}>{item.llm_id}</Table.Td>
+              <Table.Td className={style.resultTableFistTd}>
+                {item.llm_id}
+              </Table.Td>
             </Table.Tr>
           ))}
         </Table.Tbody>

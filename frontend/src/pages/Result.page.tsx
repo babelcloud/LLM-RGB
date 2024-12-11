@@ -9,7 +9,7 @@ import {
   Button,
   Popover,
   TextInput,
-} from '@mantine/core';
+} from "@mantine/core";
 import {
   defer,
   LoaderFunction,
@@ -18,34 +18,36 @@ import {
   useLocation,
   useNavigate,
   useParams,
-} from 'react-router-dom';
-import { useState } from 'react';
-import { randomId } from '@mantine/hooks';
-import dayjs from 'dayjs';
-import TestResultStats from '@models/TestResultStats';
-import TestResultScore from '@models/TestResultScore';
-import { GetTestResultStats } from '@services/TestResultStats';
-import { GetTestResultScore } from '@services/TestResultScore';
-import { ResultTable } from '@components/ResultTable/ResultTable';
-import { ResultScoreDetailTable } from '@components/ResultScoreDetailTable/ResultScoreDetailTable';
-import { GetTestResultRaw } from '@services/TestResultRaw';
-import TestResultRaw from '@models/TestResultRaw';
-import { LLMItemConfig } from '@components/LLMItemConfig/LLMItemConfig';
-import { TestRunService } from '@services/TestRunService';
-import { TestRun } from '@models/TestRun';
-import { testCaseService } from '@services/TestCaseService';
-import style from './Result.page.module.css';
-import GithubLogo from './assets/GithubLogo.png';
-import Vector from './assets/Vector.png';
+} from "react-router-dom";
+import { useState } from "react";
+import { randomId } from "@mantine/hooks";
+import dayjs from "dayjs";
+import TestResultStats from "@models/TestResultStats";
+import TestResultScore from "@models/TestResultScore";
+import { GetTestResultStats } from "@services/TestResultStats";
+import { GetTestResultScore } from "@services/TestResultScore";
+import { ResultTable } from "@components/ResultTable/ResultTable";
+import { ResultScoreDetailTable } from "@components/ResultScoreDetailTable/ResultScoreDetailTable";
+import { GetTestResultRaw } from "@services/TestResultRaw";
+import TestResultRaw from "@models/TestResultRaw";
+import { LLMItemConfig } from "@components/LLMItemConfig/LLMItemConfig";
+import { TestRunService } from "@services/TestRunService";
+import { TestRun } from "@models/TestRun";
+import { testCaseService } from "@services/TestCaseService";
+import style from "./Result.page.module.css";
+import GithubLogo from "./assets/GithubLogo.png";
+import Vector from "./assets/Vector.png";
 
-interface resultLoaderFunctionArgs extends Omit<LoaderFunctionArgs, 'params'> {
+interface resultLoaderFunctionArgs extends Omit<LoaderFunctionArgs, "params"> {
   params: {
     testId: string;
   };
 }
 
-interface resultLoaderFunction extends Omit<LoaderFunction, 'args'> {
-  (args: resultLoaderFunctionArgs): Promise<Response> | Response | Promise<any> | any;
+interface resultLoaderFunction extends Omit<LoaderFunction, "args"> {
+  (
+    args: resultLoaderFunctionArgs,
+  ): Promise<Response> | Response | Promise<any> | any;
 }
 
 export const resultLoader: resultLoaderFunction = async ({ params }) => {
@@ -61,20 +63,20 @@ export const resultLoader: resultLoaderFunction = async ({ params }) => {
 };
 
 const llmNameMap: { [name: string]: string } = {
-  'gpt-4': 'GPT-4',
-  'gpt-3.5': 'GPT-3.5',
-  'llama2-70b-v2-chat': 'Llama2',
-  minimax: 'MINIMAX',
-  palm2: 'Palm2',
-  claude2: 'Claude2',
-  cohere: 'Cohere',
-  chatglm: 'ChatGLM',
-  baidu: 'Baidu',
-  baichuan2: 'Baichuan2',
-  aliqwen: 'Aliqwen',
-  moonshot: 'Moonshot',
-  sensenova: 'SenseNova',
-  hunyuan: 'HunYuan',
+  "gpt-4": "GPT-4",
+  "gpt-3.5": "GPT-3.5",
+  "llama2-70b-v2-chat": "Llama2",
+  minimax: "MINIMAX",
+  palm2: "Palm2",
+  claude2: "Claude2",
+  cohere: "Cohere",
+  chatglm: "ChatGLM",
+  baidu: "Baidu",
+  baichuan2: "Baichuan2",
+  aliqwen: "Aliqwen",
+  moonshot: "Moonshot",
+  sensenova: "SenseNova",
+  hunyuan: "HunYuan",
 };
 
 class ResultPageProps {
@@ -90,16 +92,18 @@ class ResultPageProps {
 }
 
 export function ResultPage(props: ResultPageProps) {
-  const [activeTabsMap, setActiveTabsMap] = useState<{ [key: string]: string }>({});
+  const [activeTabsMap, setActiveTabsMap] = useState<{ [key: string]: string }>(
+    {},
+  );
   const location = useLocation();
   const navigate = useNavigate();
   let { testId } = useParams();
-  let report = '';
+  let report = "";
   if (!testId) {
     testId = location.state.testId;
     if (!testId) {
       if (!props.readonly) {
-        navigate('/test');
+        navigate("/test");
       }
     } else {
       report = testId;
@@ -118,7 +122,7 @@ export function ResultPage(props: ResultPageProps) {
   let testRun = testRunService.getByReportId(report);
   let llms = testRun?.getLlmList();
   if (!testRun) {
-    testRun = new TestRun('undefined');
+    testRun = new TestRun("undefined");
   }
   if (!llms) {
     llms = [];
@@ -126,17 +130,17 @@ export function ResultPage(props: ResultPageProps) {
   const testCases = testCaseService.list();
 
   if (props.readonly) {
-    document.title = 'Test Result Share - LLM-RGB';
+    document.title = "Test Result Share - LLM-RGB";
   } else {
     document.title = `${testRun.name} LLM-RGB`;
   }
 
   function getTestCaseDescription(name: string): string {
-    const testCase = testCases.find(t => t.name === name);
+    const testCase = testCases.find((t) => t.name === name);
     if (testCase) {
       return testCase.description;
     }
-    return '';
+    return "";
   }
 
   function selectAll(e: React.MouseEvent<HTMLInputElement>) {
@@ -156,10 +160,18 @@ export function ResultPage(props: ResultPageProps) {
   return (
     <div className={style.bodyContainer}>
       <Container size={1200} className={style.mainContainer}>
-        <Title className={`${style.title} ${style.hand}`} onClick={() => navigate('/')}>
+        <Title
+          className={`${style.title} ${style.hand}`}
+          onClick={() => navigate("/")}
+        >
           LLM-
           <span className={style.mainColor}>RGB</span>
-          <a className={style.imgBtn} href="https://babel.cloud" target="_blank" rel="noreferrer">
+          <a
+            className={style.imgBtn}
+            href="https://babel.cloud"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img alt="" src={Vector} />
           </a>
           <a
@@ -173,27 +185,41 @@ export function ResultPage(props: ResultPageProps) {
         </Title>
         <Box mt={8} className={style.subtitle}>
           {!props.readonly ? (
-            <Box component="span" onClick={() => navigate('/test')} className={style.hand}>
+            <Box
+              component="span"
+              onClick={() => navigate("/test")}
+              className={style.hand}
+            >
               Test Console
             </Box>
           ) : (
             <Box component="span">Test Result</Box>
           )}
-          {!props.readonly ? <Text span className={style.dot} /> : ''}
+          {!props.readonly ? <Text span className={style.dot} /> : ""}
           <Box className={style.subtitleInfo}>
-            {!props.readonly ? <span className={style.subtitleName}>{testRun.name}</span> : ''}
+            {!props.readonly ? (
+              <span className={style.subtitleName}>{testRun.name}</span>
+            ) : (
+              ""
+            )}
             {llms.length > 0 ? (
               <Box className={style.subtitleTime}>
-                <Text>{dayjs(startTime).format('YYYY-MM-DD HH:mm:ss')}</Text>
+                <Text>{dayjs(startTime).format("YYYY-MM-DD HH:mm:ss")}</Text>
                 <Text>Duration: {duration} secs</Text>
               </Box>
             ) : (
-              ''
+              ""
             )}
           </Box>
         </Box>
         {!props.readonly ? (
-          <Popover width={300} trapFocus position="bottom" withArrow shadow="md">
+          <Popover
+            width={300}
+            trapFocus
+            position="bottom"
+            withArrow
+            shadow="md"
+          >
             <Popover.Target>
               <Button
                 className={style.share}
@@ -228,14 +254,18 @@ export function ResultPage(props: ResultPageProps) {
             </Popover.Dropdown>
           </Popover>
         ) : (
-          ''
+          ""
         )}
         <Tabs mt={32} defaultValue="overview">
           <Tabs.List className={style.tabsList}>
-            <Tabs.Tab className={style.tabsTab} key={randomId()} value="overview">
+            <Tabs.Tab
+              className={style.tabsTab}
+              key={randomId()}
+              value="overview"
+            >
               Overview
             </Tabs.Tab>
-            {overviewStats.llms?.map(item => (
+            {overviewStats.llms?.map((item) => (
               <Tabs.Tab className={style.tabsTab} key={randomId()} value={item}>
                 {llmNameMap[item] ?? item}
               </Tabs.Tab>
@@ -252,13 +282,19 @@ export function ResultPage(props: ResultPageProps) {
               <Text mb={16} className={style.header}>
                 Score Detail
               </Text>
-              <ResultScoreDetailTable data={overviewScore} statData={overviewStats} />
+              <ResultScoreDetailTable
+                data={overviewScore}
+                statData={overviewStats}
+              />
             </Box>
           </Tabs.Panel>
-          {overviewStats.llms?.map(item => {
+          {overviewStats.llms?.map((item) => {
             const activeTab =
               activeTabsMap[item] ||
-              item + testResultRaw.results.find(rawItem => rawItem.provider.id === item)?.vars.name;
+              item +
+                testResultRaw.results.find(
+                  (rawItem) => rawItem.provider.id === item,
+                )?.vars.name;
             return (
               <Tabs.Panel key={randomId()} value={item}>
                 <Grid gutter="16">
@@ -272,14 +308,21 @@ export function ResultPage(props: ResultPageProps) {
                       className={style.selectItems}
                       defaultValue={activeTab}
                       data={testResultRaw.results
-                        .filter(rawItem => rawItem.provider.id === item)
-                        .sort((a, b) => parseInt(a.vars.name, 10) - parseInt(b.vars.name, 10))
-                        .map(rawItem => ({
+                        .filter((rawItem) => rawItem.provider.id === item)
+                        .sort(
+                          (a, b) =>
+                            parseInt(a.vars.name, 10) -
+                            parseInt(b.vars.name, 10),
+                        )
+                        .map((rawItem) => ({
                           value: item + rawItem.vars.name,
                           label: rawItem.vars.name,
                         }))}
-                      onChange={value =>
-                        setActiveTabsMap(prev => ({ ...prev, [item]: value || '' }))
+                      onChange={(value) =>
+                        setActiveTabsMap((prev) => ({
+                          ...prev,
+                          [item]: value || "",
+                        }))
                       }
                     />
                   </Grid.Col>
@@ -296,9 +339,13 @@ export function ResultPage(props: ResultPageProps) {
                     >
                       <Tabs.List className={style.tabsListLeft} mt={24}>
                         {testResultRaw.results
-                          .filter(rawItem => rawItem.provider.id === item)
-                          .sort((a, b) => parseInt(a.vars.name, 10) - parseInt(b.vars.name, 10))
-                          .map(rawItem => (
+                          .filter((rawItem) => rawItem.provider.id === item)
+                          .sort(
+                            (a, b) =>
+                              parseInt(a.vars.name, 10) -
+                              parseInt(b.vars.name, 10),
+                          )
+                          .map((rawItem) => (
                             <Tabs.Tab
                               key={item + rawItem.vars.name}
                               value={item + rawItem.vars.name}
@@ -309,8 +356,8 @@ export function ResultPage(props: ResultPageProps) {
                           ))}
                       </Tabs.List>
                       {testResultRaw.results
-                        .filter(rawItem => rawItem.provider.id === item)
-                        .map(rawItem => (
+                        .filter((rawItem) => rawItem.provider.id === item)
+                        .map((rawItem) => (
                           <Tabs.Panel
                             key={item + rawItem.vars.name}
                             value={item + rawItem.vars.name}
@@ -318,30 +365,44 @@ export function ResultPage(props: ResultPageProps) {
                             <Box className={style.description}>
                               <Text
                                 className={style.descriptionTitle}
-                                style={{ whiteSpace: 'pre-wrap' }}
+                                style={{ whiteSpace: "pre-wrap" }}
                               >
                                 {getTestCaseDescription(rawItem.vars.name)}
                                 <br />
                                 <br />
                                 difficulties
                                 <br />
-                                context-length: {rawItem.vars.difficulties['context-length']}
+                                context-length:{" "}
+                                {rawItem.vars.difficulties["context-length"]}
                                 <br />
-                                instruction-compliance:{' '}
-                                {rawItem.vars.difficulties['instruction-compliance']}
+                                instruction-compliance:{" "}
+                                {
+                                  rawItem.vars.difficulties[
+                                    "instruction-compliance"
+                                  ]
+                                }
                                 <br />
-                                reasoning-depth: {rawItem.vars.difficulties['reasoning-depth']}
+                                reasoning-depth:{" "}
+                                {rawItem.vars.difficulties["reasoning-depth"]}
                               </Text>
-                              <Text className={style.descriptionSub}>Prompt:</Text>
+                              <Text className={style.descriptionSub}>
+                                Prompt:
+                              </Text>
                               <Box className={style.descriptionText}>
-                                <Text mt={16} style={{ whiteSpace: 'pre-wrap' }}>
+                                <Text
+                                  mt={16}
+                                  style={{ whiteSpace: "pre-wrap" }}
+                                >
                                   {rawItem.prompt.raw}
                                 </Text>
                                 <Text mt={32} className={style.descriptionSub}>
                                   Response:
                                 </Text>
-                                <Text mt={16} style={{ whiteSpace: 'pre-wrap' }}>
-                                  {rawItem.response?.output ?? 'ERROR'}
+                                <Text
+                                  mt={16}
+                                  style={{ whiteSpace: "pre-wrap" }}
+                                >
+                                  {rawItem.response?.output ?? "ERROR"}
                                 </Text>
                               </Box>
                             </Box>
@@ -360,13 +421,15 @@ export function ResultPage(props: ResultPageProps) {
                         <Text className={style.configTitle}>LLM Config</Text>
                         <Box pt={16} pb={16}>
                           {llms
-                            ?.filter(l => l.id === item)
-                            .map(llm => <LLMItemConfig key={randomId()} data={llm} />)}
+                            ?.filter((l) => l.id === item)
+                            .map((llm) => (
+                              <LLMItemConfig key={randomId()} data={llm} />
+                            ))}
                         </Box>
                       </Box>
                     </Grid.Col>
                   ) : (
-                    ''
+                    ""
                   )}
                 </Grid>
               </Tabs.Panel>
