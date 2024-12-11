@@ -84,6 +84,7 @@ export interface TestCase {
     name: string;
     difficulties: DifficultyType;
     max_score?: number;
+    category?: string;
 }
 
 function extractTestcases(result: any): TestCase[] {
@@ -100,31 +101,64 @@ function extractTestcases(result: any): TestCase[] {
     return Object.values(testcases).sort((a, b) => a.name.localeCompare(b.name));
 }
 
-export function getTestStats(scores, tests, startTime, endTime) {
-    var llms: any[] = [];
+export function getTestStats(scores: LLMEval[], tests: TestCase[], startTime?: number, endTime?: number): TestStats {
+    var llms: string[] = [];
     var max_total_score = 0;
     var max_context_length = 0;
     var max_reasoning_depth = 0;
     var max_instruction_compliance = 0;
-    var testcases: any[] = [];
-    
-    for (const score of scores){
+    var testcases: TestCase[] = [];
+    var categoryScores: { [key: string]: number } = {};
+    var difficultyDistribution = {
+        contextLength: Array(3).fill(0),
+        reasoningDepth: Array(4).fill(0),
+        instructionCompliance: Array(3).fill(0)
+    };
+
+    for (const score of scores) {
         llms.push(score.llm_id);
     }
 
     for (const test of tests) {
-        var testcase: any = {};
-        testcase.name = test.name;
-        testcase.max_score = test.difficulties["context-length"] + test.difficulties["reasoning-depth"] + test.difficulties["instruction-compliance"];
-        testcase.difficulties = test.difficulties;
+        var testcase: TestCase = {
+            name: test.name,
+            difficulties: test.difficulties,
+            max_score: test.difficulties["context-length"] + test.difficulties["reasoning-depth"] + test.difficulties["instruction-compliance"],
+            category: test.category
+        };
         testcases.push(testcase);
-        // calculate max values
+
+        // Update difficulty distribution
+        difficultyDistribution.contextLength[test.difficulties["context-length"] - 1]++;
+        difficultyDistribution.reasoningDepth[test.difficulties["reasoning-depth"] - 1]++;
+        difficultyDistribution.instructionCompliance[test.difficulties["instruction-compliance"] - 1]++;
+
+        // Calculate max values
         max_total_score += testcase.max_score;
-        max_context_length += testcase.difficulties["context-length"];
-        max_reasoning_depth += testcase.difficulties["reasoning-depth"];
-        max_instruction_compliance += testcase.difficulties["instruction-compliance"];
+        max_context_length += test.difficulties["context-length"];
+        max_reasoning_depth += test.difficulties["reasoning-depth"];
+        max_instruction_compliance += test.difficulties["instruction-compliance"];
+
+        // Update category scores
+        if (test.category && !categoryScores[test.category]) {
+            categoryScores[test.category] = testcase.max_score;
+        } else if (test.category) {
+            categoryScores[test.category] += testcase.max_score;
+        }
     }
-    return { llms, max_total_score, max_context_length, max_reasoning_depth, max_instruction_compliance, testcases, startTime, endTime };
+
+    return {
+        llms,
+        max_total_score,
+        max_context_length,
+        max_reasoning_depth,
+        max_instruction_compliance,
+        testcases,
+        startTime,
+        endTime,
+        categoryScores,
+        difficultyDistribution
+    };
 }
 
 function evaluationScore(providers, tests, result) {
@@ -354,8 +388,16 @@ export type TestStats = {
     max_reasoning_depth: number;
     max_instruction_compliance: number;
     testcases: TestCase[];
-    startTime: any;
-    endTime: any;
+    startTime?: number;
+    endTime?: number;
+    categoryScores?: {
+        [category: string]: number;
+    };
+    difficultyDistribution?: {
+        contextLength: number[];
+        reasoningDepth: number[];
+        instructionCompliance: number[];
+    };
 }
 
 type resultType = {
