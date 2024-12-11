@@ -5,10 +5,14 @@ import TestCase from "@models/TestCase";
 
 class TestCaseListProps {
   testCases: TestCase[];
-  onChange: Function;
+  onChange: (testCase: TestCase, index: number) => void;
   active: TestCase;
 
-  constructor(testCases: TestCase[], onChange: Function, active: TestCase) {
+  constructor(
+    testCases: TestCase[],
+    onChange: (testCase: TestCase, index: number) => void,
+    active: TestCase,
+  ) {
     this.testCases = testCases;
     this.onChange = onChange;
     this.active = active;

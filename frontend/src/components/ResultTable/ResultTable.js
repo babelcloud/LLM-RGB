@@ -1,8 +1,8 @@
 import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
-import { Box, Table } from '@mantine/core';
-import { randomId } from '@mantine/hooks';
-import { ResultTableProgress } from '@components/ResultTableProgress/ResultTableProgress';
-import style from './ResultTable.module.css';
+import { Box, Table } from "@mantine/core";
+import { randomId } from "@mantine/hooks";
+import { ResultTableProgress } from "@components/ResultTableProgress/ResultTableProgress";
+import style from "./ResultTable.module.css";
 class ResultTableProps {
     data;
     statData;
@@ -14,8 +14,8 @@ class ResultTableProps {
 export function ResultTable(props) {
     if (!props.data || props.data.length === 0) {
         return (_jsx(_Fragment, { children: _jsx(Box, { h: 400, style: {
-                    textAlign: 'center',
-                    lineHeight: '400px',
+                    textAlign: "center",
+                    lineHeight: "400px",
                 }, children: "No data" }) }));
     }
     let maxTotalScore = 0;

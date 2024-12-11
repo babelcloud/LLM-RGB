@@ -1,7 +1,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { Box, Text, Image } from '@mantine/core';
-import { Fragment } from 'react';
-import style from './LLMIcon.module.css';
+import { Box, Text, Image } from "@mantine/core";
+import { Fragment } from "react";
+import style from "./LLMIcon.module.css";
 export class LLMIconProps {
     key;
     data;

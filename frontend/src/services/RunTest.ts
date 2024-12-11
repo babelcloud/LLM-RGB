@@ -63,8 +63,8 @@ export async function runTest(
       if (typeof llm.config.config === "string") {
         try {
           config = JSON.parse(llm.config.config);
-        } catch (e) {
-          console.log(e);
+        } catch {
+          // Handle error
         }
       }
       config.id = llm.config.id;
@@ -87,10 +87,9 @@ export async function runTest(
 
   tests.map((test) => {
     let assertJs = "";
-    const assets = test.asserts.map((a) => {
-      const { id: _, ...requestAssert } = a;
-      // Use external assert js for default test case
-      if (test.readonly && a.type === "javascript") {
+    const assets = test.asserts.map((assert) => {
+      const { ...requestAssert } = assert;
+      if (test.readonly && assert.type === "javascript") {
         assertJs = AssertMap.get(`${test.name}_assert`) ?? "";
         if (assertJs !== "") {
           requestAssert.value = `file://testcases/${test.name}_assert.js`;
@@ -123,12 +122,10 @@ export async function runTest(
         assertJs,
       ),
     );
-    console.log(configYaml);
     return true;
   });
 
   const request = new RunTestRequest(llmItems, customTestCases);
-  console.log(JSON.stringify(request));
 
   const response = await fetch("/run-test", {
     method: "POST",
@@ -158,7 +155,7 @@ export async function runTest(
         testId = progress.testId;
         onProgress(progress);
       }
-    } catch (e) {
+    } catch {
       break;
     }
   }

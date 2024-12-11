@@ -16,7 +16,7 @@ class TestCaseService {
 
   public list(): TestCase[] {
     const items = this.store.getAll() ?? [];
-    const customList = Object.keys(items).map((key: any) => {
+    const customList = Object.keys(items).map((key: string) => {
       const result = Object.create(TestCase.prototype);
       Object.assign(result, items[key]);
       return result;

@@ -1,6 +1,6 @@
 import { jsx as _jsx } from "react/jsx-runtime";
-import style from '@pages/Test.page.module.css';
-import { NavLink } from '@mantine/core';
+import style from "@pages/Test.page.module.css";
+import { NavLink } from "@mantine/core";
 class TestCaseListProps {
     testCases;
     onChange;

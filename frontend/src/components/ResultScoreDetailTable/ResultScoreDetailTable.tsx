@@ -2,6 +2,7 @@ import { Box, Table } from "@mantine/core";
 import { randomId } from "@mantine/hooks";
 import TestResultScore from "@models/TestResultScore";
 import TestResultStats from "@models/TestResultStats";
+import TestCaseDifficulties from "@models/TestCaseDifficulties";
 import { ResultTableProgress } from "@components/ResultTableProgress/ResultTableProgress";
 import style from "./ResultScoreDetailTable.module.css";
 
@@ -13,6 +14,14 @@ class ResultScoreDetailTableProps {
     this.data = data;
     this.statData = statData;
   }
+}
+
+interface TestCaseStats {
+  name: string;
+  max_score: number;
+  context_length: number;
+  reasoning_depth: number;
+  instruction_compliance: number;
 }
 
 export function ResultScoreDetailTable(props: ResultScoreDetailTableProps) {
@@ -52,11 +61,17 @@ export function ResultScoreDetailTable(props: ResultScoreDetailTableProps) {
     return true;
   });
 
-  const maxScores = new Map<String, number>();
+  const maxScores = new Map<string, number>();
   maxScores.set("Total Score", props.statData.max_total_score ?? 0);
-  props.statData.testcases?.forEach((testcase: any) => {
-    maxScores.set(testcase.name, testcase.max_score);
-  });
+  props.statData.testcases?.forEach(
+    (testcase: TestCaseDifficulties & Partial<TestCaseStats>) => {
+      const name = testcase.name;
+      const maxScore = testcase.max_score;
+      if (typeof name === "string" && typeof maxScore === "number") {
+        maxScores.set(name, maxScore);
+      }
+    },
+  );
 
   return (
     <div className={style.resultContainer}>

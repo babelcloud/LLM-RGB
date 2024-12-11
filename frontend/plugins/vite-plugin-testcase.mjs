@@ -1,23 +1,23 @@
-const fs = require('fs');
-const path = require('path');
+import { readFileSync, readdirSync } from 'fs';
+import { resolve, parse, join } from 'path';
 
 function listFiles(filePath) {
   const files = [];
-  fs.readdirSync(filePath).forEach((file) => {
+  readdirSync(filePath).forEach((file) => {
     files.push(file);
   });
   return files;
 }
 
 function resolveFileData(filePath, filename) {
-  const basename = path.parse(filename).name;
+  const basename = parse(filename).name;
   const parts = basename.split('_');
   const fileType = parts.pop();
   const testName = parts.join('_');
   return {
     type: fileType,
     name: testName,
-    content: Buffer.from(fs.readFileSync(path.join(filePath, filename))).toString('base64'),
+    content: Buffer.from(readFileSync(join(filePath, filename))).toString('base64'),
   };
 }
 
@@ -53,10 +53,10 @@ function buildModuleContent(filePath) {
   return moduleTemplate.join('\n').replace('__SETTERS__', setters.join('\n'));
 }
 
-module.exports = function testcasePlugin() {
+export default function testcasePlugin() {
   const moduleId = '@TestCaseData';
   const resolvedModuleId = `\0${moduleId}`;
-  const testcasePath = path.resolve(__dirname, '../../testcases/');
+  const testcasePath = resolve(__dirname, '../../testcases/');
 
   return {
     name: 'testcase-plugin',
@@ -73,4 +73,4 @@ module.exports = function testcasePlugin() {
       return null;
     },
   };
-};
+}

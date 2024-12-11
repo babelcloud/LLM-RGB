@@ -24,14 +24,14 @@ class LLMItemProps {
   data: LLM;
   disable: boolean;
   onUpdate: onUpdate;
-  onDelete: Function;
+  onDelete: () => void;
   warning: boolean = false;
 
   constructor(
     data: LLM,
     disable: boolean,
     onUpdate: onUpdate,
-    onDelete: Function,
+    onDelete: () => void,
     warning?: boolean,
   ) {
     this.data = data;

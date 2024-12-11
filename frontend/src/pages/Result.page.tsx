@@ -12,13 +12,13 @@ import {
 } from "@mantine/core";
 import {
   defer,
-  LoaderFunction,
-  LoaderFunctionArgs,
   useLoaderData,
-  useLocation,
   useNavigate,
   useParams,
+  useLocation,
+  LoaderFunction,
 } from "react-router-dom";
+import React from "react";
 import { useState } from "react";
 import { randomId } from "@mantine/hooks";
 import dayjs from "dayjs";
@@ -29,7 +29,7 @@ import { GetTestResultScore } from "@services/TestResultScore";
 import { ResultTable } from "@components/ResultTable/ResultTable";
 import { ResultScoreDetailTable } from "@components/ResultScoreDetailTable/ResultScoreDetailTable";
 import { GetTestResultRaw } from "@services/TestResultRaw";
-import TestResultRaw from "@models/TestResultRaw";
+import TestResultRaw, { Result } from "@models/TestResultRaw";
 import { LLMItemConfig } from "@components/LLMItemConfig/LLMItemConfig";
 import { TestRunService } from "@services/TestRunService";
 import { TestRun } from "@models/TestRun";
@@ -38,23 +38,21 @@ import style from "./Result.page.module.css";
 import GithubLogo from "./assets/GithubLogo.png";
 import Vector from "./assets/Vector.png";
 
-interface resultLoaderFunctionArgs extends Omit<LoaderFunctionArgs, "params"> {
-  params: {
-    testId: string;
-  };
-}
-
-interface resultLoaderFunction extends Omit<LoaderFunction, "args"> {
-  (
-    args: resultLoaderFunctionArgs,
-  ): Promise<Response> | Response | Promise<any> | any;
-}
-
-export const resultLoader: resultLoaderFunction = async ({ params }) => {
+export const resultLoader: LoaderFunction = async ({
+  params,
+}: {
+  params: { testId?: string };
+}) => {
   const { testId } = params;
+
+  if (!testId) {
+    throw new Error("Test ID is required");
+  }
+
   const overviewStats = await GetTestResultStats(testId);
   const overviewScore = await GetTestResultScore(testId);
   const testResultRaw = await GetTestResultRaw(testId);
+
   return defer({
     overviewStats,
     overviewScore,
@@ -112,11 +110,13 @@ export function ResultPage(props: ResultPageProps) {
     report = testId;
   }
 
-  const { overviewStats, overviewScore, testResultRaw } = useLoaderData() as {
+  const data = useLoaderData() as {
     overviewStats: TestResultStats;
     overviewScore: TestResultScore[];
     testResultRaw: TestResultRaw;
   };
+
+  const { overviewStats, overviewScore, testResultRaw } = data;
 
   const testRunService = new TestRunService();
   let testRun = testRunService.getByReportId(report);
@@ -293,7 +293,7 @@ export function ResultPage(props: ResultPageProps) {
               activeTabsMap[item] ||
               item +
                 testResultRaw.results.find(
-                  (rawItem) => rawItem.provider.id === item,
+                  (rawItem: Result) => rawItem.provider.id === item,
                 )?.vars.name;
             return (
               <Tabs.Panel key={randomId()} value={item}>
@@ -308,13 +308,15 @@ export function ResultPage(props: ResultPageProps) {
                       className={style.selectItems}
                       defaultValue={activeTab}
                       data={testResultRaw.results
-                        .filter((rawItem) => rawItem.provider.id === item)
+                        .filter(
+                          (rawItem: Result) => rawItem.provider.id === item,
+                        )
                         .sort(
-                          (a, b) =>
+                          (a: Result, b: Result) =>
                             parseInt(a.vars.name, 10) -
                             parseInt(b.vars.name, 10),
                         )
-                        .map((rawItem) => ({
+                        .map((rawItem: Result) => ({
                           value: item + rawItem.vars.name,
                           label: rawItem.vars.name,
                         }))}
@@ -339,13 +341,15 @@ export function ResultPage(props: ResultPageProps) {
                     >
                       <Tabs.List className={style.tabsListLeft} mt={24}>
                         {testResultRaw.results
-                          .filter((rawItem) => rawItem.provider.id === item)
+                          .filter(
+                            (rawItem: Result) => rawItem.provider.id === item,
+                          )
                           .sort(
-                            (a, b) =>
+                            (a: Result, b: Result) =>
                               parseInt(a.vars.name, 10) -
                               parseInt(b.vars.name, 10),
                           )
-                          .map((rawItem) => (
+                          .map((rawItem: Result) => (
                             <Tabs.Tab
                               key={item + rawItem.vars.name}
                               value={item + rawItem.vars.name}
@@ -356,8 +360,10 @@ export function ResultPage(props: ResultPageProps) {
                           ))}
                       </Tabs.List>
                       {testResultRaw.results
-                        .filter((rawItem) => rawItem.provider.id === item)
-                        .map((rawItem) => (
+                        .filter(
+                          (rawItem: Result) => rawItem.provider.id === item,
+                        )
+                        .map((rawItem: Result) => (
                           <Tabs.Panel
                             key={item + rawItem.vars.name}
                             value={item + rawItem.vars.name}

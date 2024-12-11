@@ -17,11 +17,12 @@ class ResultTableProgressProps {
 }
 
 export function ResultTableProgress(props: ResultTableProgressProps) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
   useLayoutEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/dot-notation
-    ref && ref.current && setWidth(ref.current["offsetWidth"]);
+    if (ref.current) {
+      setWidth(ref.current.offsetWidth);
+    }
   }, []);
 
   const value = props.value ?? 0;

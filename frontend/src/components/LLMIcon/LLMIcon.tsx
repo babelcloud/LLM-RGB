@@ -7,9 +7,14 @@ export class LLMIconProps {
   key: string;
   data: LLM;
   public enable?: boolean = true;
-  onClick: Function;
+  onClick: (enable: boolean, data: LLM) => void;
 
-  constructor(key: string, data: LLM, onClick: Function, enable?: boolean) {
+  constructor(
+    key: string,
+    data: LLM,
+    onClick: (enable: boolean, data: LLM) => void,
+    enable?: boolean,
+  ) {
     this.key = key;
     this.data = data;
     this.enable = enable === undefined ? false : enable;

@@ -72,7 +72,7 @@ export function HomePage() {
             This repository contains a collection of detailed test cases
             (prompts) designed to evaluate the reasoning and generation
             capabilities of Language Learning Models (LLMs) in complex
-            scenarios. It's important to note that this benchmark is not
+            scenarios. It&apos;s important to note that this benchmark is not
             intended to be a comprehensive test for LLMs. The project was
             initially developed as an internal project at babel.cloud, with the
             aim of assessing the performance of LLMs in understanding context
@@ -98,11 +98,12 @@ export function HomePage() {
             <br />
             The value is 1 if the prompt contains 2000 characters or less. If
             the number of characters is between 2000 and 5000 (inclusive), the
-            value is 2. If it's more than 5000, the value is 3. The model's
-            actual performance in this dimension depends on the result of each
-            task and the task's context length difficulty. It's not accurate to
-            rate a model's ability in different context lengths solely based on
-            the maximum context length that the model can handle.
+            value is 2. If it&apos;s more than 5000, the value is 3. The
+            model&apos;s actual performance in this dimension depends on the
+            result of each task and the task&apos;s context length difficulty.
+            It&apos;s not accurate to rate a model&apos;s ability in different
+            context lengths solely based on the maximum context length that the
+            model can handle.
           </Text>
           <Text>
             <span style={{ fontWeight: "bold" }}>
@@ -111,10 +112,10 @@ export function HomePage() {
             <br />
             The value is 1 if the answer can be inferred directly from the
             context, such as a knowledge base. If the answer requires reasoning,
-            the value is 2, for example, "Who is considered the father of the
-            iPhone and what is the last digit of his birth year?". If the answer
-            requires reasoning with the provided context, the value is 4, such
-            as writing a program using the provided context syntax.
+            the value is 2, for example, &quot;Who is considered the father of
+            the iPhone and what is the last digit of his birth year?&quot;. If
+            the answer requires reasoning with the provided context, the value
+            is 4, such as writing a program using the provided context syntax.
           </Text>
           <Text>
             <span style={{ fontWeight: "bold" }}>
@@ -123,17 +124,18 @@ export function HomePage() {
             <br />
             The value is 1 if the expected response is in natural language
             without any special requirements. If the expected response should be
-            in a specific style such as "YES or NO", "Shell command only", the
-            value is 2. If the expected response requires a structural format
-            such as JSON, YAML, the value is 3.
+            in a specific style such as &quot;YES or NO&quot;, &quot;Shell
+            command only&quot;, the value is 2. If the expected response
+            requires a structural format such as JSON, YAML, the value is 3.
           </Text>
           <Text>
             The difficulty of each test case (Dn) is the sum of the three
             difficulties. Each test case includes a set of assertions to
-            evaluate the LLM's output. The result of the assertion (Rn) is a
-            decimal between [0, 1]. The final score of the test case (Sn) is
-            calculated as Rn x Dn. "n" is the test case number. The total score
-            for each LLM is the sum of all test case scores (S1...Sn).
+            evaluate the LLM&apos;s output. The result of the assertion (Rn) is
+            a decimal between [0, 1]. The final score of the test case (Sn) is
+            calculated as Rn x Dn. &quot;n&quot; is the test case number. The
+            total score for each LLM is the sum of all test case scores
+            (S1...Sn).
           </Text>
           <Text>
             <span style={{ fontWeight: "bold" }}>Score Table</span>
