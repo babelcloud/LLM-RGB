@@ -1,0 +1,9 @@
+description: "Tests LLM behavior with extremely long input"
+threshold: 0.7
+vars:
+  name: "edge_002_long_input"
+  difficulties:
+    context-length: 3
+    reasoning-depth: 2
+    instruction-compliance: 2
+  prompt: ${readFile prompt.txt}

@@ -1,0 +1,9 @@
+description: "Tests LLM behavior with conflicting instructions"
+threshold: 0.8
+vars:
+  name: "edge_003_conflicting_instructions"
+  difficulties:
+    context-length: 2
+    reasoning-depth: 3
+    instruction-compliance: 3
+  prompt: ${readFile prompt.txt}

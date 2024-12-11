@@ -1,0 +1,9 @@
+description: "Tests LLM behavior with empty/minimal prompts"
+threshold: 0.6
+vars:
+  name: "edge_001_empty_prompt"
+  difficulties:
+    context-length: 1
+    reasoning-depth: 2
+    instruction-compliance: 3
+  prompt: ${readFile prompt.txt}

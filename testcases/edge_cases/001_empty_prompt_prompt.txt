@@ -1,0 +1,3 @@
+# Empty Prompt Test
+
+Please provide a response.

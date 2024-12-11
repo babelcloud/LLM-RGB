@@ -1,0 +1,10 @@
+# Conflicting Instructions Test
+
+1. Write a very detailed, comprehensive response.
+2. Keep your response under 50 words.
+3. Include specific examples.
+4. Be as concise as possible.
+5. Explain all technical terms thoroughly.
+6. Avoid any explanations.
+
+Describe the process of making coffee.
