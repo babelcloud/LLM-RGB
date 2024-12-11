@@ -13,7 +13,9 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
+    "noEmit": false,
+    "declaration": true,
+    "declarationDir": "./dist/types",
     "jsx": "react-jsx",
     "paths": {
       "@/*": ["./src/*"],
@@ -22,7 +24,7 @@
       "@models/*": ["./src/models/*"],
       "@pages/*": ["./src/pages/*"],
       "@services/*": ["./src/services/*"],
-      "@testcases/*": ["../testcases/*"],
+      "@testcases/*": ["../testcases/*"]
     }
   },
   "include": ["src", "src/models", "src/services", "../testcases"],

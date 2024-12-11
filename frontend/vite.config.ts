@@ -1,7 +1,7 @@
 import * as path from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import testcasePlugin from './src/vite-plugin-testcase';
+import testcasePlugin from './plugins/vite-plugin-testcase';
 
 // https://vitejs.dev/config/
 const baseUrl = 'https://llm-rgb.babel.run';
