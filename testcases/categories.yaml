@@ -1,0 +1,58 @@
+# Test Categories for LLM-RGB
+# Each category groups related test cases and provides metadata about their purpose
+
+categories:
+  code_generation:
+    description: "Tests that evaluate code generation capabilities"
+    subcategories:
+      typescript:
+        description: "TypeScript code generation tests"
+        tests:
+          - name: "007_simple_vue"
+            focus: "Complex TypeScript type definitions"
+      yaml:
+        description: "YAML processing and generation tests"
+        tests:
+          - name: "001_yaml_format"
+            focus: "YAML format conversion and validation"
+
+  parsing:
+    description: "Tests that evaluate parsing and text processing capabilities"
+    tests:
+      - name: "004_sed_command"
+        focus: "Command-line text processing"
+
+  reasoning:
+    description: "Tests that focus on complex reasoning and problem-solving"
+    tests:
+      - name: "007_simple_vue"
+        focus: "Understanding and implementing Vue-like type system"
+
+metadata:
+  difficulty_ranges:
+    context_length:
+      min: 1
+      max: 3
+      description: "Measures the amount of context needed to understand the task"
+
+    reasoning_depth:
+      min: 1
+      max: 4
+      description: "Measures the complexity of reasoning required"
+
+    instruction_compliance:
+      min: 1
+      max: 3
+      description: "Measures how well instructions must be followed"
+
+  test_types:
+    - code_generation
+    - parsing
+    - reasoning
+    - system_design
+    - algorithm_implementation
+    - error_handling
+
+  scoring:
+    description: "Test scores are calculated based on difficulty ratings and assertion results"
+    formula: "test_score = assertion_score * (context_length + reasoning_depth + instruction_compliance)"
