@@ -86,3 +86,6 @@ export function TestCaseManage(props) {
                             lg: 9,
                         }, children: _jsx(ScrollArea, { h: 600, children: _jsx(Box, { className: style.testcaseForm, children: _jsx(TestCaseForm, { testCase: currentTestCase, testCaseList: testCaseList, onSave: saveTestCase, onDelete: deleteTestCase, disabled: currentTestCase.readonly }, randomId()) }) }) })] })] }));
 }
+
+
+export { create };
