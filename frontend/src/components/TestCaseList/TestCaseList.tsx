@@ -36,3 +36,6 @@ export function TestCaseList(props: TestCaseListProps) {
     </div>
   );
 }
+
+
+export { TestCaseListProps };
