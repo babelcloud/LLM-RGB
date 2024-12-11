@@ -1,5 +1,6 @@
-const fs = require('fs');
-const path = require('path');
+import { readFileSync, readdirSync } from 'fs';
+import { parse, dirname } from 'path';
+import { fileURLToPath } from 'url';
 
 type FileData = {
   type: string;
@@ -9,21 +10,21 @@ type FileData = {
 
 function listFiles(filePath: string): string[] {
   const files: string[] = [];
-  fs.readdirSync(filePath).forEach((file: string) => {
+  readdirSync(filePath).forEach((file: string) => {
     files.push(file);
   });
   return files;
 }
 
 function resolveFileData(filePath: string, filename: string): FileData {
-  const basename = path.parse(filename).name;
+  const basename = parse(filename).name;
   const parts = basename.split('_');
   const fileType = parts.pop();
   const testName = parts.join('_');
   return {
     type: fileType,
     name: testName,
-    content: btoa(unescape(encodeURIComponent(fs.readFileSync(filePath + filename)))),
+    content: Buffer.from(readFileSync(filePath + filename)).toString('base64'),
   };
 }
 
@@ -62,6 +63,7 @@ function buildModuleContent(filePath: string) {
 export default function testcasePlugin() {
   const moduleId = '@TestCaseData';
   const resolvedModuleId = `\0${moduleId}`;
+  const __dirname = dirname(fileURLToPath(import.meta.url));
   const testcasePath = `${__dirname}/../../testcases/`;
 
   return {
