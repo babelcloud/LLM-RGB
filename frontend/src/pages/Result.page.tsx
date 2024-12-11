@@ -256,7 +256,8 @@ export function ResultPage(props: ResultPageProps) {
             </Box>
           </Tabs.Panel>
           {overviewStats.llms?.map(item => {
-            const activeTab = activeTabsMap[item] ||
+            const activeTab =
+              activeTabsMap[item] ||
               item + testResultRaw.results.find(rawItem => rawItem.provider.id === item)?.vars.name;
             return (
               <Tabs.Panel key={randomId()} value={item}>
@@ -277,7 +278,9 @@ export function ResultPage(props: ResultPageProps) {
                           value: item + rawItem.vars.name,
                           label: rawItem.vars.name,
                         }))}
-                      onChange={value => setActiveTabsMap(prev => ({ ...prev, [item]: value || '' }))}
+                      onChange={value =>
+                        setActiveTabsMap(prev => ({ ...prev, [item]: value || '' }))
+                      }
                     />
                   </Grid.Col>
                   <Grid.Col
