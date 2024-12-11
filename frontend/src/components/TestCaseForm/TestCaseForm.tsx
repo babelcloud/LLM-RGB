@@ -34,12 +34,12 @@ interface TestCaseFormProps {
 }
 
 export function TestCaseForm({
-                               testCase,
-                               testCaseList,
-                               onSave,
-                               onDelete,
-                               disabled = false,
-                             }: TestCaseFormProps) {
+  testCase,
+  testCaseList,
+  onSave,
+  onDelete,
+  disabled = false,
+}: TestCaseFormProps) {
   const [updated, setUpdated] = useState(false);
 
   const form = useForm({
@@ -84,8 +84,8 @@ export function TestCaseForm({
   });
 
   function resetForm() {
-      form.reset();
-      setUpdated(false);
+    form.reset();
+    setUpdated(false);
   }
 
   function saveTestCase() {
@@ -110,11 +110,7 @@ export function TestCaseForm({
       <form>
         <Box>
           <SimpleGrid cols={2}>
-            <TextInput
-              label="Name"
-              disabled={disabled}
-              {...form.getInputProps('name')}
-            />
+            <TextInput label="Name" disabled={disabled} {...form.getInputProps('name')} />
             <NumberInput
               label="Threshold"
               decimalScale={1}
@@ -171,8 +167,17 @@ export function TestCaseForm({
           />
         </Box>
         <Box mt={32}>
-          {disabled ? '' : (
-            <Button size="xs" color="#795FF3" style={{ float: 'right' }} onClick={() => addAssert()}>Add</Button>
+          {disabled ? (
+            ''
+          ) : (
+            <Button
+              size="xs"
+              color="#795FF3"
+              style={{ float: 'right' }}
+              onClick={() => addAssert()}
+            >
+              Add
+            </Button>
           )}
           <Text style={{ lineHeight: '30px' }}>Asserts</Text>
           <div style={{ clear: 'both' }} />
@@ -184,39 +189,38 @@ export function TestCaseForm({
                   <CloseButton disabled={disabled} size="xs" onClick={() => deleteAssert(index)} />
                 </Tooltip>
               </div>
-              <TestCaseFormAssert
-                form={form}
-                assert={assert}
-                index={index}
-                disabled={disabled}
-              />
+              <TestCaseFormAssert form={form} assert={assert} index={index} disabled={disabled} />
             </div>
           ))}
         </Box>
       </form>
-      {disabled ? '' : (
+      {disabled ? (
+        ''
+      ) : (
         <Box mt={16}>
           <Divider />
           <Box mt={16} style={{ float: 'right' }}>
-          <Button
-            mr={16}
-            className={style.newTest}
-            size="2rem"
-            color="gray"
-            radius="8"
-            disabled={!updated}
-            onClick={resetForm}
-          >Cancel
-          </Button>
-          <Button
-            className={style.newTest}
-            size="2rem"
-            color="#795FF3"
-            radius="8"
-            disabled={!updated}
-            onClick={saveTestCase}
-          >Save
-          </Button>
+            <Button
+              mr={16}
+              className={style.newTest}
+              size="2rem"
+              color="gray"
+              radius="8"
+              disabled={!updated}
+              onClick={resetForm}
+            >
+              Cancel
+            </Button>
+            <Button
+              className={style.newTest}
+              size="2rem"
+              color="#795FF3"
+              radius="8"
+              disabled={!updated}
+              onClick={saveTestCase}
+            >
+              Save
+            </Button>
           </Box>
           <Box mt={16}>
             <Button

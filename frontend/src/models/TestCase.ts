@@ -12,14 +12,16 @@ export default class TestCase {
   readonly: boolean = false;
   created: string;
 
-  constructor(name: string,
-              threshold: number,
-              contextLength: number,
-              reasoningDepth: number,
-              instructionCompliance: number,
-              description?: string,
-              prompt?: string,
-              asserts?: TestCaseAssert[]) {
+  constructor(
+    name: string,
+    threshold: number,
+    contextLength: number,
+    reasoningDepth: number,
+    instructionCompliance: number,
+    description?: string,
+    prompt?: string,
+    asserts?: TestCaseAssert[],
+  ) {
     this.name = name;
     this.threshold = threshold;
     this.contextLength = contextLength;

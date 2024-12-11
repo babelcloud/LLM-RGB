@@ -20,14 +20,14 @@ export function TestCaseList(props: TestCaseListProps) {
   return (
     <div>
       {props.testCases.map((item, index) => (
-      <NavLink
-        key={item.created}
-        mb={8}
-        className={style.navLink}
-        label={item.name}
-        active={item.created === active.created}
-        onClick={() => onChange(item, index)}
-      />
+        <NavLink
+          key={item.created}
+          mb={8}
+          className={style.navLink}
+          label={item.name}
+          active={item.created === active.created}
+          onClick={() => onChange(item, index)}
+        />
       ))}
     </div>
   );

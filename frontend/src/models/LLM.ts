@@ -14,7 +14,7 @@ export default class LLM {
     name: string,
     icon: string,
     settings?: LLMConfig,
-    note?: string
+    note?: string,
   ) {
     this.key = key;
     this.id = id;

@@ -30,7 +30,7 @@ export function ResultScoreDetailTable(props: ResultScoreDetailTableProps) {
   const models: string[] = [];
   const scoreNameSet: string[] = [];
   const scoreSet = new Map<string, number[]>();
-  items.map((item) => {
+  items.map(item => {
     if (item.llm_id === undefined || item.total_score === undefined) {
       return false;
     }
@@ -41,7 +41,7 @@ export function ResultScoreDetailTable(props: ResultScoreDetailTableProps) {
       scoreNameSet.push(testName);
     }
     scoreSet.get(testName)?.push(item.total_score);
-    item.scores?.map((score) => {
+    item.scores?.map(score => {
       if (!scoreSet.has(score.test_name)) {
         scoreSet.set(score.test_name, []);
         scoreNameSet.push(score.test_name);
@@ -64,17 +64,19 @@ export function ResultScoreDetailTable(props: ResultScoreDetailTableProps) {
         <Table>
           <Table.Thead>
             <Table.Tr>
-              <Table.Th key={randomId()} className={style.resultTableFistTh}>Model</Table.Th>
-              {models.map((item) => (
+              <Table.Th key={randomId()} className={style.resultTableFistTh}>
+                Model
+              </Table.Th>
+              {models.map(item => (
                 <Table.Th key={randomId()}>{item}</Table.Th>
               ))}
             </Table.Tr>
           </Table.Thead>
           <Table.Tbody>
-            {scoreNameSet.map((name) => (
+            {scoreNameSet.map(name => (
               <Table.Tr key={randomId()}>
                 <Table.Td className={style.resultTableFistTd}>{name}</Table.Td>
-                {scoreSet.get(name)?.map((value) => (
+                {scoreSet.get(name)?.map(value => (
                   <Table.Td key={randomId()} className={style.resultTableTd}>
                     <ResultTableProgress value={value} maxValue={maxScores.get(name) ?? 0} />
                   </Table.Td>
@@ -85,18 +87,18 @@ export function ResultScoreDetailTable(props: ResultScoreDetailTableProps) {
         </Table>
       </div>
       <Table className={style.resultTableFixed}>
-          <Table.Thead>
-            <Table.Tr>
-              <Table.Th className={style.resultTableFistTh}>Model</Table.Th>
+        <Table.Thead>
+          <Table.Tr>
+            <Table.Th className={style.resultTableFistTh}>Model</Table.Th>
+          </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+          {scoreNameSet.map(name => (
+            <Table.Tr key={randomId()}>
+              <Table.Td className={style.resultTableFistTd}>{name}</Table.Td>
             </Table.Tr>
-          </Table.Thead>
-          <Table.Tbody>
-            {scoreNameSet.map((name) => (
-              <Table.Tr key={randomId()}>
-                <Table.Td className={style.resultTableFistTd}>{name}</Table.Td>
-              </Table.Tr>
-            ))}
-          </Table.Tbody>
+          ))}
+        </Table.Tbody>
       </Table>
     </div>
   );

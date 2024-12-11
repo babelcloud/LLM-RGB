@@ -16,15 +16,18 @@ class TestCaseService {
 
   public list(): TestCase[] {
     const items = this.store.getAll() ?? [];
-    const customList = Object.keys(items)
-      .map((key: any) => {
-        const result = Object.create(TestCase.prototype);
-        Object.assign(result, items[key]);
-        return result;
-      });
-    return [...this.defaultList, ...customList.sort((left: TestCase, right: TestCase) =>
-      parseInt(left.created, 10) - parseInt(right.created, 10)
-    )];
+    const customList = Object.keys(items).map((key: any) => {
+      const result = Object.create(TestCase.prototype);
+      Object.assign(result, items[key]);
+      return result;
+    });
+    return [
+      ...this.defaultList,
+      ...customList.sort(
+        (left: TestCase, right: TestCase) =>
+          parseInt(left.created, 10) - parseInt(right.created, 10),
+      ),
+    ];
   }
 
   public set(testCase: TestCase): void {
@@ -63,18 +66,19 @@ class TestCaseService {
           }
           asserts.push(new TestCaseAssert(assert.type, assertValue ?? '', assert.weight ?? 1));
           return assert;
-          }
-        );
+        });
       }
 
-      const testCase = new TestCase(item.vars.name,
+      const testCase = new TestCase(
+        item.vars.name,
         item.threshold,
         item.vars.difficulties['context-length'],
         item.vars.difficulties['reasoning-depth'],
         item.vars.difficulties['instruction-compliance'],
         item.description,
         this.decode(prompt ?? ''),
-        asserts);
+        asserts,
+      );
       testCase.readonly = true;
       result.push(testCase);
     });

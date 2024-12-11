@@ -61,9 +61,9 @@ export interface Response {
 }
 
 export interface Difficulties {
-  'context-length': number
-  'reasoning-depth': number
-  'instruction-compliance': number
+  'context-length': number;
+  'reasoning-depth': number;
+  'instruction-compliance': number;
 }
 
 export interface Vars {

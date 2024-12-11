@@ -174,7 +174,9 @@ export function HomePage() {
             </Text>
           </Box>
         </Box>
-        <Text mt={80} className={style.copyright}>Powered by babel.cloud</Text>
+        <Text mt={80} className={style.copyright}>
+          Powered by babel.cloud
+        </Text>
       </Container>
     </div>
   );

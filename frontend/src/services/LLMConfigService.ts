@@ -20,7 +20,7 @@ export class LLMConfigService {
 
   public delete(llm: string, config: LLMConfig): void {
     const configs = this.get(llm);
-    const newConfigs = configs.filter((item) => item.created !== config.created);
+    const newConfigs = configs.filter(item => item.created !== config.created);
     this.save(llm, newConfigs);
   }
 

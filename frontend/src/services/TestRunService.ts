@@ -13,7 +13,7 @@ export class TestRunService {
     if (!this.testRunList) {
       this.testRunList = [];
     } else {
-      this.testRunList = this.testRunList.map((t) => {
+      this.testRunList = this.testRunList.map(t => {
         const result = Object.create(TestRun.prototype);
         Object.assign(result, t);
         return result;
@@ -32,16 +32,16 @@ export class TestRunService {
 
   public listNames(): string[] {
     const result: string[] = [];
-    this.testRunList.map((testRun) => result.push(testRun.name));
+    this.testRunList.map(testRun => result.push(testRun.name));
     return result;
   }
 
   public getByName(name: string): TestRun | undefined {
-    return this.testRunList.find((testRun) => testRun.name === name);
+    return this.testRunList.find(testRun => testRun.name === name);
   }
 
   public getByReportId(reportId: string): TestRun | undefined {
-    return this.testRunList.find((testRun) => testRun.reportId === reportId);
+    return this.testRunList.find(testRun => testRun.reportId === reportId);
   }
 
   public add(testRun: TestRun): void {
@@ -50,8 +50,8 @@ export class TestRunService {
   }
 
   public update(source: TestRun): void {
-    this.testRunList = this.testRunList.map((target) =>
-      target.name === source.name ? source : target
+    this.testRunList = this.testRunList.map(target =>
+      target.name === source.name ? source : target,
     );
     this.save();
   }
@@ -74,7 +74,7 @@ export class TestRunService {
   }
 
   public delete(name: string): void {
-    this.testRunList = this.testRunList.filter((testRun) => testRun.name !== name);
+    this.testRunList = this.testRunList.filter(testRun => testRun.name !== name);
     this.save();
   }
 

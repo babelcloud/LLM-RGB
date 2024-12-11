@@ -24,7 +24,7 @@ class LLMItemProps {
     disable: boolean,
     onUpdate: onUpdate,
     onDelete: Function,
-    warning?: boolean
+    warning?: boolean,
   ) {
     this.data = data;
     this.disable = disable;
@@ -68,7 +68,7 @@ export function LLMItem(props: LLMItemProps) {
     openEdit();
   }
 
-  function useIt(config: LLMConfig) {
+  function applyConfig(config: LLMConfig) {
     Object.assign(data.config, config);
     onUpdate(data.config);
     closeList();
@@ -76,7 +76,7 @@ export function LLMItem(props: LLMItemProps) {
 
   function del(config: LLMConfig) {
     configService.delete(data.id, config);
-    setConfigList.filter((c) => c.created !== config.created);
+    setConfigList.filter(c => c.created !== config.created);
     console.log(configService.get(data.id));
   }
 
@@ -87,19 +87,19 @@ export function LLMItem(props: LLMItemProps) {
 
   function save() {
     const config = new LLMConfig(
-        form.values.apiKey === null ? undefined : form.values.apiKey,
-        form.values.temperature === null ? undefined : form.values.temperature,
-        form.values.max_new_tokens === null ? undefined : form.values.max_new_tokens,
-        form.values.groupId === null ? undefined : form.values.groupId,
-        form.values.maxOutputTokens === null ? undefined : form.values.maxOutputTokens,
-        form.values.secretKey === null ? undefined : form.values.secretKey,
-        form.values.secret_id === null ? undefined : form.values.secret_id,
-        form.values.secret_key === null ? undefined : form.values.secret_key,
-        form.values.app_id === null ? undefined : form.values.app_id,
-        form.values.id === null ? undefined : form.values.id,
-        form.values.url === null ? undefined : form.values.url,
-        form.values.config === null ? undefined : form.values.config,
-        form.values.remark === null ? undefined : form.values.remark,
+      form.values.apiKey === null ? undefined : form.values.apiKey,
+      form.values.temperature === null ? undefined : form.values.temperature,
+      form.values.max_new_tokens === null ? undefined : form.values.max_new_tokens,
+      form.values.groupId === null ? undefined : form.values.groupId,
+      form.values.maxOutputTokens === null ? undefined : form.values.maxOutputTokens,
+      form.values.secretKey === null ? undefined : form.values.secretKey,
+      form.values.secret_id === null ? undefined : form.values.secret_id,
+      form.values.secret_key === null ? undefined : form.values.secret_key,
+      form.values.app_id === null ? undefined : form.values.app_id,
+      form.values.id === null ? undefined : form.values.id,
+      form.values.url === null ? undefined : form.values.url,
+      form.values.config === null ? undefined : form.values.config,
+      form.values.remark === null ? undefined : form.values.remark,
     );
     configService.add(data.id, config);
     setConfigList.append(config);
@@ -155,7 +155,7 @@ export function LLMItem(props: LLMItemProps) {
                 <>
                   <Text>Used configurations</Text>
                   <Box className={style.configList}>
-                    {configList.map((config) => (
+                    {configList.map(config => (
                       <Box
                         key={randomId()}
                         mb={12}
@@ -173,7 +173,7 @@ export function LLMItem(props: LLMItemProps) {
                           className={style.useIt}
                           color="#F7F9FC14"
                           style={{ float: 'right' }}
-                          onClick={() => useIt(config)}
+                          onClick={() => applyConfig(config)}
                         >
                           Use it
                         </Button>

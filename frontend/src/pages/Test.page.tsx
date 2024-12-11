@@ -104,9 +104,9 @@ export function TestPage() {
       setCurrentTestCases.append(testCase);
       currentTestRun.testCaseList.push(testCase);
     } else {
-      setCurrentTestCases.filter((t) => t.name !== testCase.name);
+      setCurrentTestCases.filter(t => t.name !== testCase.name);
       currentTestRun.testCaseList = currentTestRun.testCaseList.filter(
-        (t) => t.name !== testCase.name
+        t => t.name !== testCase.name,
       );
     }
     testRunService.update(currentTestRun);
@@ -140,7 +140,7 @@ export function TestPage() {
       const exists: string[] = [];
       setCurrentLLMs.append(llm);
       setCurrentLLMs.filter((l: LLM) => {
-        if (exists.some((e) => e === l.name)) {
+        if (exists.some(e => e === l.name)) {
           return false;
         }
         exists.push(l.name);
@@ -152,15 +152,15 @@ export function TestPage() {
       }
       currentTestRun.llmList.push(newLLM);
     } else {
-      setCurrentLLMs.filter((l) => l.name !== llm.name);
-      currentTestRun.llmList = currentTestRun.llmList.filter((t) => t.name !== llm.name);
+      setCurrentLLMs.filter(l => l.name !== llm.name);
+      currentTestRun.llmList = currentTestRun.llmList.filter(t => t.name !== llm.name);
     }
     testRunService.update(currentTestRun);
   }
 
   function updateItem(llm: LLM, index: number, newConfig: LLMConfig) {
     setCurrentLLMs.setItemProp(index, 'config', newConfig);
-    const llmIndex = currentTestRun.llmList.findIndex((l) => l.name === llm.name);
+    const llmIndex = currentTestRun.llmList.findIndex(l => l.name === llm.name);
     Object.assign(currentTestRun.llmList[llmIndex].config, newConfig);
     testRunService.update(currentTestRun);
   }
@@ -173,10 +173,7 @@ export function TestPage() {
 
   // 运行测试部分开始
 
-  const [running, {
-    open: openRunning,
-    close: closeRunning,
-  }] = useDisclosure(false);
+  const [running, { open: openRunning, close: closeRunning }] = useDisclosure(false);
   const navigate = useNavigate();
   const [progress, setProgress] = useState(0);
   const [viewLoading, setViewLoading] = useState(false);
@@ -200,11 +197,10 @@ export function TestPage() {
     }
 
     const requestTestCaseList = testCaseList.filter(t =>
-    currentTestRun.testCaseList.some(ct =>
-        ct.name === t.name
-    ));
+      currentTestRun.testCaseList.some(ct => ct.name === t.name),
+    );
 
-    const invalidLLMs = currentTestRun.llmList.filter((l) => {
+    const invalidLLMs = currentTestRun.llmList.filter(l => {
       if (l.config.apiKey !== undefined) {
         return l.config.apiKey?.trim() === '';
       }
@@ -219,14 +215,10 @@ export function TestPage() {
     }
     openRunning();
     const startTime = new Date().getTime();
-    const testId: string = await runTest(
-      currentTestRun.llmList,
-      requestTestCaseList,
-      (r) => {
-        console.log(r);
-        setProgress((r.progress / r.total) * 100);
-      }
-    );
+    const testId: string = await runTest(currentTestRun.llmList, requestTestCaseList, r => {
+      console.log(r);
+      setProgress((r.progress / r.total) * 100);
+    });
     const endTime = new Date().getTime();
     const duration = endTime - startTime;
     currentTestRun.duration = Math.round(duration / 1000);
@@ -259,10 +251,7 @@ export function TestPage() {
 
   // Test Case 管理开始
 
-  const [showManage, {
-    open: openManage,
-    close: closeManage,
-  }] = useDisclosure(false);
+  const [showManage, { open: openManage, close: closeManage }] = useDisclosure(false);
 
   function saveTestCaseList(newTestCaseList: TestCase[]) {
     testCaseService.setList(newTestCaseList);
@@ -326,7 +315,7 @@ export function TestPage() {
                 }
                 value={currentTestRun.name}
                 data={testRunNames}
-                onChange={(value) => changeTestRun(value || '')}
+                onChange={value => changeTestRun(value || '')}
               />
               <Button
                 className={style.newTest}
@@ -339,7 +328,7 @@ export function TestPage() {
                 New Test
               </Button>
               <Box className={style.navLinkList}>
-                {testRunNames.map((item) => (
+                {testRunNames.map(item => (
                   <NavLink
                     key={item}
                     mb={8}
@@ -373,7 +362,13 @@ export function TestPage() {
             >
               <Container className={style.form}>
                 <Box style={{ float: 'right' }}>
-                  <ActionIcon variant="filled" aria-label="Manage" size="sm" color="#795FF3" onClick={openManage}>
+                  <ActionIcon
+                    variant="filled"
+                    aria-label="Manage"
+                    size="sm"
+                    color="#795FF3"
+                    onClick={openManage}
+                  >
                     <IconPencil
                       style={{
                         width: '70%',
@@ -382,7 +377,13 @@ export function TestPage() {
                       stroke={1.5}
                     />
                   </ActionIcon>
-                  <Modal opened={showManage} onClose={closeManage} title="Test Case Management" size="1200" centered>
+                  <Modal
+                    opened={showManage}
+                    onClose={closeManage}
+                    title="Test Case Management"
+                    size="1200"
+                    centered
+                  >
                     <TestCaseManage testCases={testCaseList} onSave={saveTestCaseList} />
                   </Modal>
                 </Box>
@@ -399,15 +400,15 @@ export function TestPage() {
                   />
                 </Box>
                 <Box className={style.testCases}>
-                  {testCaseList.map((testCase) => (
+                  {testCaseList.map(testCase => (
                     <Checkbox
                       disabled={currentTestRun.finished()}
                       key={testCase.name}
                       label={testCase.name}
                       size="1rem"
-                      checked={currentTestCases.some((t) => t.name === testCase.name)}
+                      checked={currentTestCases.some(t => t.name === testCase.name)}
                       className={style.checkbox}
-                      onChange={(e) => toggleTestCase(e, testCase)}
+                      onChange={e => toggleTestCase(e, testCase)}
                     />
                   ))}
                 </Box>
@@ -432,12 +433,12 @@ export function TestPage() {
                     dragFree
                     loop
                   >
-                    {LLMs.map((item) => (
+                    {LLMs.map(item => (
                       <Carousel.Slide key={item.key}>
                         <LLMIcon
                           key={item.key}
                           data={item}
-                          enable={currentLLMs.some((l) => {
+                          enable={currentLLMs.some(l => {
                             if (l === undefined) {
                               return false;
                             }
@@ -458,7 +459,7 @@ export function TestPage() {
                       key={randomId()}
                       data={item}
                       disable={currentTestRun.finished()}
-                      onUpdate={(newConfig) => updateItem(item, index, newConfig)}
+                      onUpdate={newConfig => updateItem(item, index, newConfig)}
                       onDelete={() => removeItem(item)}
                       warning={
                         ((typeof item.config.apiKey === 'string' && item.config.apiKey === '') ||

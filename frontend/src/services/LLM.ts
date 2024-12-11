@@ -27,7 +27,7 @@ export function getLLMs(): LLM[] {
       'Llama2',
       llama2,
       new LLMConfig('', 0.01, 4096),
-      '(replicate.com)'
+      '(replicate.com)',
     ),
     new LLM('anthropic:completion:claude-2', 'claude2', 'Claude2', claude2, new LLMConfig('')),
     new LLM(
@@ -35,77 +35,84 @@ export function getLLMs(): LLM[] {
       'chatglm',
       'ChatGLM',
       chatglm,
-      new LLMConfig('')
+      new LLMConfig(''),
     ),
     new LLM(
       'webhook:https://llm-proxy.babel.run/minimax',
       'minimax',
       'MINIMAX',
       minimax,
-      new LLMConfig('', undefined, undefined, '')
+      new LLMConfig('', undefined, undefined, ''),
     ),
     new LLM(
       'webhook:https://llm-proxy.babel.run/cohere',
       'cohere',
       'Cohere',
       cohere,
-      new LLMConfig('')
+      new LLMConfig(''),
     ),
-    new LLM(
-      'palm:chat-bison-001',
-      'palm2',
-      'Palm2',
-      palm2,
-      new LLMConfig('', 0.01)
-    ),
+    new LLM('palm:chat-bison-001', 'palm2', 'Palm2', palm2, new LLMConfig('', 0.01)),
     new LLM(
       'webhook:https://llm-proxy.babel.run/aliqwen',
       'aliqwen',
       'Aliqwen',
       aliqwen,
-      new LLMConfig('')
+      new LLMConfig(''),
     ),
     new LLM(
       'webhook:https://llm-proxy.babel.run/baichuan',
       'baichuan2',
       'Baichuan',
       baichuan2,
-      new LLMConfig('', undefined, undefined, undefined, undefined, '')
+      new LLMConfig('', undefined, undefined, undefined, undefined, ''),
     ),
     new LLM(
       'webhook:https://llm-proxy.babel.run/baidu-erniebot4',
       'baidu',
       'Baidu',
       baidu,
-      new LLMConfig('', undefined, undefined, undefined, undefined, '')
+      new LLMConfig('', undefined, undefined, undefined, undefined, ''),
     ),
     new LLM(
       'webhook:https://llm-proxy.babel.run/moonshot',
       'moonshot',
       'Moonshot',
       moonshot,
-      new LLMConfig('')
+      new LLMConfig(''),
     ),
     new LLM(
       'webhook:https://llm-proxy.babel.run/sensenova',
       'sensenova',
       'SenseNova',
       sensenova,
-      new LLMConfig('', undefined, undefined, undefined, undefined, '')
+      new LLMConfig('', undefined, undefined, undefined, undefined, ''),
     ),
     new LLM(
       'webhook:https://llm-proxy.babel.run/hunyuan',
       'hunyuan',
       'HunYuan',
       hunyuan,
-      new LLMConfig(undefined, undefined, undefined, undefined, undefined, undefined, '', '', '')
+      new LLMConfig(undefined, undefined, undefined, undefined, undefined, undefined, '', '', ''),
     ),
     new LLM(
       'custom',
       'custom',
       'Custom',
       robot,
-      new LLMConfig(undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, '', '', '')
+      new LLMConfig(
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        '',
+        '',
+        '',
+      ),
     ),
   ];
 }

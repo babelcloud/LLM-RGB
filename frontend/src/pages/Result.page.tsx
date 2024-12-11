@@ -90,6 +90,7 @@ class ResultPageProps {
 }
 
 export function ResultPage(props: ResultPageProps) {
+  const [activeTabsMap, setActiveTabsMap] = useState<{ [key: string]: string }>({});
   const location = useLocation();
   const navigate = useNavigate();
   let { testId } = useParams();
@@ -131,7 +132,7 @@ export function ResultPage(props: ResultPageProps) {
   }
 
   function getTestCaseDescription(name: string): string {
-    const testCase = testCases.find((t) => t.name === name);
+    const testCase = testCases.find(t => t.name === name);
     if (testCase) {
       return testCase.description;
     }
@@ -234,7 +235,7 @@ export function ResultPage(props: ResultPageProps) {
             <Tabs.Tab className={style.tabsTab} key={randomId()} value="overview">
               Overview
             </Tabs.Tab>
-            {overviewStats.llms?.map((item) => (
+            {overviewStats.llms?.map(item => (
               <Tabs.Tab className={style.tabsTab} key={randomId()} value={item}>
                 {llmNameMap[item] ?? item}
               </Tabs.Tab>
@@ -254,11 +255,9 @@ export function ResultPage(props: ResultPageProps) {
               <ResultScoreDetailTable data={overviewScore} statData={overviewStats} />
             </Box>
           </Tabs.Panel>
-          {overviewStats.llms?.map((item) => {
-            const [activeTab, setActiveTab] = useState<string | null>(
-              item +
-                testResultRaw.results.find((rawItem) => rawItem.provider.id === item)?.vars.name
-            );
+          {overviewStats.llms?.map(item => {
+            const activeTab = activeTabsMap[item] ||
+              item + testResultRaw.results.find(rawItem => rawItem.provider.id === item)?.vars.name;
             return (
               <Tabs.Panel key={randomId()} value={item}>
                 <Grid gutter="16">
@@ -272,13 +271,13 @@ export function ResultPage(props: ResultPageProps) {
                       className={style.selectItems}
                       defaultValue={activeTab}
                       data={testResultRaw.results
-                        .filter((rawItem) => rawItem.provider.id === item)
+                        .filter(rawItem => rawItem.provider.id === item)
                         .sort((a, b) => parseInt(a.vars.name, 10) - parseInt(b.vars.name, 10))
-                        .map((rawItem) => ({
+                        .map(rawItem => ({
                           value: item + rawItem.vars.name,
                           label: rawItem.vars.name,
                         }))}
-                      onChange={(value) => setActiveTab(value)}
+                      onChange={value => setActiveTabsMap(prev => ({ ...prev, [item]: value || '' }))}
                     />
                   </Grid.Col>
                   <Grid.Col
@@ -294,9 +293,9 @@ export function ResultPage(props: ResultPageProps) {
                     >
                       <Tabs.List className={style.tabsListLeft} mt={24}>
                         {testResultRaw.results
-                          .filter((rawItem) => rawItem.provider.id === item)
+                          .filter(rawItem => rawItem.provider.id === item)
                           .sort((a, b) => parseInt(a.vars.name, 10) - parseInt(b.vars.name, 10))
-                          .map((rawItem) => (
+                          .map(rawItem => (
                             <Tabs.Tab
                               key={item + rawItem.vars.name}
                               value={item + rawItem.vars.name}
@@ -307,8 +306,8 @@ export function ResultPage(props: ResultPageProps) {
                           ))}
                       </Tabs.List>
                       {testResultRaw.results
-                        .filter((rawItem) => rawItem.provider.id === item)
-                        .map((rawItem) => (
+                        .filter(rawItem => rawItem.provider.id === item)
+                        .map(rawItem => (
                           <Tabs.Panel
                             key={item + rawItem.vars.name}
                             value={item + rawItem.vars.name}
@@ -358,10 +357,8 @@ export function ResultPage(props: ResultPageProps) {
                         <Text className={style.configTitle}>LLM Config</Text>
                         <Box pt={16} pb={16}>
                           {llms
-                            ?.filter((l) => l.id === item)
-                            .map((llm) => (
-                              <LLMItemConfig key={randomId()} data={llm} />
-                            ))}
+                            ?.filter(l => l.id === item)
+                            .map(llm => <LLMItemConfig key={randomId()} data={llm} />)}
                         </Box>
                       </Box>
                     </Grid.Col>

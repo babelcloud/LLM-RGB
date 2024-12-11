@@ -2,15 +2,15 @@ const fs = require('fs');
 const path = require('path');
 
 type FileData = {
-  type: string,
-  name: string,
-  content: string
+  type: string;
+  name: string;
+  content: string;
 };
 
 function listFiles(filePath: string): string[] {
   const files: string[] = [];
   fs.readdirSync(filePath).forEach((file: string) => {
-      files.push(file);
+    files.push(file);
   });
   return files;
 }

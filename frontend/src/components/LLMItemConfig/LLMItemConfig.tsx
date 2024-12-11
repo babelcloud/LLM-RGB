@@ -36,11 +36,7 @@ export function LLMItemConfig(props: LLMItemConfigProps) {
           </Text>
         )}
         <Box className={style.infoBox}>
-          {typeof data.config.apiKey === 'string' ? (
-            <Text>{maskKey(data.config.apiKey)}</Text>
-          ) : (
-            ''
-          )}
+          {typeof data.config.apiKey === 'string' ? <Text>{maskKey(data.config.apiKey)}</Text> : ''}
           {data.config.temperature !== undefined ? (
             <Text>Temperature: {data.config.temperature}</Text>
           ) : (

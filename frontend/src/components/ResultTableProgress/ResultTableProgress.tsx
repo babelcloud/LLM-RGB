@@ -48,9 +48,7 @@ export function ResultTableProgress(props: ResultTableProgressProps) {
             justifyContent: width < 55 ? 'initial' : 'end',
           }}
         >
-          <Progress.Label className={style.resultTableProgressLabel}>
-            {value}
-          </Progress.Label>
+          <Progress.Label className={style.resultTableProgressLabel}>{value}</Progress.Label>
         </Progress.Section>
       </Progress.Root>
       <Text className={style.resultTableValue}>{value}</Text>

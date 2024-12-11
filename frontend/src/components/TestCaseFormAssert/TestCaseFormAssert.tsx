@@ -10,10 +10,12 @@ class TestCaseFormAssertProps {
   index: number;
   disabled: boolean = false;
 
-  constructor(form: UseFormReturnType<TestCase>,
-              assert: TestCaseAssert,
-              index: number,
-              disabled?: boolean) {
+  constructor(
+    form: UseFormReturnType<TestCase>,
+    assert: TestCaseAssert,
+    index: number,
+    disabled?: boolean,
+  ) {
     this.form = form;
     this.assert = assert;
     this.index = index;
@@ -24,12 +26,7 @@ class TestCaseFormAssertProps {
 }
 
 export function TestCaseFormAssert(props: TestCaseFormAssertProps) {
-  const {
-    form,
-    assert,
-    index,
-    disabled,
-  } = props;
+  const { form, assert, index, disabled } = props;
 
   const monacoOptions = {
     domReadOnly: disabled,
@@ -65,7 +62,7 @@ export function TestCaseFormAssert(props: TestCaseFormAssertProps) {
             language="javascript"
             theme="vs-dark"
             options={monacoOptions}
-            onMount={(editor) => {
+            onMount={editor => {
               editor.updateOptions({ readOnly: disabled });
             }}
             {...form.getInputProps(`asserts.${index}.value`)}

@@ -47,10 +47,10 @@ export interface onProgress {
 export async function runTest(
   llms: LLM[],
   tests: TestCase[],
-  onProgress?: onProgress
+  onProgress?: onProgress,
 ): Promise<string> {
   const llmItems: object[] = [];
-  llms.map((llm) => {
+  llms.map(llm => {
     let targetItem = {};
     if (llm.key === 'custom') {
       const key = `webhook:${llm.config.url}`;
@@ -80,7 +80,7 @@ export async function runTest(
 
   const customTestCases: CustomTestCaseRequest[] = [];
 
-  tests.map((test) => {
+  tests.map(test => {
     let assertJs = '';
     const assets = test.asserts.map(a => {
       const { id: _, ...requestAssert } = a;
@@ -94,27 +94,24 @@ export async function runTest(
       return requestAssert;
     });
 
-    const configYaml = YAML.stringify([{
-      description: test.description,
-      threshold: test.threshold,
-      vars: {
-        name: test.name,
-        difficulties: {
-          'context-length': test.contextLength,
-          'reasoning-depth': test.reasoningDepth,
-          'instruction-compliance': test.instructionCompliance,
+    const configYaml = YAML.stringify([
+      {
+        description: test.description,
+        threshold: test.threshold,
+        vars: {
+          name: test.name,
+          difficulties: {
+            'context-length': test.contextLength,
+            'reasoning-depth': test.reasoningDepth,
+            'instruction-compliance': test.instructionCompliance,
+          },
+          prompt: `file://testcases/${test.name}_prompt.txt`,
         },
-        prompt: `file://testcases/${test.name}_prompt.txt`,
+        assert: assets,
       },
-      assert: assets,
-    }]);
+    ]);
     customTestCases.push(
-      new CustomTestCaseRequest(
-        test.name,
-        encode(configYaml),
-        encode(test.prompt),
-        assertJs,
-      )
+      new CustomTestCaseRequest(test.name, encode(configYaml), encode(test.prompt), assertJs),
     );
     console.log(configYaml);
     return true;

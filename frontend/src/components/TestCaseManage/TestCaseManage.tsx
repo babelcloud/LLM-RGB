@@ -28,16 +28,12 @@ function create(testCases: TestCase[]): TestCase {
     return testCase;
   });
   lastNumber += 1;
-  const index = String(lastNumber)
-    .padStart(3, '0');
+  const index = String(lastNumber).padStart(3, '0');
   return new TestCase(`${index}_test_case`, 1, 1, 1, 1);
 }
 
 export function TestCaseManage(props: TestCaseManageProps) {
-  const {
-    testCases,
-    onSave,
-  } = props;
+  const { testCases, onSave } = props;
   const [testCaseList, setTestCaseList] = useListState(testCases);
   const firstTestCase = testCaseList[0];
   const [currentTestCase, setCurrentTestCase] = useState(firstTestCase);
@@ -85,8 +81,8 @@ export function TestCaseManage(props: TestCaseManageProps) {
   }
 
   useEffect(() => () => {
-      onSave(testCaseList);
-    });
+    onSave(testCaseList);
+  });
 
   return (
     <>
@@ -122,10 +118,7 @@ export function TestCaseManage(props: TestCaseManageProps) {
             lg: 3,
           }}
         >
-          <ScrollArea
-            h={600}
-            viewportRef={testCaseListViewport}
-          >
+          <ScrollArea h={600} viewportRef={testCaseListViewport}>
             <Box
               className={style.testcaseForm}
               style={{
