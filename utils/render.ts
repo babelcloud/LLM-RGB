@@ -65,6 +65,9 @@ const getScoreAndStructureData = (folderPath: string | undefined) => {
             }
         });
 
+        // sort the scoreData by total_score
+        scoreData.sort((a, b) => b.total_score - a.total_score);
+
         structureData = getTestStats(
             scoreData,
             Object.values(testcases),
