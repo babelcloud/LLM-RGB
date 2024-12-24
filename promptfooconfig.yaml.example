@@ -1,81 +1,155 @@
 prompts: prompt.txt
 providers: 
 ### OpenAI
-  - openai:o1-preview:
-      id: openai-o1-preview
-      config:
-        apiKey: # Your Key
-        temperature: 0
-  - openai:o1-mini:
-      id: openai-o1-mini
-      config:
-        apiKey: # Your Key
-        temperature: 0
+  # - openai:o1-mini:
+  #     id: openai-o1-mini
+  #     config:
+  #       apiKey: 
+  #       temperature: 1
+  # - openai:o1-preview:
+  #     id: openai-o1-preview
+  #     config:
+  #       apiKey: 
+  #       temperature: 1
+  # - openai:o1-mini:
+  #     id: openai-o1-mini
+  #     config:
+  #       apiKey: 
+  #       temperature: 1
   - openai:gpt-4o:
       id: gpt-4o
       config:
-        apiKey: # Your Key
-        temperature: 0
+        apiKey: 
+        #temperature: 0
 ### Anthropic
-  - anthropic:messages:claude-3-opus-20240229:
-      id: claude3-Opus
-      config:
-        apiKey: # Your Key
-        temperature: 0
-        max_tokens: 4000
-  - anthropic:messages:claude-3-5-sonnet-20240620:
-      id: claude35-Sonnet
-      config: 
-        apiKey: # Your Key
-        temperature: 0
-        max_tokens: 4000
-### Cohere
-  # - cohere:command-r-plus:
-  #     id: cohere
+  # - anthropic:messages:claude-3-opus-20240229:
+  #     id: claude3-Opus
   #     config:
   #       apiKey: 
   #       temperature: 0
-  #       max_tokens: 3000
+  #       max_tokens: 4096
+  - anthropic:messages:claude-3-5-sonnet-20241022:
+      id: Sonnet-1022
+      config: 
+        apiKey:
+        #temperature: 0
+        max_tokens: 8192
+  # - anthropic:messages:claude-3-5-sonnet-20240620:
+  #     id: Sonnet-0620
+  #     config: 
+  #       apiKey: 
+  #       temperature: 0
+  #       max_tokens: 4096
+## Cohere
+  # - cohere:command-r-plus:
+  #     id: cohere-command-r-plus
+  #     config:
+  #       apiKey: 
+  #       temperature: 0
+  #       max_tokens: 4096
 ### Mistral
   # - mistral:mistral-large-latest:
-  #     id: mistral
+  #     id: mistral-large
   #     config:
   #       apiKey: 
   #       temperature: 0
   #       max_tokens: 4096
 ### Google
-  # - google:gemini-1.5-pro-latest:
+  # - google:gemini-1.5-pro-002:
   #     id: gemini-1.5-pro
   #     config:
-  #       apiKey: # Your Key
+  #       apiKey: 
   #       temperature: 0
   #       maxOutputTokens: 8192
+  - google:gemini-exp-1206:
+      id: gemini-exp-1206
+      config:
+        apiKey: 
+        #temperature: 0
+        maxOutputTokens: 8192
+  # - google:gemini-2.0-flash-exp:
+  #     id: gemini-2.0-flash-exp
+  #     config:
+  #       apiKey: 
+  #       temperature: 0
+  #       maxOutputTokens: 8192
+  # - google:gemini-2.0-flash-thinking-exp:
+  #     id: gemini-2.0-flash-thinking-exp
+  #     config:
+  #       apiKey: 
+  #       temperature: 0
+  #       maxOutputTokens: 8192
+### xAI
+  - openai:chat:grok-beta:
+      id: grok-beta
+      config:
+        apiKey: 
+        apiBaseUrl: https://api.x.ai/v1
+### Baidu
+  - file://utils/baiduProvider.ts:
+      id: baidu-ernie4-128k
+      config:
+        apiKey: 
+        secretKey: 
+### GLM
+  - file://utils/glmProvider.ts:
+      id: zhipu-glm4-plus
+      config:
+        apiKey: 
+### Bytedance
+  - file://utils/bytedanceProvider.ts:
+      id: bytedance-doubao-pro
+      config:
+        apiKey: 
+        endpoint: https://ark.cn-beijing.volces.com/api/v3/chat/completions
+        model: 
 ### Deepseek
-  # - openai:chat:deepseek-chat:
-  #     id: deepseek
-  #     config:
-  #       apiKey: 
-  #       apiBaseUrl: https://api.deepseek.com
+  - openai:chat:deepseek-chat:
+      id: deepseek-chat
+      config:
+        apiKey: 
+        apiBaseUrl: https://api.deepseek.com
+### Tencent
+  - openai:chat:hunyuan-pro:
+      id: tencent-hunyuan-pro
+      config:
+        apiKey: 
+        apiBaseUrl: https://api.hunyuan.cloud.tencent.com/v1
+### Qwen
+  - openai:chat:qwen-max-latest:
+      id: alibaba-qwen-max
+      config:
+        apiKey: 
+        apiBaseUrl: https://dashscope.aliyuncs.com/compatible-mode/v1
 ### Moonshot
-  # - openai:chat:moonshot-v1-128k:
-  #     id: moonshot-v1-128k
-  #     config:
-  #       apiKey: 
-  #       apiBaseUrl: https://api.moonshot.cn/v1
+  - openai:chat:moonshot-v1-128k:
+      id: moonshot-v1-128k
+      config:
+        apiKey: 
+        apiBaseUrl: https://api.moonshot.cn/v1
 ### Step
   # - openai:chat:step-2-16k:
   #     id: step-2-16k
   #     config:
   #       apiKey: 
   #       apiBaseUrl: https://api.stepfun.com/v1
-  #       temperature: 0
+        #temperature: 0
 ### Llama - Replicate
-  # - replicate:meta/meta-llama-3.1-405b-instruct:
-  #     id: llama3.1-405b
-  #     config:
-  #       apiKey: 
-  #       temperature: 0.01
-  #       max_new_tokens: 4096
+  - replicate:meta/meta-llama-3.1-405b-instruct:
+      id: llama3.1-405b
+      config:
+        apiKey: 
+        #temperature: 0.01
+        max_new_tokens: 4096
+### Anthropic - Bedrock
+  # - id: bedrock:anthropic.claude-3-5-sonnet-20240620-v1:0
+  #   config:
+  #     region: 'us-east-1'
+  #     temperature: 0
+  #     max_tokens: 4096
+  #     access_key_id: 
+  #     secret_access_key: 
+  #     anthropic_version: bedrock-2023-05-31
 defaultTest:
   options:
     postprocess: |

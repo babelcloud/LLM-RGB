@@ -1,0 +1,72 @@
+# 006_is_neg_number
+
+## Prompt
+
+/*
+  25747 - IsNegativeNumber
+  -------
+  by andrew jarrett (@ahrjarrett) #hard #number #template literal
+
+  ### Question
+
+  Sometimes when working with numeric literals, we need to rule out (or enforce) that the provided number is a positive integer.
+
+  To do that, we first need a way to tell if the number is negative.
+
+  Write a type-level function `IsNegativeNumber` that accepts a number `N` and returns:
+
+  - `true` if `N` is negative
+  - `false` if `N` is positive
+  - `false` if `N` is `0`,
+  - `never` if `N` is `number`
+  - `never` if `N` is a union
+
+  > View on GitHub: https://tsch.js.org/25747
+*/
+
+/* _____________ Your Code Here _____________ */
+
+type IsNegativeNumber<T extends number> = any
+
+/* _____________ Test Cases _____________ */
+import type { Equal, Expect } from '@type-challenges/utils'
+
+type cases = [
+  Expect<Equal<IsNegativeNumber<0>, false>>,
+  Expect<Equal<IsNegativeNumber<number>, never>>,
+  Expect<Equal<IsNegativeNumber<-1 | -2>, never>>,
+  Expect<Equal<IsNegativeNumber<-1>, true>>,
+  Expect<Equal<IsNegativeNumber<-1.9>, true>>,
+  Expect<Equal<IsNegativeNumber<-100_000_000>, true>>,
+  Expect<Equal<IsNegativeNumber<1>, false>>,
+  Expect<Equal<IsNegativeNumber<1.9>, false>>,
+  Expect<Equal<IsNegativeNumber<100_000_000>, false>>,
+]
+
+/* _____________ Further Steps _____________ */
+/*
+  > Share your solutions: https://tsch.js.org/25747/answer
+  > View solutions: https://tsch.js.org/25747/solutions
+  > More Challenges: https://tsch.js.org
+*/
+
+Code of the type ONLY, no explanations.
+
+## Response
+
+```typescript
+type IsNegativeNumber<T extends number> = 
+  T extends -Infinity ? true :
+  T extends 0 ? false :
+  T extends infer U extends number 
+    ? [U] extends [never] 
+      ? never 
+      : U extends negative ? true : false 
+  : never;
+
+type negative = -1 | -2 | -3 | -4 | -5 | -6 | -7 | -8 | -9 | -10 
+  | -11 | -12 | -13 | -14 | -15 | -16 | -17 | -18 | -19 | -20
+  | -100 | -1_000 | -10_000 | -100_000 | -1_000_000 | -10_000_000 
+  | -100_000_000 | -1_000_000_000 | number & { _IsNegativeBrand: 'negative' };
+```
+
