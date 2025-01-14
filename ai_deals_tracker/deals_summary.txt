@@ -1,0 +1,48 @@
+AI Funding Round Summary:
+
+Total Funding: $19.81B
+Date Range: 2024-01-08 to 2024-01-18
+
+Funding by Stage:
+- Series C+: 14 deals, $3308.0M total
+- Pre-seed: 10 deals, $32.2M total
+- Series B: 3 deals, $255.0M total
+- Seed: 4 deals, $20.0M total
+- Late Stage/Growth: 4 deals, $16000.0M total
+- Series A: 5 deals, $194.0M total
+
+Top 3 Largest Funding Rounds:
+- xAI (2024-01-17 00:00:00): $6.00B (Valuation: $50.0B)
+  AI company founded by Elon Musk
+  Investors: Sequoia, Andreessen Horowitz, Qatar Investment Authority
+
+- xAI (2024-01-17 00:00:00): $6.00B (Valuation: $50.0B)
+  AI company founded by Elon Musk
+  Investors: Sequoia, Andreessen Horowitz, Qatar Investment Authority
+
+- Anthropic (2024-01-15 09:00:00): $2.00B (Valuation: $60.0B)
+  Leading AI research company developing safe and ethical AI systems
+  Investors: Multiple investors in talks
+
+
+Recent Seed & Early-Stage Deals:
+- Edera AI (2024-01-18 10:00:00): $4.5M
+  AI-powered Kubernetes security and compliance platform
+  Investors: Vertex Ventures, Unusual Ventures
+
+- Edera AI (2024-01-18 10:00:00): $4.5M
+  AI-powered Kubernetes security and compliance platform
+  Investors: Vertex Ventures, Unusual Ventures
+
+- Altera AI (2024-01-17 09:30:00): $3.8M
+  Game-playing AI agents and reinforcement learning platform
+  Investors: Innovation Endeavors, Eric Schmidt
+
+- Altera AI (2024-01-17 09:30:00): $3.8M
+  Game-playing AI agents and reinforcement learning platform
+  Investors: Innovation Endeavors, Eric Schmidt
+
+- Pharos AI (2024-01-16 09:30:00): $5.0M
+  AI-powered hospital quality reporting and analytics platform
+  Investors: Felicis Ventures, Y Combinator
+
