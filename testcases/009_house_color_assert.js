@@ -13,7 +13,7 @@ module.exports = (output, { vars }) => {
                 .replace(/^```json\n/, "") // Remove the prefix
                 .replace(/\n```$/, "") // Remove the suffix
         );
-        if(jsonContent.color === "red"){
+        if(jsonContent.color.toLowerCase() === "red"){
             score += 0.9;
         }
     } catch (error) {
