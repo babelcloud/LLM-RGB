@@ -16,10 +16,5 @@
       weight: 7
     - type: contains-all
       value:
-        - 'git pull'
-        - 'git submodule update'
-      weight: 2
-    - type: contains-all
-      value:
-        - 'git pull'
-      weight: 1
+        - 'make install-app'
+      weight: 3

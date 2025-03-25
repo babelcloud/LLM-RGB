@@ -1,0 +1,16 @@
+You are working on a test now.
+
+=== Test Begin ===
+{{prompt}}
+=== Test End ===
+
+You need to think step by step. The thought should be detailed and complete, think with different angles and think with self-reflection. The answer should follow the requirements of the test exactly.
+Output in the following format:
+
+<thought>
+{{thought}}
+</thought>
+
+<answer>
+{{answer}}
+</answer>

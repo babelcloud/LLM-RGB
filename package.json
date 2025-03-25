@@ -31,12 +31,13 @@
     "chalk": "^4.1.2",
     "cli-table3": "^0.6.5",
     "js-yaml": "^4.1.0",
-    "promptfoo": "~0.103.12",
+    "promptfoo": "~0.107.4",
     "python-shell": "^5.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
   },
   "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
     "@types/node": "^20.17.12",
     "vitest": "^2.1.8"
   }

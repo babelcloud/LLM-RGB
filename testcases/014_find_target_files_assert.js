@@ -23,17 +23,16 @@ module.exports = (output, { vars }) => {
             return false;
         }
         const outputSet = new Set(targetFiles);
-        if (outputSet.size !== expectedOutput.size) {
-            return false;
+        if (outputSet.size == expectedOutput.size) {
+            score += 0.1;
         }
 
         // check if targetFiles contains the expected output
         for (const file of expectedOutput) {
-            if (!outputSet.has(file)) {
-                return false;
+            if (outputSet.has(file)) {
+                score += 0.4;
             }
         }
-        score += 0.9;
     } catch (error) {
         return false;
     }
