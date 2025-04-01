@@ -21,9 +21,9 @@ The value is 1 if the expected response is in natural language without any speci
 The difficulty of each test case (Dn) is the sum of the three difficulties. Each test case includes a set of assertions to evaluate the LLM's output. The result of the assertion (Rn) is a decimal between [0, 1]. The final score of the test case (Sn) is calculated as Rn x Dn. "n" is the test case number. The total score for each LLM is the sum of all test case scores (S1...Sn).
 
 ## Score Table
-The following tables show the evaluation results, executed on Dec. 22th, 2024. We ran the evaluation 5 times and take the average scores. The full score of all 15 testcases is 100. You can check experiments/2024-12-22T09-53-32-371Z for the detailed results. Please note that CoT LLMs such as o1 are purposely not included in the test as it's not an apple to apple comparison. From previous tests, CoT LLMs are generally better than non-CoT LLMs. The score of "o1-preview" is approximately 70. We will conduct a new test once more CoT LLMs are released.
+The following tables show the evaluation results, executed on Mar. 26th, 2025. We ran the evaluation 5 times and take the average scores. The full score of all 15 testcases is 100. You can check experiments/2025-03-26T20-49-03-321Z for the detailed results. 
 
-![image](https://github.com/user-attachments/assets/ee1a9db4-832c-4351-ab46-394a63d8155f)
+![Image](https://github.com/user-attachments/assets/d1264fb9-ca13-40fb-8989-40492b84d3dc)
 
 
 ## Quick Start
