@@ -47,6 +47,7 @@ const getScoreAndStructureData = (folderPath: string | undefined) => {
                                 assertion_score: testcase["assertion_score"],
                                 test_score: testcase["test_score"],
                                 repeat: testcase["repeat"],
+                                latencyMs: testcase["latencyMs"] || 0,
                             } as TestScore;
 
                             if (!testcases[testcase["test_name"]]) {
@@ -117,6 +118,16 @@ let verticalTestCasesTable = new Table({
 
 let verticalRows: any[] = [[`Total Score (repeat: ${repeat})`]];
 
+let timeTable = new Table({
+    head: ['Test Case / LLM ID'].concat(structureData.llms).map(header => chalk.blue(header))
+});
+
+let timeRows: any[] = [['Time (ms)']];
+
+structureData.testcases.forEach((testcase: any) => {
+    timeRows.push([testcase.name]);
+});
+
 structureData.testcases.forEach((testcase: any) => {
     verticalRows.push([testcase.name]);
 });
@@ -143,15 +154,27 @@ scoreData.forEach((item: any) => {
     item.scores.forEach((scoreItem: any, index: number) => {
         verticalRows[index + 1].push(createBar(scoreItem.test_score, maxScores[scoreItem.test_name]));
     });
+    
+    timeRows[0].push(item.llm_id);
+    
+    item.scores.forEach((scoreItem: any, index: number) => {
+        timeRows[index + 1].push(scoreItem.latencyMs || 'N/A');
+    });
 });
 
 verticalRows.forEach((row: any) => {
     verticalTestCasesTable.push(row);
 });
 
+timeRows.forEach((row: any) => {
+    timeTable.push(row);
+});
+
 console.log(scoresTable.toString());
 //console.log(testCasesTable.toString());
 console.log(verticalTestCasesTable.toString());
+console.log('\nTime spent per test case (ms):');
+console.log(timeTable.toString());
 
 function createBar(score: number, maxScore: number) {
     let percentage = score / maxScore;
