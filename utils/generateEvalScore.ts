@@ -201,7 +201,8 @@ function getLLMScores(llm_id: string, results, tests) {
                 test_name: result.vars.name,
                 assertion_score: result.score,
                 test_score: test_score,
-                repeat: 1
+                repeat: 1,
+                latencyMs: result.response?.latencyMs || 0
             }
 
             if(!scoreMap.has(score.test_name)){
@@ -215,12 +216,14 @@ function getLLMScores(llm_id: string, results, tests) {
     const scores: TestScore[] = Array.from(scoreMap.values()).map(scoreList => {
         let assertion_score_sum = scoreList.map(s => s.assertion_score).reduce((pre, cur) => pre + cur);
         let test_score_sum = scoreList.map(s => s.test_score).reduce((pre, cur) => pre + cur);
+        let latency_sum = scoreList.map(s => s.latencyMs || 0).reduce((pre, cur) => pre + cur);
         
         return {
             test_name: scoreList[0].test_name,
             assertion_score: parseFloat((assertion_score_sum/scoreList.length).toFixed(1)),
             test_score: parseFloat((test_score_sum/scoreList.length).toFixed(1)),
-            repeat: scoreList.length
+            repeat: scoreList.length,
+            latencyMs: Math.round(latency_sum/scoreList.length)
         };
     });
 
@@ -253,6 +256,7 @@ function generateResponseLogs(rawResp: resultsType, scores: LLMEval[], testStats
                 difficulty: extractedTestcases.find(test => test.name === testId).difficulties,
                 assertion_score: testCaseScore.assertion_score,
                 test_score: testCaseScore.test_score,
+                latencyMs: 0, // Initialize latency
                 details: {}
             };
         }
@@ -291,10 +295,28 @@ function generateResponseLogs(rawResp: resultsType, scores: LLMEval[], testStats
 
         // Update llmTestCaseReports
         const testCaseDifficulties = llmTestCaseReports[providerId][testId].difficulty;
+        const latencyMs = result.response?.latencyMs || 0;
         llmTestCaseReports[providerId][testId].details[fileName.replace(".md", "")] = {
             assertion_score: result.score,
-            test_score: result.score.toFixed(1) * (testCaseDifficulties["context-length"] + testCaseDifficulties["reasoning-depth"] + testCaseDifficulties["instruction-compliance"])
+            test_score: result.score.toFixed(1) * (testCaseDifficulties["context-length"] + testCaseDifficulties["reasoning-depth"] + testCaseDifficulties["instruction-compliance"]),
+            latencyMs: latencyMs
         }
+    });
+
+    Object.entries(llmTestCaseReports).forEach(([llmId, llm]) => {
+        Object.values(llm).forEach((testCase: any) => {
+            if (testCase.details) {
+                let totalLatency = 0;
+                let count = 0;
+                Object.values(testCase.details).forEach((detail: any) => {
+                    if (detail.latencyMs) {
+                        totalLatency += detail.latencyMs;
+                        count++;
+                    }
+                });
+                testCase.latencyMs = count > 0 ? Math.round(totalLatency / count) : 0;
+            }
+        });
     });
 
     // Write llmTestCaseReports to file
@@ -339,6 +361,7 @@ export type TestScore = {
     assertion_score: number
     test_score: number
     repeat: number
+    latencyMs?: number
 }
 
 type DifficultyType = {
@@ -377,6 +400,7 @@ type resultType = {
     };
     response?: {
         output: string;
+        latencyMs?: number; // Add latency field
         [key: string]: any;
     };
     [key: string]: any;
@@ -397,5 +421,6 @@ export type TestCaseReport = {
     difficulty: DifficultyType;
     assertion_score: number;
     test_score: number;
+    latencyMs?: number; // Add latency field
     details?: object
 }
