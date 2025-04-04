@@ -154,9 +154,9 @@ scoreData.forEach((item: any) => {
     item.scores.forEach((scoreItem: any, index: number) => {
         verticalRows[index + 1].push(createBar(scoreItem.test_score, maxScores[scoreItem.test_name]));
     });
-    
+
     timeRows[0].push(item.llm_id);
-    
+
     item.scores.forEach((scoreItem: any, index: number) => {
         timeRows[index + 1].push(scoreItem.latencyMs || 'N/A');
     });
